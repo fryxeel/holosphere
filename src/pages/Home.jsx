@@ -15,6 +15,8 @@ export default function Home() {
     <div>
       <h1>Accueil</h1>
       <Bouton>Hey</Bouton>
+      <Bouton>le 2</Bouton>
+      <Bouton>3emmeeee</Bouton>
     </div>
   )
 }

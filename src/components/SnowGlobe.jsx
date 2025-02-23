@@ -26,7 +26,7 @@ const Scene = () => {
     }}>
       <Canvas 
         camera={{ position: [0, 0, 5], fov: 50 }} 
-        style={{ width: '500px', height: '500px' }}
+        style={{ width: '500px', height: '500px', position:'fixed' }}
       >
         <ambientLight intensity={0.5} />
         <directionalLight position={[2, 5, 3]} intensity={1} />

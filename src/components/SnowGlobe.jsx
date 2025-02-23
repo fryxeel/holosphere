@@ -1,17 +1,17 @@
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, useGLTF } from "@react-three/drei";
-import { Suspense } from "react";
+import { Canvas } from '@react-three/fiber'
+import { OrbitControls, useGLTF } from '@react-three/drei'
+import { Suspense } from 'react'
 import React from 'react'
 
 const SnowGlobe = () => {
-  const { scene } = useGLTF("/models/holosphere_v1.glb"); // Assure-toi du bon chemin
+  const { scene } = useGLTF('/models/holosphere_v1.glb') // Assure-toi du bon chemin
 
   return (
     <Suspense fallback={null}>
       <primitive object={scene} scale={1} />
     </Suspense>
-  );
-};
+  )
+}
 
 const Scene = () => {
   return (
@@ -21,7 +21,7 @@ const Scene = () => {
       <SnowGlobe />
       <OrbitControls enableZoom={false} />
     </Canvas>
-  );
-};
+  )
+}
 
-export default Scene;
+export default Scene

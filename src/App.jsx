@@ -35,20 +35,18 @@ function App() {
 export default App*/
 
 import React from 'react'
-// import { Routes, Route } from 'react-router-dom'
-// import Home from './pages/Home'
-// import About from './pages/About'
-import SnowGlobe from "./components/SnowGlobe.jsx";
+import { Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import About from './pages/About'
+import Vue3d from './pages/Vue3d.jsx'
 
 function App() {
   return (
-    // <Routes>
-    //   <Route path="/" element={<Home />} />
-    //   <Route path="/about" element={<About />} />
-    // </Routes>
-    <div style={{ width: "100vw", height: "100vh" }}>
-      <SnowGlobe />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/vue3d" element={<Vue3d />} />
+    </Routes>
   )
 }
 

@@ -13,12 +13,19 @@ const Bouton = styled(Link)`
   text-decoration: none;
 `
 
+const MyH1 = styled.h1`
+  font-family: 'Soria', serif;
+  font-weight: 400;
+  font-size: 80px;
+  margin-bottom: 24px;
+`
+
 export default function Home() {
   return (
     <>
       <Header />
       <div>
-        <h1>Accueil</h1>
+        <MyH1>Accueil</MyH1>
         <Bouton to="/about">Page about</Bouton>
         <Bouton to="/vue3d">Page vue 3d</Bouton>
         <Bouton to="/test">Page test</Bouton>

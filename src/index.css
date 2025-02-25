@@ -67,6 +67,13 @@ button:focus-visible {
   }
 } */
 
+@font-face {
+  font-family: 'Soria';
+  src: url('./assets/fonts/Soria-remastered.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 
 *{
   margin: 0;

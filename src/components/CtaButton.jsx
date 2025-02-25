@@ -35,13 +35,18 @@ const MyButton = styled.a`
   }
 `
 
-const Button = ({ content }) => {
-  return <MyButton>{content}</MyButton>
+const CtaButton = ({ children, href }) => {
+  return <MyButton href={href}>{children}</MyButton>
 }
 
-// Ajout de PropTypes pour la validation des props
-Button.propTypes = {
-  content: PropTypes.string.isRequired,
+// Ajout de PropTypes
+CtaButton.propTypes = {
+  children: PropTypes.node.isRequired, // Accepte du texte ou d'autres éléments JSX
+  href: PropTypes.string, // Ajout d'un lien facultatif
 }
 
-export default Button
+CtaButton.defaultProps = {
+  href: '#', // Valeur par défaut
+}
+
+export default CtaButton

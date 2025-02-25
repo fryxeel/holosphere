@@ -13,20 +13,21 @@ const SnowGlobe = () => {
   )
 }
 
-
 const Scene = () => {
   return (
-    <div style={{
-      width: '100vw',
-      height: '100vh',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#000' // Pour voir si le centrage fonctionne bien
-    }}>
-      <Canvas 
-        camera={{ position: [0, 0, 5], fov: 50 }} 
-        style={{ width: '500px', height: '500px', position:'fixed' }}
+    <div
+      style={{
+        width: '100vw',
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#000', // Pour voir si le centrage fonctionne bien
+      }}
+    >
+      <Canvas
+        camera={{ position: [0, 0, 5], fov: 50 }}
+        style={{ width: '500px', height: '500px', position: 'fixed' }}
       >
         <ambientLight intensity={0.5} />
         <directionalLight position={[2, 5, 3]} intensity={1} />
@@ -36,6 +37,5 @@ const Scene = () => {
     </div>
   )
 }
-
 
 export default Scene

@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import Header from '../components/Header'
+import Hero from '../components/Hero'
 
 const Bouton = styled(Link)`
   background-color: #007bff;
@@ -23,13 +24,14 @@ const MyH1 = styled.h1`
 export default function Home() {
   return (
     <>
-      <Header />
-      <div>
-        <MyH1>Accueil</MyH1>
-        <Bouton to="/about">Page about</Bouton>
-        <Bouton to="/vue3d">Page vue 3d</Bouton>
-        <Bouton to="/test">Page test</Bouton>
-      </div>
+      <Hero>
+        <Header />
+        <div>
+          <MyH1>Accueil</MyH1>
+          <Bouton to="/vue3d">Page vue 3d</Bouton>
+          <Bouton to="/test">Page test POC</Bouton>
+        </div>
+      </Hero>
     </>
   )
 }

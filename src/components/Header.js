@@ -21,7 +21,7 @@ export default function Header() {
                         </Link>
                     </li>
                     <li>
-                        <Link href={routes.detail} className={liClass}>
+                        <Link href={routes.personnalisation} className={liClass}>
                             Personnalisation
                         </Link>
                     </li>

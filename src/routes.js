@@ -4,7 +4,7 @@ const routes = {
     test: '/test',
     story: '/story',
     get: '/get',
-    detail: '/details',
+    personnalisation: '/personnalisation',
 }
 
 export default routes

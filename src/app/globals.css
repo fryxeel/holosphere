@@ -1,0 +1,26 @@
+@import 'tailwindcss';
+
+:root {
+  --color-gradient: radial-gradient(
+      179.27% 115.06% at 9.74% -6.22%,
+      #fcdaaf 0%,
+      #e99dbc 13.14%,
+      #8c64c5 26.31%,
+      #252d5a 62.27%,
+      #0c0f1e 100%
+  );
+  --h1: 6rem;
+  --p: 1rem;
+}
+
+@theme inline {
+    --font-manrope: 'Manrope', sans-serif;
+    --font-recoleta: 'Recoleta', sans-serif;
+    --text-h1: var(--h1);
+    --spacing-h1: calc(var(--h1) - 5px); 
+}
+
+body {
+  background: var(--color-gradient);
+}
+

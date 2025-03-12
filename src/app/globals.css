@@ -1,26 +1,35 @@
 @import 'tailwindcss';
 
+/*font Manrope*/
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+/*font Recoleta*/
+@font-face {
+    font-family: 'Recoleta';
+    src: url('/fonts/Recoleta/Recoleta Regular.woff2') format('woff2');
+}
+
 :root {
-  --color-gradient: radial-gradient(
-      179.27% 115.06% at 9.74% -6.22%,
-      #fcdaaf 0%,
-      #e99dbc 13.14%,
-      #8c64c5 26.31%,
-      #252d5a 62.27%,
-      #0c0f1e 100%
-  );
-  --h1: 6rem;
-  --p: 1rem;
+    --color-gradient: radial-gradient(
+        179.27% 115.06% at 9.74% -6.22%,
+        #fcdaaf 0%,
+        #e99dbc 13.14%,
+        #8c64c5 26.31%,
+        #252d5a 62.27%,
+        #0c0f1e 100%
+    );
+    --h1: 6rem;
+    --p: 1rem;
 }
 
 @theme inline {
     --font-manrope: 'Manrope', sans-serif;
-    --font-recoleta: 'Recoleta', sans-serif;
+    --font-recoleta: 'Recoleta', serif;
     --text-h1: var(--h1);
-    --spacing-h1: calc(var(--h1) - 5px); 
+    --spacing-h1: calc(var(--h1) - 5px);
+    --text-p: var(--p);
 }
 
 body {
-  background: var(--color-gradient);
+    background: var(--color-gradient);
 }
-

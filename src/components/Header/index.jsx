@@ -1,12 +1,12 @@
 import Link from 'next/link'
-import routes from '../../routes.js'
-import CTAButton from '../CTAButton.js'
+import routes from '../../routes.jsx'
+import CTAButton from '../CTAButton.jsx'
 import './styles.css'
 
 export default function Header() {
     const liClass = 'font-manrope text-base opacity-70 font-regular'
     return (
-        <header className=" text-white p-4 flex gap-4 font-manrope text-base ">
+        <header className=" text-white p-4 flex gap-4">
             <ul className="flex justify-around w-full items-center">
                 <li>
                     <Link href={routes.home}>

@@ -1,4 +1,4 @@
-import CTAButton from '../components/CTAButton.js'
+import CTAButton from '../components/CTAButton.jsx'
 export default function Home() {
     return (
         <>
@@ -23,7 +23,7 @@ export default function Home() {
                                 <CTAButton href="vue3D">
                                     vue3D (commander maintenant)
                                 </CTAButton>
-                                <CTAButton href="vue3D" variant="secondary">
+                                <CTAButton href="test" variant="secondary">
                                     Découvrir
                                 </CTAButton>
                             </div>

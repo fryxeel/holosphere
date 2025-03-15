@@ -1,6 +1,8 @@
 import Link from 'next/link'
-import routes from '../routes.js'
-import CTAButton from './CTAButton.js'
+import routes from '../../routes.js'
+import CTAButton from '../CTAButton.js'
+import './styles.css'
+
 export default function Header() {
     const liClass = 'font-manrope text-base opacity-70 font-regular'
     return (
@@ -9,6 +11,7 @@ export default function Header() {
                 <li>
                     <Link href={routes.home}>
                         <img
+                            className="h-10"
                             src="/images/logos/complet.svg"
                             alt="Logo Holosphere"
                         />
@@ -21,7 +24,10 @@ export default function Header() {
                         </Link>
                     </li>
                     <li>
-                        <Link href={routes.personnalisation} className={liClass}>
+                        <Link
+                            href={routes.personnalisation}
+                            className={liClass}
+                        >
                             Personnalisation
                         </Link>
                     </li>
@@ -32,9 +38,7 @@ export default function Header() {
                     </li>
                 </div>
                 <li>
-                    <CTAButton href="get">
-                        Obtenir la vôtre
-                    </CTAButton>
+                    <CTAButton href="get">Obtenir la vôtre</CTAButton>
                 </li>
             </ul>
         </header>

@@ -134,7 +134,7 @@
 // }
 
 import { Canvas } from '@react-three/fiber'
-import { CameraControls, Environment } from '@react-three/drei'
+import { OrbitControls, Environment } from '@react-three/drei'
 import { TextureLoader } from 'three'
 import { useRef, useState } from 'react'
 import { useLoader } from '@react-three/fiber'
@@ -158,23 +158,27 @@ export default function SnowGlobe() {
     const cameraControlsRef = useRef()
 
     return (
-        <div className="flex flex-col w-full h-full">
+        <div className="flex flex-row w-full h-full">
             {/* Input pour sélectionner une image */}
-            <input type="file" onChange={handleImageSelect} accept="image/*" />
 
-            <Canvas camera={{ position: [0, 2, 6], fov: 50 }}>
+            <Canvas camera={{ position: [0, 2, 8], fov: 50 }}>
                 {/* Lumières */}
                 <ambientLight intensity={0.5} />
                 <directionalLight position={[5, 5, 5]} intensity={2} />
 
                 {/* Contrôles de la caméra */}
-                <CameraControls
-                    ref={cameraControlsRef}
-                    minDistance={3}
-                    maxDistance={10}
-                    enableZoom={true}
-                    enableRotate={false}
-                    enablePan={false}
+                <OrbitControls
+                    minAzimuthAngle={-Math.PI / 4}
+                    maxAzimuthAngle={Math.PI / 4}
+                    minPolarAngle={Math.PI / 6}
+                    maxPolarAngle={Math.PI - Math.PI / 6}
+                    enableDamping={true} // Active l'inertie
+                    dampingFactor={0.05} // Ajuste la force de l'inertie
+                    rotateSpeed={0.34} // Réduire pour ralentir la rotation
+                    panSpeed={0.5} // Réduire pour ralentir le déplacement
+                    zoomSpeed={0.5} // Réduire pour ralentir le zoom
+                    minDistance={5} // Distance minimale de la caméra
+                    maxDistance={15} // Distance maximale de la caméra
                 />
 
                 {/* Boule en verre */}
@@ -205,18 +209,27 @@ export default function SnowGlobe() {
 
                 {/* Image à l'intérieur de la boule */}
                 {texture && (
-                    <mesh position={[0, 1, -2]}>
-                        {' '}
-                        {/* Ajustez la position pour centrer l'image */}
-                        <planeGeometry args={[3, 3]} />{' '}
+                    <mesh position={[0, 1, 0]}>
+                        <planeGeometry args={[2, 2]} />{' '}
                         {/* Ajustez la taille */}
                         <meshBasicMaterial map={texture} opacity={1} />
                     </mesh>
                 )}
 
-                {/* Environnement pour les reflets
-                <Environment preset="city" /> */}
+                {/* Environnement pour les reflets */}
+                <Environment preset="city" />
             </Canvas>
+            <div className="border w-5xl ">
+                <div className="p-5">
+                    <label htmlFor="file">Tester avec votre image :</label>
+                    <br />
+                    <input
+                        type="file"
+                        onChange={handleImageSelect}
+                        accept="image/*"
+                    />
+                </div>
+            </div>
         </div>
     )
 }

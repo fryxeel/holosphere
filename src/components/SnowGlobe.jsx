@@ -1,41 +1,235 @@
+'use client'
+// import { Canvas, useFrame } from '@react-three/fiber'
+// import { Environment } from "@react-three/drei";
+// import React, { useRef, useState } from 'react'
+// import { useControls } from 'leva'
+// const Cube = ({ position, side, color }) => {
+//     const ref = useRef()
+//     useFrame((state, delta) => {
+//         {
+//             /* delta c'est la différence de temps entre la première frame et la dernière frame */
+//         }
+//         // ref.current.rotation.x += delta
+//         ref.current.rotation.y += delta
+//         // ref.current.position.z = Math.sin(state.clock.elapsedTime) * 2 /*effet boomrang*/
+//     })
+
+//     return (
+//         <mesh position={position} ref={ref}>
+//             {/*mesh sert à render  quelque chose*/}
+//             <boxGeometry args={side} />
+//             {/*axe x, axe y, axe z : si on ne met pas d'args de base on est à 1, 1, 1*/}
+//             <meshStandardMaterial color={color} />
+//         </mesh>
+//     )
+// }
+
+// const Sphere = ({ position, side, color }) => {
+//     const ref = useRef()
+//     const [isHovered, setIsHovered] = useState(false)
+//     useFrame((state, delta) => {
+//         ref.current.rotation.y += delta * 1
+//     })
+
+//     return (
+//         <mesh
+//             position={position}
+//             ref={ref}
+//             onPointerEnter={(event) => {
+//                 event.stopPropagation(), setIsHovered(true)
+//             }}
+//             onPointerLeave={() => {
+//                 setIsHovered(false)
+//             }}
+//         >
+//             {/*mesh sert à render  quelque chose*/}
+//             <sphereGeometry args={side} />
+//             {/*axe x, axe y, axe z : si on ne met pas d'args de base on est à 1, 1, 1*/}
+//             <meshStandardMaterial
+//                 color={isHovered ? 'blue' : 'white'}
+//                 wireframe
+//             />
+//         </mesh>
+//     )
+// }
+
+// const SnowGlobe = () => {
+
+//         // const gui = useControls({
+//         //   sphereSize: { value: 1, min: 0, max: 5 }
+//         // })
+//     return (
+//         <Canvas camera={{ position: [0, 0, 5] }}>
+//         {/* Lumière */}
+//         <ambientLight intensity={0.5} />
+//         <directionalLight position={[5, 5, 5]} intensity={2} />
+
+//         {/* Sphère en verre */}
+//         <mesh>
+//           <sphereGeometry args={[1, 64, 64]} />
+//           <meshPhysicalMaterial
+//             transparent
+//             transmission={1} // Rend la sphère transparente
+//             ior={1.5} // Indice de réfraction (verre)
+//             roughness={0} // Surface lisse
+//             metalness={0.1} // Légèrement métallique
+//             clearcoat={1} // Brillance
+//             clearcoatRoughness={0} // Pas de rugosité sur le clearcoat
+//             thickness={0.5} // Épaisseur du verre
+//           />
+//         </mesh>
+
+//         {/* Ajout d'un environnement pour de beaux reflets */}
+//         <Environment preset="city" />
+//       </Canvas>
+//     )
+// }
+
+// export default SnowGlobe
+
+// import { Canvas } from '@react-three/fiber'
+// import { CameraControls, Environment } from '@react-three/drei'
+
+// export default function SnowGlobe() {
+//     return (
+//         <Canvas camera={{ position: [0, 2, 6] }}>
+//             {/* Lumières */}
+//             <ambientLight intensity={0.5} />
+//             <directionalLight position={[5, 5, 5]} intensity={2} />
+//             <CameraControls
+//                 makeDefault
+//                 minDistance={5} //  zoomer
+//                 maxDistance={8} // dézoomer
+//                 enableZoom={true} // Activer le zoom avec la molette
+//             />
+//             {/* Boule en verre */}
+//             <mesh position={[0, 1, 0]}>
+//                 <sphereGeometry args={[2, 64, 64]} />
+//                 <meshPhysicalMaterial
+//                     transparent
+//                     transmission={1}
+//                     ior={1.5}
+//                     roughness={0}
+//                     metalness={0.1}
+//                     clearcoat={1}
+//                     clearcoatRoughness={0}
+//                     thickness={0.5}
+//                     color="white"
+//                 />
+//             </mesh>
+//             {/* Socle */}
+//             <mesh position={[0, -1, 0]}>
+//                 <cylinderGeometry args={[1.75, 1.75, 0.3, 64]} />{' '}
+//                 {/* longueur, longueur, hauteur, jsp*/}
+//                 <meshStandardMaterial
+//                     color="#6b4f4f"
+//                     roughness={0.7}
+//                     metalness={0.3}
+//                 />
+//             </mesh>
+//             {/* Environnement pour les reflets */}
+//             <Environment preset="city" />
+//         </Canvas>
+//     )
+// }
+
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, useGLTF } from '@react-three/drei'
-import { Suspense } from 'react'
-import React from 'react'
+import { OrbitControls, Environment } from '@react-three/drei'
+import { TextureLoader } from 'three'
+import { useRef, useState } from 'react'
+import { useLoader } from '@react-three/fiber'
 
-const SnowGlobe = () => {
-  const { scene } = useGLTF('/models/holosphere_v3.glb')
+export default function SnowGlobe() {
+    const [imageTexture, setImageTexture] = useState(null)
+    const texture = imageTexture ? useLoader(TextureLoader, imageTexture) : null
 
-  return (
-    <Suspense fallback={null}>
-      <primitive object={scene} scale={0.5} position={[0, -1.3, 0]} />
-    </Suspense>
-  )
+    const handleImageSelect = (e) => {
+        const file = e.target.files[0]
+        if (file) {
+            const reader = new FileReader()
+            reader.onloadend = () => {
+                console.log('Image chargée :', reader.result) // Vérifiez dans la console
+                setImageTexture(reader.result)
+            }
+            reader.readAsDataURL(file)
+        }
+    }
+
+    const cameraControlsRef = useRef()
+
+    return (
+        <div className="flex flex-row w-full h-full">
+            {/* Input pour sélectionner une image */}
+
+            <Canvas camera={{ position: [0, 2, 8], fov: 50 }}>
+                {/* Lumières */}
+                <ambientLight intensity={0.5} />
+                <directionalLight position={[5, 5, 5]} intensity={2} />
+
+                {/* Contrôles de la caméra */}
+                <OrbitControls
+                    minAzimuthAngle={-Math.PI / 4}
+                    maxAzimuthAngle={Math.PI / 4}
+                    minPolarAngle={Math.PI / 6}
+                    maxPolarAngle={Math.PI - Math.PI / 6}
+                    enableDamping={true} // Active l'inertie
+                    dampingFactor={0.05} // Ajuste la force de l'inertie
+                    rotateSpeed={0.34} // Réduire pour ralentir la rotation
+                    panSpeed={0.5} // Réduire pour ralentir le déplacement
+                    zoomSpeed={0.5} // Réduire pour ralentir le zoom
+                    minDistance={5} // Distance minimale de la caméra
+                    maxDistance={15} // Distance maximale de la caméra
+                />
+
+                {/* Boule en verre */}
+                <mesh position={[0, 1, 0]}>
+                    <sphereGeometry args={[2, 64, 64]} />
+                    <meshPhysicalMaterial
+                        transparent
+                        transmission={1}
+                        ior={1.5}
+                        roughness={0}
+                        metalness={0.1}
+                        clearcoat={1}
+                        clearcoatRoughness={0}
+                        thickness={0.5}
+                        color="white"
+                    />
+                </mesh>
+
+                {/* Socle */}
+                <mesh position={[0, -1, 0]}>
+                    <cylinderGeometry args={[1.75, 1.75, 0.3, 64]} />
+                    <meshStandardMaterial
+                        color="#6b4f4f"
+                        roughness={0.7}
+                        metalness={0.3}
+                    />
+                </mesh>
+
+                {/* Image à l'intérieur de la boule */}
+                {texture && (
+                    <mesh position={[0, 1, 0]}>
+                        <planeGeometry args={[2, 2]} />{' '}
+                        {/* Ajustez la taille */}
+                        <meshBasicMaterial map={texture} opacity={1} />
+                    </mesh>
+                )}
+
+                {/* Environnement pour les reflets */}
+                <Environment preset="city" />
+            </Canvas>
+            <div className="border w-5xl ">
+                <div className="p-5">
+                    <label htmlFor="file">Tester avec votre image :</label>
+                    <br />
+                    <input
+                        type="file"
+                        onChange={handleImageSelect}
+                        accept="image/*"
+                    />
+                </div>
+            </div>
+        </div>
+    )
 }
-
-const Scene = () => {
-  return (
-    <div
-      style={{
-        width: '100vw',
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#000', // Pour voir si le centrage fonctionne bien
-      }}
-    >
-      <Canvas
-        camera={{ position: [0, 0, 5], fov: 50 }}
-        style={{ width: '500px', height: '500px', position: 'fixed' }}
-      >
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[2, 5, 3]} intensity={1} />
-        <SnowGlobe />
-        <OrbitControls enableZoom={false} enableRotate={false} />
-      </Canvas>
-    </div>
-  )
-}
-
-export default Scene

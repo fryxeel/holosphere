@@ -141,17 +141,17 @@ import { useLoader } from '@react-three/fiber'
 
 export default function SnowGlobe() {
     const [imageTexture, setImageTexture] = useState(null)
-    const texture = imageTexture ? useLoader(TextureLoader, imageTexture) : null // Ne charge que si imageTexture est défini
+    const texture = imageTexture ? useLoader(TextureLoader, imageTexture) : null
 
-    // Gestion de l'ajout de l'image via un input
     const handleImageSelect = (e) => {
         const file = e.target.files[0]
         if (file) {
             const reader = new FileReader()
             reader.onloadend = () => {
-                setImageTexture(reader.result) // Mettre à jour la texture sélectionnée
+                console.log('Image chargée :', reader.result) // Vérifiez dans la console
+                setImageTexture(reader.result)
             }
-            reader.readAsDataURL(file) // Lire l'image sélectionnée
+            reader.readAsDataURL(file)
         }
     }
 
@@ -159,10 +159,10 @@ export default function SnowGlobe() {
 
     return (
         <div className="flex flex-col w-full h-full">
-            {/* Input pour sélectionner l'image */}
-            <input type="file" onChange={handleImageSelect} />
+            {/* Input pour sélectionner une image */}
+            <input type="file" onChange={handleImageSelect} accept="image/*" />
 
-            <Canvas camera={{ position: [0, 2, 6] }}>
+            <Canvas camera={{ position: [0, 2, 6], fov: 50 }}>
                 {/* Lumières */}
                 <ambientLight intensity={0.5} />
                 <directionalLight position={[5, 5, 5]} intensity={2} />
@@ -170,13 +170,11 @@ export default function SnowGlobe() {
                 {/* Contrôles de la caméra */}
                 <CameraControls
                     ref={cameraControlsRef}
-                    
-                    minDistance={5} // Zoomer
-                    maxDistance={8} // Dézoomer
-                    enableZoom={true} // Activer le zoom avec la molette
-                    enableRotate={false} // Activer la rotation de la caméra avec la souris
-                    enablePan={false} // Désactive le déplacement de la caméra (panning)
-                    rotateSpeed={0.5} // Optionnel : ajuste la vitesse de rotation
+                    minDistance={3}
+                    maxDistance={10}
+                    enableZoom={true}
+                    enableRotate={false}
+                    enablePan={false}
                 />
 
                 {/* Boule en verre */}
@@ -205,16 +203,19 @@ export default function SnowGlobe() {
                     />
                 </mesh>
 
-                {/* Ajout d'image dans la sphère si une texture est sélectionnée */}
-                {imageTexture && texture && (
-                    <mesh position={[0, 0, 0]}>
-                        <planeGeometry args={[1, 1]} />
-                        <meshBasicMaterial map={texture} />
+                {/* Image à l'intérieur de la boule */}
+                {texture && (
+                    <mesh position={[0, 1, -2]}>
+                        {' '}
+                        {/* Ajustez la position pour centrer l'image */}
+                        <planeGeometry args={[3, 3]} />{' '}
+                        {/* Ajustez la taille */}
+                        <meshBasicMaterial map={texture} opacity={1} />
                     </mesh>
                 )}
 
-                {/* Environnement pour les reflets */}
-                <Environment preset="city" />
+                {/* Environnement pour les reflets
+                <Environment preset="city" /> */}
             </Canvas>
         </div>
     )

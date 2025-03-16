@@ -1,5 +1,5 @@
 'use client'
-import { Canvas } from '@react-three/fiber'
+import { Canvas, useLoader} from '@react-three/fiber'
 import { useState } from 'react'
 import SnowGlobeSphere from '../../components/snowglobe/SnowGlobeSphere.jsx'
 import Base from '../../components/snowglobe/Base'

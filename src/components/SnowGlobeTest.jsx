@@ -401,3 +401,138 @@
 //         </div>
 //     )
 // }
+
+import { Canvas, useThree, useLoader } from '@react-three/fiber'
+import { OrbitControls } from '@react-three/drei'
+import { TextureLoader } from 'three'
+import * as THREE from 'three'
+
+import { useState } from 'react'
+
+function CaptureScene({ setCaptureFunction }) {
+    const { gl, scene, camera } = useThree()
+
+    const captureImage = () => {
+        gl.render(scene, camera)
+        const canvas = gl.domElement
+        const image = canvas.toDataURL('image/png', 0.8)
+
+        const link = document.createElement('a')
+        link.href = image
+        link.download = 'Ma_Holosphere.png'
+        link.click()
+    }
+
+    setCaptureFunction(() => captureImage)
+
+    return null
+}
+
+export default function SnowGlobe() {
+    const [imageTexture, setImageTexture] = useState(null)
+    const [captureFunction, setCaptureFunction] = useState(null)
+
+    const texture = imageTexture ? useLoader(TextureLoader, imageTexture) : null
+
+    if (texture) {
+        texture.colorSpace = 'srgb'
+        texture.wrapS = texture.wrapT = THREE.RepeatWrapping
+    }
+
+    const handleImageSelect = (e) => {
+        const file = e.target.files[0]
+        if (file) {
+            const reader = new FileReader()
+            reader.onloadend = () => {
+                setImageTexture(reader.result)
+            }
+            reader.readAsDataURL(file)
+        }
+    }
+
+    return (
+        <div className="flex flex-row w-full h-full">
+            <div className="w-full h-full">
+                <Canvas camera={{ position: [0, 2, 8], fov: 50 }}>
+                    <ambientLight intensity={0.5} />
+                    <directionalLight position={[5, 5, 5]} intensity={2} />
+                    <OrbitControls
+                    // minAzimuthAngle={-Math.PI / 4}
+                    // maxAzimuthAngle={Math.PI / 4}
+                    // minPolarAngle={Math.PI / 6}
+                    // maxPolarAngle={Math.PI - Math.PI / 6}
+                    enableDamping={true}
+                    dampingFactor={0.05}
+                    rotateSpeed={0.34}
+                    panSpeed={0.5}
+                    zoomSpeed={0.5}
+                    minDistance={7.3}
+                    maxDistance={10}
+                    />
+
+                    {/* Ajout de la sphère principale */}
+                    <mesh position={[0, 0.5, 0]}>
+                        <sphereGeometry args={[2, 64, 64]} />
+                        <meshPhysicalMaterial
+                            transparent
+                            transmission={1}
+                            ior={1.5}
+                            roughness={0}
+                            metalness={0.1}
+                            clearcoat={1}
+                            clearcoatRoughness={0}
+                            thickness={0.5}
+                            color="white"
+                        />
+                    </mesh>
+
+                    {/* Ajout du socle */}
+                    <mesh position={[0, -1.2, 0]}>
+                        <cylinderGeometry args={[1.75, 1.75, 0.7, 64]} />
+                        <meshStandardMaterial
+                            color="white"
+                            roughness={0.7}
+                            metalness={0.3}
+                        />
+                    </mesh>
+
+                    {/* Utilisation d'une sphère géométrique et ajout de l'image avec des bords arrondis */}
+                    {texture && (
+                        <mesh position={[0, 0.5, 0]}>
+                            <sphereGeometry args={[2, 64, 64]} />
+                            <meshBasicMaterial
+                                map={texture}
+                                side={THREE.DoubleSide}
+                                transparent
+                                opacity={1}
+                            />
+                        </mesh>
+                    )}
+
+                    <CaptureScene setCaptureFunction={setCaptureFunction} />
+                </Canvas>
+            </div>
+
+            <div className="border w-5xl">
+                <div className="p-5">
+                    <label htmlFor="file">Tester avec votre image :</label>
+                    <br />
+                    <input
+                        type="file"
+                        onChange={handleImageSelect}
+                        accept="image/*"
+                    />
+                    <br />
+                    <br />
+
+                    <button
+                        onClick={() => captureFunction && captureFunction()}
+                        className="cta-button"
+                    >
+                        Télécharger l'image du globe
+                    </button>
+                </div>
+            </div>
+        </div>
+    )
+}

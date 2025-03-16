@@ -1,7 +1,5 @@
 'use client'
-import { useLoader } from '@react-three/fiber'
-import { TextureLoader } from 'three'
-
+import * as THREE from 'three'
 const SnowGlobeSphere = ({ texture }) => {
     return (
         <mesh position={[0, 0.5, 0]}>

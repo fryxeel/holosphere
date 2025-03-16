@@ -1,4 +1,4 @@
-import SnowGlobe from "@/components/SnowGlobe";
+import SnowGlobe from "@/components/SnowGlobe.jsx";
 
 export default function Test() {
     return (

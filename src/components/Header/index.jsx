@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import routes from '../../routes.jsx'
-import CTAButton from '../CTAButton.jsx'
+import CTAButton from '../Buttons/CTAButton.jsx'
 import './styles.css'
 
 export default function Header() {

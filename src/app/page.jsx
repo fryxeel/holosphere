@@ -1,4 +1,4 @@
-import CTAButton from '../components/CTAButton.jsx'
+import CTAButton from '../components/Buttons/CTAButton.jsx'
 export default function Home() {
     return (
         <>

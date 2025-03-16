@@ -1,4 +1,3 @@
-
 'use client'
 import { Canvas } from '@react-three/fiber'
 import { useState } from 'react'
@@ -27,8 +26,58 @@ export default function SnowGlobe() {
 
     return (
         <div className="flex flex-row w-full h-screen">
-            <div className="border w-5xl">
-                <div className="p-5 bg-white">
+            <div className="flex justify-center w-full p-10 font-manrope">
+                <div className="w-sm px-4 py-6 rounded-2xl bg-white">
+                    <h3 className="font-recoleta font-bold text-2xl">
+                        Outils de création
+                    </h3>
+                    <h4>Aggrandissement</h4>
+                    <input type="range" min={0} max={100} />
+                    <br />
+                    <h4>Vos propres images</h4>
+                    <div className="grid grid-cols-3 gap-2">
+                        {[
+                            '/images/zerry_pfp.png',
+                            '/images/pfp_pogachar_capxelio.png',
+                            '/images/pfp_revan.png',
+                        ].map((image, index) => (
+                            <div
+                                key={index}
+                                className="bg-gray-200 cursor-pointer w-28 h-28 rounded-2xl"
+                                style={{
+                                    backgroundImage: `url(${image})`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                }}
+                            ></div>
+                        ))}
+                    </div>
+                    <p>
+                        <span>Astuce : </span>Cliquez sur l'image, maintenez et
+                        glissez la jusqu'à l'emplacement souhaité dans la boule.
+                    </p>
+                    <h4>Musique d'ambiance</h4>
+                    <div className="grid grid-cols-3 gap-2">
+                        {[
+                            '/images/zerry_pfp.png',
+                            '/images/pfp_pogachar_capxelio.png',
+                            '/images/pfp_revan.png',
+                        ].map((image, index) => (
+                            <div
+                                key={index}
+                                className="bg-gray-200 cursor-pointer w-22 h-22 rounded-2xl"
+                                style={{
+                                    backgroundImage: `url(${image})`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                }}
+                            ></div>
+                        ))}
+                    </div>
+                    <p>
+                        <span>Échos de Mémoire </span>- Alain S.
+                    </p>
+
                     <label htmlFor="file">Tester avec votre image :</label>
                     <br />
                     <input
@@ -44,6 +93,11 @@ export default function SnowGlobe() {
                     >
                         Télécharger l'image du globe
                     </button>
+                    <p>
+                        Partagez votre création avec le tag{' '}
+                        <span>#holosphere</span> et tentez de remporter des
+                        réductions exclusives, jusqu’à 50% !
+                    </p>
                 </div>
             </div>
             <div className="w-full h-full">
@@ -56,9 +110,6 @@ export default function SnowGlobe() {
                     <CaptureScene setCaptureFunction={setCaptureFunction} />
                 </Canvas>
             </div>
-
-            
         </div>
     )
 }
-

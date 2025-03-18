@@ -15,6 +15,10 @@ export default function SnowGlobe() {
 
     const texture = imageTexture ? useLoader(TextureLoader, imageTexture) : null
 
+    const handleImageClick = (imageSrc) => {
+        setImageTexture(imageSrc)
+    }
+
     const handleImageSelect = (e) => {
         const file = e.target.files[0]
         if (file) {
@@ -26,7 +30,6 @@ export default function SnowGlobe() {
         }
     }
 
-    // CaptureScene sera affiché uniquement sur la page "/personnalisation"
     const isCapturePage = pathname === '/personnalisation'
 
     return (
@@ -54,6 +57,7 @@ export default function SnowGlobe() {
                                     backgroundSize: 'cover',
                                     backgroundPosition: 'center',
                                 }}
+                                onClick={() => handleImageClick(image)}
                             ></div>
                         ))}
                     </div>
@@ -82,7 +86,6 @@ export default function SnowGlobe() {
                     <p>
                         <span>Échos de Mémoire </span>- Alain S.
                     </p>
-
                     <label htmlFor="file">Tester avec votre image :</label>
                     <br />
                     <input
@@ -106,8 +109,8 @@ export default function SnowGlobe() {
                 </div>
             </div>
             <div className="w-full h-full">
-                <Canvas camera={{ position: [0, 2, 8], fov: 50 }}>
-                    <ambientLight /> {/*intensity={0.5} */}
+                <Canvas camera={{ position: [20, 2, 8], fov: 50 }}>
+                    <ambientLight />
                     <directionalLight position={[5, 5, 5]} intensity={2} />
                     <Controls />
                     <SnowGlobeSphere texture={texture} />

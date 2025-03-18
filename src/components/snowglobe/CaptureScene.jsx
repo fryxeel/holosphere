@@ -1,21 +1,24 @@
 'use client'
 import { useThree } from '@react-three/fiber'
+import { useEffect } from 'react'
 
 const CaptureScene = ({ setCaptureFunction }) => {
     const { gl, scene, camera } = useThree()
 
-    const captureImage = () => {
-        gl.render(scene, camera)
-        const canvas = gl.domElement
-        const image = canvas.toDataURL('image/png', 0.8)
+    useEffect(() => {
+        const captureImage = () => {
+            gl.render(scene, camera)
+            const canvas = gl.domElement
+            const image = canvas.toDataURL('image/png', 0.8)
 
-        const link = document.createElement('a')
-        link.href = image
-        link.download = 'Ma_Holosphere.png'
-        link.click()
-    }
+            const link = document.createElement('a')
+            link.href = image
+            link.download = 'Ma_Holosphere.png'
+            link.click()
+        }
 
-    setCaptureFunction(() => captureImage)
+        setCaptureFunction(() => captureImage)
+    }, [gl, scene, camera, setCaptureFunction])
 
     return null
 }

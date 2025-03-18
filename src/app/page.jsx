@@ -2,6 +2,7 @@ import CTAButton from '../components/Buttons/CTAButton.jsx'
 export default function Home() {
     return (
         <>
+        
             <div className="flex justify-center items-center min-h-screen text-white ">
                 <div className="flex flex-col text-3xl h-[60vh]">
                     <div className="flex flex-col justify-center items-center w-5xl gap-16">

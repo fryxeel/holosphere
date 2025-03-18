@@ -1,76 +1,122 @@
 'use client'
+import { Canvas, useLoader } from '@react-three/fiber'
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
+import SnowGlobeSphere from '../../components/snowglobe/SnowGlobeSphere'
+import Base from '../../components/snowglobe/Socle'
+import Controls from '../../components/snowglobe/Controls'
+import CaptureScene from '../../components/snowglobe/CaptureScene'
+import { TextureLoader } from 'three'
 
-export default function Personnalisation() {
-    const [draggedItem, setDraggedItem] = useState(null)
-    const [circleImage, setCircleImage] = useState(null) // Image initiale du cercle
+export default function SnowGlobe() {
+    const [imageTexture, setImageTexture] = useState(null)
+    const [captureFunction, setCaptureFunction] = useState(null)
+    const pathname = usePathname()
 
-    const handleDragStart = (e, image) => {
-        setDraggedItem(image) // Stocke l'URL de l'image à déplacer
+    const texture = imageTexture ? useLoader(TextureLoader, imageTexture) : null
+
+    const handleImageSelect = (e) => {
+        const file = e.target.files[0]
+        if (file) {
+            const reader = new FileReader()
+            reader.onloadend = () => {
+                setImageTexture(reader.result)
+            }
+            reader.readAsDataURL(file)
+        }
     }
 
-    const handleDrop = (e) => {
-        e.preventDefault()
-        setCircleImage(draggedItem) // Met à jour l'image du cercle avec celle du carré glissé
-    }
-
-    const handleDragOver = (e) => {
-        e.preventDefault() // Permet au cercle d'accepter le dépôt
-    }
+    // CaptureScene sera affiché uniquement sur la page "/test"
+    const isCapturePage = pathname === '/test'
 
     return (
-        <>
-            <div className="flex justify-center w-full h-screen">
-                <div className="grid grid-cols-1 gap-5 w-full">
-                    {/* Cercle où l'on dépose l'image */}
-                    <div className="flex items-center">
-                        <div
-                            className="w-64 h-64 rounded-full bg-gray-300 mx-auto flex items-center justify-center border border-gray-500"
-                            onDrop={handleDrop}
-                            onDragOver={handleDragOver}
-                            style={{
-                                backgroundImage: circleImage
-                                    ? `url(${circleImage})`
-                                    : 'none',
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                            }}
-                        >
-                            {!circleImage && (
-                                <span className="text-gray-700">
-                                    Déposez une image
-                                </span>
-                            )}
-                        </div>
+        <div className="flex flex-row w-full h-screen">
+            <div className="flex justify-center w-full p-10 font-manrope">
+                <div className="w-sm px-4 py-6 rounded-2xl bg-white">
+                    <h3 className="font-recoleta font-bold text-2xl">
+                        Outils de création
+                    </h3>
+                    <h4>Aggrandissement</h4>
+                    <input type="range" min={0} max={100} />
+                    <br />
+                    <h4>Vos propres images</h4>
+                    <div className="grid grid-cols-3 gap-2">
+                        {[
+                            '/images/zerry_pfp.png',
+                            '/images/pfp_pogachar_capxelio.png',
+                            '/images/pfp_revan.png',
+                        ].map((image, index) => (
+                            <div
+                                key={index}
+                                className="bg-gray-200 cursor-pointer w-28 h-28 rounded-2xl"
+                                style={{
+                                    backgroundImage: `url(${image})`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                }}
+                            ></div>
+                        ))}
                     </div>
+                    <p>
+                        <span>Astuce : </span>Cliquez sur l'image, maintenez et
+                        glissez la jusqu'à l'emplacement souhaité dans la boule.
+                    </p>
+                    <h4>Musique d'ambiance</h4>
+                    <div className="grid grid-cols-3 gap-2">
+                        {[
+                            '/images/zerry_pfp.png',
+                            '/images/pfp_pogachar_capxelio.png',
+                            '/images/pfp_revan.png',
+                        ].map((image, index) => (
+                            <div
+                                key={index}
+                                className="bg-gray-200 cursor-pointer w-22 h-22 rounded-2xl"
+                                style={{
+                                    backgroundImage: `url(${image})`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                }}
+                            ></div>
+                        ))}
+                    </div>
+                    <p>
+                        <span>Échos de Mémoire </span>- Alain S.
+                    </p>
 
-                    {/* Grille avec les images à glisser */}
-                    <div className="flex justify-center">
-                        <div className="grid grid-cols-4 gap-10 p-4 justify-center bg-white h-40 rounded-xl">
-                            {[
-                                '/images/zerry_pfp.png',
-                                '/images/pfp_pogachar_capxelio.png',
-                                '/images/pfp_revan.png',
-                                '/images/pfp_powder.png',
-                            ].map((image, index) => (
-                                <div
-                                    key={index}
-                                    className="w-32 h-32 bg-gray-200 cursor-pointer"
-                                    draggable
-                                    onDragStart={(e) =>
-                                        handleDragStart(e, image)
-                                    }
-                                    style={{
-                                        backgroundImage: `url(${image})`,
-                                        backgroundSize: 'cover',
-                                        backgroundPosition: 'center',
-                                    }}
-                                ></div>
-                            ))}
-                        </div>
-                    </div>
+                    <label htmlFor="file">Tester avec votre image :</label>
+                    <br />
+                    <input
+                        type="file"
+                        onChange={handleImageSelect}
+                        accept="image/*"
+                    />
+                    <br />
+                    <br />
+                    <button
+                        onClick={() => captureFunction && captureFunction()}
+                        className="cta-button"
+                    >
+                        Télécharger l'image du globe
+                    </button>
+                    <p>
+                        Partagez votre création avec le tag{' '}
+                        <span>#holosphere</span> et tentez de remporter des
+                        réductions exclusives, jusqu’à 50% !
+                    </p>
                 </div>
             </div>
-        </>
+            <div className="w-full h-full">
+                <Canvas camera={{ position: [0, 2, 8], fov: 50 }}>
+                    <ambientLight /> {/*intensity={0.5} */}
+                    <directionalLight position={[5, 5, 5]} intensity={2} />
+                    <Controls />
+                    <SnowGlobeSphere texture={texture} />
+                    <Base />
+                    {isCapturePage && (
+                        <CaptureScene setCaptureFunction={setCaptureFunction} />
+                    )}
+                </Canvas>
+            </div>
+        </div>
     )
 }

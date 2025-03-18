@@ -26,8 +26,8 @@ export default function SnowGlobe() {
         }
     }
 
-    // CaptureScene sera affiché uniquement sur la page "/test"
-    const isCapturePage = pathname === '/test'
+    // CaptureScene sera affiché uniquement sur la page "/personnalisation"
+    const isCapturePage = pathname === '/personnalisation'
 
     return (
         <div className="flex flex-row w-full h-screen">

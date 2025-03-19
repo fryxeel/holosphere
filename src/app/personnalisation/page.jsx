@@ -7,11 +7,15 @@ import Base from '../../components/snowglobe/Socle'
 import Controls from '../../components/snowglobe/Controls'
 import CaptureScene from '../../components/snowglobe/CaptureScene'
 import { TextureLoader } from 'three'
+import { Environment } from '@react-three/drei'
+
+
 
 export default function SnowGlobe() {
     const [imageTexture, setImageTexture] = useState(null)
     const [captureFunction, setCaptureFunction] = useState(null)
     const pathname = usePathname()
+    
 
     const texture = imageTexture ? useLoader(TextureLoader, imageTexture) : null
 
@@ -19,6 +23,7 @@ export default function SnowGlobe() {
         setImageTexture(imageSrc)
     }
 
+    //transformation de le l'image en base64 pour l'afficher en texture
     const handleImageSelect = (e) => {
         const file = e.target.files[0]
         if (file) {
@@ -109,15 +114,19 @@ export default function SnowGlobe() {
                 </div>
             </div>
             <div className="w-full h-full">
-                <Canvas camera={{ position: [20, 2, 8], fov: 50 }}>
-                    <ambientLight />
-                    <directionalLight position={[5, 5, 5]} intensity={2} />
+                <Canvas camera={{ position: [60, 30, 8], fov: 50 }}>
+                    <ambientLight intensity={0.8} />
+                    <directionalLight position={[5, 5, 5]} intensity={0.5} />
+                    <pointLight position={[10, 10, 10]} intensity={0.5} />
+                    <pointLight position={[-10, -10, -10]} intensity={0.5} />
                     <Controls />
                     <SnowGlobeSphere texture={texture} />
                     <Base />
                     {isCapturePage && (
                         <CaptureScene setCaptureFunction={setCaptureFunction} />
                     )}
+
+                    <Environment files="/environnement/brown_photostudio_02_4k.hdr" />
                 </Canvas>
             </div>
         </div>

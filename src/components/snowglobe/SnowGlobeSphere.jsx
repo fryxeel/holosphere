@@ -1,8 +1,9 @@
 'use client'
 import * as THREE from 'three'
+
 const SnowGlobeSphere = ({ texture }) => {
     return (
-        <mesh position={[0, 0.5, 0]}>
+        <mesh position={[0, 0.5, 0]} rotation={[0, 150, 0]}>
             <sphereGeometry args={[2, 64, 64]} />
             <meshPhysicalMaterial
                 transparent
@@ -17,6 +18,7 @@ const SnowGlobeSphere = ({ texture }) => {
             />
             {texture && (
                 <meshBasicMaterial
+                    position={[50, 0, 0]}
                     map={texture}
                     side={THREE.DoubleSide}
                     transparent

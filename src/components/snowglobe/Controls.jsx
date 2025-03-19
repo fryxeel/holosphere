@@ -4,6 +4,10 @@ import { OrbitControls } from '@react-three/drei'
 const Controls = () => {
     return (
         <OrbitControls
+            minAzimuthAngle={-Math.PI / 4}
+            maxAzimuthAngle={Math.PI / 4}
+            minPolarAngle={Math.PI / 6}
+            maxPolarAngle={Math.PI - Math.PI / 6}
             enableDamping={true}
             dampingFactor={0.05}
             rotateSpeed={0.34}

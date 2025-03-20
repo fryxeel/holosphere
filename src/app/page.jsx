@@ -7,13 +7,13 @@ export default function Home() {
                 <div className="flex flex-col text-3xl h-[60vh]">
                     <div className="flex flex-col justify-center items-center w-5xl gap-16">
                         <div>
-                            <h1 className="text-h1 font-recoleta font-medium text-center">
+                            <h1 className="text-h1 font-medium text-center">
                                 Capturez vos souvenirs en hologramme
                             </h1>
                         </div>
                         <div className="flex flex-col gap-8">
                             <div className="w-xl">
-                                <p className="text-p font-manrope text-base opacity-70 text-center">
+                                <p className="text-p text-base opacity-70 text-center">
                                     Une sphère immersive qui projette vos
                                     souvenirs en images et en musique, pour une
                                     expérience sensorielle et interactive

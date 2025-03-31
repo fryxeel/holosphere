@@ -4,7 +4,7 @@ import CTAButton from '../Buttons/CTAButton.jsx'
 import './styles.css'
 
 export default function Header() {
-    const liClass = 'text-base opacity-70 font-regular'
+    const liClass = 'text-base opacity-70 font-regular font-manrope'
     return (
         <header className=" text-white p-4 flex gap-4">
             <ul className="flex justify-around w-full items-center">

@@ -9,7 +9,7 @@ const CaptureScene = ({ setCaptureFunction }) => {
         const captureImage = () => {
             gl.render(scene, camera)
             const canvas = gl.domElement
-            const image = canvas.toDataURL('image/png', 0.8)
+            const image = canvas.toDataURL('image/png', 1)
 
             const link = document.createElement('a')
             link.href = image

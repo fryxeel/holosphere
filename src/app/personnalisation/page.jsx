@@ -8,6 +8,7 @@ import Controls from '../../components/snowglobe/Controls'
 import CaptureScene from '../../components/snowglobe/CaptureScene'
 import { TextureLoader } from 'three'
 import { Environment } from '@react-three/drei'
+import { useRef } from 'react'
 
 export default function SnowGlobe() {
     const [imageTexture, setImageTexture] = useState(null) // Texture pour la sphère
@@ -16,11 +17,17 @@ export default function SnowGlobe() {
     const [themeImages, setImageThemes] = useState([]) // models pour sphere3D
     const [captureFunction, setCaptureFunction] = useState(null) //capture d'écran
     const pathname = usePathname()
-
+    const fileInputRef = useRef(null)
     const themes = {
         summer: [
             {
-                model: '/models/tree_small_02_4k.gltf',
+                model: '/models/summer/quiver/quiver_tree_02_1k.gltf',
+                position: [0, -1.5, 1],
+                scale: 1,
+                img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
+            },
+            {
+                model: '/models/summer/tree/tree_small_02_1k.gltf',
                 position: [1, -1.5, 0],
                 scale: 0.4,
                 img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
@@ -33,12 +40,13 @@ export default function SnowGlobe() {
     }
 
     const handleThemeClick = (theme) => {
-        setselectedTheme(themes[theme]) // Charge les objets du thème pour sphere3D
-        setImageThemes(
-            themes[theme].map((item) => {
-                return item
-            })
-        )
+        setselectedTheme(themes[theme]) // Charge les objets du thème pour la sphère 3D
+        setImageThemes(themes[theme]) // Met à jour la liste des images affichées
+    }
+
+    const handleRemoveThemeObject = (index) => {
+        setselectedTheme((prev) => prev.filter((_, i) => i !== index))
+        setImageThemes((prev) => prev.filter((_, i) => i !== index))
     }
 
     // Charger les textures
@@ -77,66 +85,93 @@ export default function SnowGlobe() {
                         <h3 className="font-recoleta text-span2 font-medium">
                             Outils de création
                         </h3>
-                        <h4 className="font-regular font-manrope text-[18px]">
-                            Aggrandissement
-                        </h4>
+                        <h3 className="font-semibold font-manrope text-span3">
+                            Agrandissement
+                        </h3>
                         <input type="range" min={0} max={100} />
                         <br />
-                        <h4>Vos propres images</h4>
-                        <div className="grid grid-cols-3 gap-2"></div>
-                        <p>
-                            <span>Astuce : </span>Cliquez sur l'image, maintenez
-                            et glissez la jusqu'à l'emplacement souhaité dans la
-                            boule.
-                        </p>
-                        <h4>Musique d'ambiance</h4>
-                        <div className="grid grid-cols-3 gap-2 ">
-                            {[
-                                // Choisir la texture pour la base
-                                '/textures/Wood003_2K-JPG_Color.jpg',
-                                '/textures/Fabric062_2K-JPG_AmbientOcclusion.jpg',
-                                '/textures/Asphalt025B_2K-JPG_Color.jpg',
-                                '/textures/Ice003_2K-JPG_Color.jpg',
-                                '/textures/NightSkyHDRI007_2K-TONEMAPPED.jpg',
-                            ].map((materialTexture, index) => (
-                                <div
-                                    key={index}
-                                    className="bg-gray-200 cursor-pointer w-22 h-22 rounded-2xl"
-                                    style={{
-                                        backgroundImage: `url(${materialTexture})`,
-                                        backgroundSize: 'cover',
-                                        backgroundPosition: 'center',
-                                    }}
-                                    onClick={
-                                        () =>
-                                            handleMaterialClick(materialTexture) // Applique sur la base
-                                    }
-                                ></div>
-                            ))}
+                        <div className="py-6 flex flex-col gap-2">
+                            <h4 className="font-semibold font-manrope text-span3">
+                                Vos propres images
+                            </h4>
+                            <div className="flex gap-2">
+                                {[
+                                    // Choisir l'image pour la sphère
+                                    '/images/zerry_pfp.png',
+                                    '/images/pfp_pogachar_capxelio.png',
+                                    '/images/pfp_pogachar_capxelio.png',
+                                ].map((image, index) => (
+                                    <img
+                                        key={index}
+                                        className="bg-gray-200 cursor-pointer w-18 h-18 rounded-2xl"
+                                        title="coucou"
+                                        src={image}
+                                        onClick={() => handleImageClick(image)} // Applique sur la sphère
+                                    ></img>
+                                ))}
+                                <input
+                                    ref={fileInputRef} // Ajoute la référence ici
+                                    type="file"
+                                    className="hidden"
+                                    onChange={handleImageSelect}
+                                    accept="image/*"
+                                />
+                                <div>
+                                    <button
+                                        onClick={() =>
+                                            fileInputRef.current.click()
+                                        } // Déclenche le clic sur l'input caché
+                                        className="cta-button-black w-18 h-18 flex-col gap-1 py-2.5 px-1.5 rounded-2xl"
+                                    >
+                                        <img
+                                            className="w-4.5 h-4.5"
+                                            src="/images/Download.svg"
+                                            alt=""
+                                        />
+                                        Ajouter
+                                    </button>
+                                </div>
+                            </div>
+                            <p>
+                                <span>Astuce : </span>Cliquez sur l'image,
+                                maintenez et glissez la jusqu'à l'emplacement
+                                souhaité dans la boule.
+                            </p>
                         </div>
-                        <p>
-                            <span>Échos de Mémoire </span>- Alain S.
-                        </p>
-                        <label htmlFor="file">Tester avec votre image :</label>
-                        <br />
-                        <input
-                            type="file"
-                            onChange={handleImageSelect}
-                            // accept="image/*"
-                        />
-                        <br />
-                        <br />
-                        <button
-                            onClick={() => captureFunction && captureFunction()}
-                            className="cta-button"
-                        >
-                            Télécharger l'image du globe
-                        </button>
-                        <p>
-                            Partagez votre création avec le tag{' '}
-                            <span>#holosphere</span> et tentez de remporter des
-                            réductions exclusives, jusqu’à 50% !
-                        </p>
+                        <div className="pb-6 flex flex-col gap-2">
+                            <h4 className="font-semibold font-manrope text-span3 ">
+                                Matériau du socle
+                            </h4>
+                            <div className="flex gap-2">
+                                {[
+                                    // Choisir la texture pour la base
+                                    '/textures/Wood003_2K-JPG_Color.jpg',
+                                    '/textures/Fabric062_2K-JPG_AmbientOcclusion.jpg',
+                                    '/textures/Asphalt025B_2K-JPG_Color.jpg',
+                                    '/textures/NightSkyHDRI007_2K-TONEMAPPED.jpg',
+                                ].map((materialTexture, index) => (
+                                    <img
+                                        key={index}
+                                        className="bg-gray-200 cursor-pointer w-18 h-18 rounded-2xl"
+                                        onClick={
+                                            () =>
+                                                handleMaterialClick(
+                                                    materialTexture
+                                                ) // Applique sur la base
+                                        }
+                                        src={materialTexture}
+                                    ></img>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="pb-6 flex flex-col gap-2">
+                            <h3 className="font-semibold font-manrope text-span3">
+                                Musique d'ambiance
+                            </h3>
+                            <p>
+                                <span>Échos de Mémoire </span>- Alain S.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -166,7 +201,10 @@ export default function SnowGlobe() {
                                 setCaptureFunction={setCaptureFunction}
                             />
                         )}
-                        <Environment files="/environnement/brown_photostudio_02_4k.hdr" />
+                        <Environment
+                            files="/environnement/poly_haven_studio_1k.hdr"
+                            intensity={0}
+                        />
                     </Canvas>
                 </div>
 
@@ -179,47 +217,58 @@ export default function SnowGlobe() {
                             </div>
                         </div>
                         <div className="flex items-center gap-2">
-                            {[
-                                // Choisir l'image pour la sphère
-                                '/images/zerry_pfp.png',
-                                '/images/pfp_pogachar_capxelio.png',
-                                '/images/pfp_revan.png',
-                                '/textures/NightSkyHDRI007_2K-TONEMAPPED.jpg',
-                            ].map((image, index) => (
-                                <div
-                                    key={index}
-                                    className="bg-gray-200 cursor-pointer w-14 h-14 rounded-2xl"
-                                    title="coucou"
-                                    style={{
-                                        backgroundImage: `url(${image})`,
-                                        backgroundSize: 'cover',
-                                        backgroundPosition: 'center',
-                                    }}
-                                    onClick={() => handleImageClick(image)} // Applique sur la sphère
-                                ></div>
-                            ))}
                             <button onClick={() => handleThemeClick('summer')}>
-                                🌴 Thème Été
+                                été
                             </button>
                             <button onClick={() => handleThemeClick('winter')}>
-                                ❄️ Thème Hiver
+                                hiver
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="flex justify-center w-full p-10 font-manrope">
-                <div className="w-sm rounded-[20px] border-white border-2 p-1">
-                    <div className="bg-white rounded-2xl h-full">
-                        <div className="grid grid-cols-3 gap-2 mt-4">
-                            {themeImages.map((item, index) => (
-                                <img
-                                    key={index}
-                                    src={item.img}
-                                    alt="Objet du thème"
-                                    className="w-20 h-20 rounded-lg shadow-md"
-                                />
-                            ))}
+            <div className="flex flex-col w-full">
+                <div className="flex justify-center w-full p-10 font-manrope">
+                    <div className="w-sm rounded-[20px] border-white border-2 p-1 ">
+                        <div className="bg-white rounded-2xl h-140">
+                            <div className="grid grid-cols-3 gap-2 p-1">
+                                {themeImages.map((item, index) => (
+                                    <img
+                                        key={index}
+                                        src={item.img}
+                                        alt="Objet du thème"
+                                        className="w-20 h-20 rounded-lg shadow-md cursor-pointer"
+                                        onClick={() =>
+                                            handleRemoveThemeObject(index)
+                                        }
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="flex justify-center w-full p-10 font-manrope">
+                    <div className="w-sm rounded-[20px] border-white border-2 p-1 ">
+                        <div className="bg-white rounded-2xl h-full py-4 px-6">
+                            <div className="flex flex-col gap-4">
+                                <button
+                                    onClick={() =>
+                                        captureFunction && captureFunction()
+                                    }
+                                    className="cta-button-orange"
+                                >
+                                    Télécharger ma création
+                                    <img src="/images/Vector.svg" alt="" />
+                                </button>
+                                <p>
+                                    Partagez votre création avec le tag{' '}
+                                    <span className="text-[14px] font-semibold font-manrope">
+                                        #holosphere
+                                    </span>{' '}
+                                    et tentez de remporter des réductions
+                                    exclusives, jusqu’à 50% !
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

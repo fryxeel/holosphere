@@ -5,8 +5,6 @@ import { useMemo } from 'react'
 import { clone } from 'three/examples/jsm/utils/SkeletonUtils'
 
 const SnowGlobeSphere = ({ texture, selectedTheme }) => {
-    console.log(selectedTheme)
-
     // Charger tous les modèles en une seule fois avec useMemo
     const models = useMemo(() => {
         return (

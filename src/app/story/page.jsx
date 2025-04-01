@@ -1,7 +1,17 @@
+import FondBlanc from '@/components/FondBlanc'
+
 export default function Story() {
     return (
-        <div className="flex justify-center items-center min-h-screen bg-blue-500 text-white text-3xl">
-            story
-        </div>
+        <>
+            <div className="text-white text-3xl pt-[60px] pb-[80px]">
+                <p className="text-span3 font-manrope text-center">
+                    À propos de notre histoire
+                </p>
+                <h1 className="text-span1 font-recoleta text-center ">
+                    Holosphere : La Magie des Souvenirs Réinventée
+                </h1>
+            </div>
+            <FondBlanc className="h-screen w-full"></FondBlanc>
+        </>
     )
 }

@@ -9,6 +9,9 @@ import CaptureScene from '../../components/snowglobe/CaptureScene'
 import { TextureLoader } from 'three'
 import { Environment } from '@react-three/drei'
 import { useRef } from 'react'
+import FondBlanc from '../../components/FondBlanc.jsx'
+import MaterialSelector from '@/components/snowglobe/TextureSocle'
+import MusicAmbience from '@/components/snowglobe/MusicAmbience'
 
 export default function SnowGlobe() {
     const [imageTexture, setImageTexture] = useState(null) // Texture pour la sphère
@@ -78,10 +81,18 @@ export default function SnowGlobe() {
     const isCapturePage = pathname === '/personnalisation'
 
     return (
-        <div className="flex flex-row w-full min-h-screen">
-            <div className="flex justify-center w-full p-10">
-                <div className="w-sm rounded-[20px] border-white border-2 p-1">
-                    <div className="bg-white rounded-2xl h-full py-4 px-6">
+        <>
+            <div className="pt-[23px] pb-[75px] relative">
+                <h3 className="text-span3 text-center font-manrope text-white">
+                    Mon atelier création
+                </h3>
+                <h1 className="font-recoleta text-span1 text-center font-medium text-white">
+                    Sculptez votre souvenir
+                </h1>
+            </div>
+            <div className="flex flex-row w-full min-h-screen">
+                <div className="flex flex-col items-center w-full p-10">
+                    <FondBlanc className="w-sm h-full">
                         <h3 className="font-recoleta text-span2 font-medium">
                             Outils de création
                         </h3>
@@ -139,10 +150,48 @@ export default function SnowGlobe() {
                             </p>
                         </div>
                         <div className="pb-6 flex flex-col gap-2">
-                            <h4 className="font-semibold font-manrope text-span3 ">
-                                Matériau du socle
-                            </h4>
-                            <div className="flex gap-2">
+                            <MaterialSelector
+                                onSelectMaterial={setMaterialTexture}
+                            />
+
+                            {/* <div className="flex gap-2">
+                                {[
+                                    {
+                                        src: '/textures/Wood003_2K-JPG_Color.jpg',
+                                        text: 'Texture bois',
+                                    },
+                                    {
+                                        src: '/textures/Fabric062_2K-JPG_AmbientOcclusion.jpg',
+                                        text: 'Texture tissu',
+                                    },
+                                    {
+                                        src: '/textures/Asphalt025B_2K-JPG_Color.jpg',
+                                        text: 'Texture asphalte',
+                                    },
+                                    {
+                                        src: '/textures/NightSkyHDRI007_2K-TONEMAPPED.jpg',
+                                        text: 'Ciel nocturne',
+                                    },
+                                ].map((material, index) => (
+                                    <div key={index} className="text-center">
+                                        <img
+                                            className="bg-gray-200 cursor-pointer w-18 h-18 rounded-2xl"
+                                            onClick={() =>
+                                                handleMaterialClick(
+                                                    material.src
+                                                )
+                                            }
+                                            src={material.src}
+                                        />
+                                        <p>{material.text}</p>
+                                    </div>
+                                ))}
+                            </div> */}
+                        </div>
+                        <div className="pb-6 flex flex-col gap-2">
+                            
+                            <MusicAmbience />
+                            {/* <div className="flex gap-2">
                                 {[
                                     // Choisir la texture pour la base
                                     '/textures/Wood003_2K-JPG_Color.jpg',
@@ -163,75 +212,81 @@ export default function SnowGlobe() {
                                     ></img>
                                 ))}
                             </div>
-                        </div>
-                        <div className="pb-6 flex flex-col gap-2">
-                            <h3 className="font-semibold font-manrope text-span3">
-                                Musique d'ambiance
-                            </h3>
                             <p>
                                 <span>Échos de Mémoire </span>- Alain S.
-                            </p>
+                            </p> */}
                         </div>
-                    </div>
+                    </FondBlanc>
                 </div>
-            </div>
-            <div className="w-full flex items-center flex-col p-10">
-                <div className="w-full h-full">
-                    <Canvas camera={{ position: [60, 30, 8], fov: 50 }}>
-                        <ambientLight intensity={0.8} />
-                        <directionalLight
-                            position={[5, 5, 5]}
-                            intensity={0.5}
-                        />
-                        <pointLight position={[10, 10, 10]} intensity={0.5} />
-                        <pointLight
-                            position={[-10, -10, -10]}
-                            intensity={0.5}
-                        />
-                        <Controls />
-                        <SnowGlobeSphere
-                            texture={texture}
-                            selectedTheme={selectedTheme}
-                        />{' '}
-                        {/* Applique la texture à la sphère */}
-                        <Base textureDuMateriel={textureMaterial} />{' '}
-                        {/* Applique la texture à la base */}
-                        {isCapturePage && (
-                            <CaptureScene
-                                setCaptureFunction={setCaptureFunction}
+                <div className="w-full flex items-center flex-col p-10">
+                    <div className="w-full h-full">
+                        <Canvas camera={{ position: [60, 30, 8], fov: 50 }}>
+                            <ambientLight intensity={0.8} />
+                            <directionalLight
+                                position={[5, 5, 5]}
+                                intensity={0.5}
                             />
-                        )}
-                        <Environment
-                            files="/environnement/poly_haven_studio_1k.hdr"
-                            intensity={0}
-                        />
-                    </Canvas>
-                </div>
+                            <pointLight
+                                position={[10, 10, 10]}
+                                intensity={0.5}
+                            />
+                            <pointLight
+                                position={[-10, -10, -10]}
+                                intensity={0.5}
+                            />
+                            <Controls />
+                            <SnowGlobeSphere
+                                texture={texture}
+                                selectedTheme={selectedTheme}
+                            />{' '}
+                            {/* Applique la texture à la sphère */}
+                            <Base textureDuMateriel={textureMaterial} />{' '}
+                            {/* Applique la texture à la base */}
+                            {isCapturePage && (
+                                <CaptureScene
+                                    setCaptureFunction={setCaptureFunction}
+                                />
+                            )}
+                            <Environment
+                                files="/environnement/poly_haven_studio_1k.hdr"
+                                intensity={0}
+                            />
+                        </Canvas>
+                    </div>
 
-                <div className="rounded-[20px] border-white border-2 p-1 w-full">
-                    <div className="flex flex-col bg-white rounded-2xl p-[11px] gap-3">
-                        <div className="flex justify-between items-center">
-                            <div>Thème à appliquer</div>
-                            <div className="px-2 bg-gray-200 rounded-[8px]">
-                                Par défaut
+                    <div className="rounded-[20px] border-white border-2 p-1 w-full">
+                        <div className="flex flex-col bg-white rounded-2xl p-[11px] gap-3">
+                            <div className="flex justify-between items-center">
+                                <div>Thème à appliquer</div>
+                                <div className="px-2 bg-gray-200 rounded-[8px]">
+                                    Par défaut
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <button
+                                    onClick={() => handleThemeClick('summer')}
+                                >
+                                    été
+                                </button>
+                                <button
+                                    onClick={() => handleThemeClick('winter')}
+                                >
+                                    hiver
+                                </button>
                             </div>
                         </div>
-                        <div className="flex items-center gap-2">
-                            <button onClick={() => handleThemeClick('summer')}>
-                                été
-                            </button>
-                            <button onClick={() => handleThemeClick('winter')}>
-                                hiver
-                            </button>
-                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="flex flex-col w-full">
-                <div className="flex justify-center w-full p-10 font-manrope">
-                    <div className="w-sm rounded-[20px] border-white border-2 p-1 ">
-                        <div className="bg-white rounded-2xl h-140">
-                            <div className="grid grid-cols-3 gap-2 p-1">
+                <div className="flex flex-col w-full h-full">
+                    <div className="flex justify-center w-full p-10 font-manrope flex-grow">
+                        <FondBlanc className="w-sm min-h-full flex flex-col">
+                            <h3 className="font-recoleta text-span2 font-medium">
+                                Éléments du thème
+                            </h3>
+                            <h3 className="font-semibold font-manrope text-span3">
+                                Pièces pour Noël
+                            </h3>
+                            <div className="grid grid-cols-3 gap-2 p-1 min-h-[120px]">
                                 {themeImages.map((item, index) => (
                                     <img
                                         key={index}
@@ -244,12 +299,10 @@ export default function SnowGlobe() {
                                     />
                                 ))}
                             </div>
-                        </div>
+                        </FondBlanc>
                     </div>
-                </div>
-                <div className="flex justify-center w-full p-10 font-manrope">
-                    <div className="w-sm rounded-[20px] border-white border-2 p-1 ">
-                        <div className="bg-white rounded-2xl h-full py-4 px-6">
+                    <div className="flex justify-center w-full p-10 font-manrope">
+                        <FondBlanc className="w-sm flex-shrink-0">
                             <div className="flex flex-col gap-4">
                                 <button
                                     onClick={() =>
@@ -269,10 +322,10 @@ export default function SnowGlobe() {
                                     exclusives, jusqu’à 50% !
                                 </p>
                             </div>
-                        </div>
+                        </FondBlanc>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }

@@ -35,7 +35,7 @@ export default function CTAButton({
     }
 
     return (
-        <Link href={''} className={clsx(variantSwitcher, className)}>
+        <Link href={href} className={clsx(variantSwitcher, className)}>
             {children}
         </Link>
     )

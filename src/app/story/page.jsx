@@ -1,5 +1,6 @@
 import FondBlanc from '@/components/FondBlanc'
-import Text from '@/components/Text'
+import Body from '@/components/Text/Body'
+import Title from '@/components/Text/Title'
 
 export default function Story() {
     return (
@@ -11,9 +12,8 @@ export default function Story() {
                 <h1 className="text-span1 font-recoleta text-center ">
                     Holosphere : La Magie des Souvenirs Réinventée
                 </h1>
-                <Text type="title" hierarchy="3">
-                    Mamamia
-                </Text>
+                <Body hierarchy="3">Mamamia</Body>
+                <Title hierarchy="1">Mamamia</Title>
             </div>
             <FondBlanc className="h-screen w-full"></FondBlanc>
         </>

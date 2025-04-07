@@ -1,3 +1,27 @@
+.homeH1 {
+    /* H1 Title */
+    font-family: Recoleta SemiBold;
+    font-size: 96px;
+    font-style: normal;
+    line-height: 104px; /* 108.333% */
+}
+
+.homeH2 {
+    /* H2 Section Title */
+    font-family: Recoleta SemiBold;
+    font-size: 48px;
+    font-style: normal;
+    line-height: 72px; /* 150% */
+}
+
+.homeH3 {
+    /* H3 Div Title */
+    font-family: Recoleta SemiBold;
+    font-size: 32px;
+    font-style: normal;
+    line-height: normal;
+}
+
 .otherH1 {
     /* H1 Other Page */
     font-family: Recoleta Regular;
@@ -11,6 +35,15 @@
     font-size: 28.8px;
     font-style: normal;
     line-height: 40px; /* 138.889% */
+}
+
+.otherH3 {
+    /* H3 Small Div */
+    font-family: Manrope;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
 }
 
 .body1 {

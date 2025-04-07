@@ -1,7 +1,15 @@
 @import 'tailwindcss';
 
 /* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');*/
+/* Ci dessous la version avec la FONT LOCALE */
+@font-face {
+    font-family: 'Manrope';
+    font-weight: 200 800;
+    font-style: normal;
+    src: url('/fonts/Manrope/Manrope-VariableFont_wght.ttf') format('ttf');
+    font-display: swap;
+}
 
 @font-face {
     font-family: 'Recoleta Regular';

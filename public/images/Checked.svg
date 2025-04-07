@@ -1,7 +1,5 @@
-<svg width="26" height="27" viewBox="0 0 26 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="Frame 44">
-<rect x="-1" y="1.51978" width="26" height="26" rx="7" fill="#0C0F1E"/>
-<rect x="-1" y="1.51978" width="26" height="26" rx="7" stroke="white" stroke-width="2"/>
-<path id="Vector" d="M17.6172 10.6575L9.89355 18.3811L6.38281 14.8704" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
+<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="1" y="1" width="26" height="26" rx="7" fill="#0C0F1E"/>
+<rect x="1" y="1" width="26" height="26" rx="7" stroke="white" stroke-width="2"/>
+<path d="M19.6172 10.1377L11.8936 17.8613L8.38281 14.3506" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

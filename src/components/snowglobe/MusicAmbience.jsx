@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 
 const MusicAmbience = () => {
     const musicAmbiences = [
@@ -6,7 +6,7 @@ const MusicAmbience = () => {
             src: '/songs/End_of_Line.mp3',
             title: 'End of Line',
             author: 'Daft Punk',
-            image: 'https://upload.wikimedia.org/wikipedia/en/3/39/Tron_Legacy_Soundtrack.jpg', // Image de la musique
+            image: 'https://upload.wikimedia.org/wikipedia/en/3/39/Tron_Legacy_Soundtrack.jpg',
         },
         {
             src: '/songs/TRON_Legacy_(End Titles).mp3',
@@ -23,25 +23,51 @@ const MusicAmbience = () => {
     ]
 
     const [selectedMusic, setSelectedMusic] = useState(musicAmbiences[0])
-    const [isMuted, setIsMuted] = useState(false) // Etat pour gérer la sourdine
-    const audioRef = useRef(new Audio(selectedMusic.src)) // 🔥 Crée l'instance audio
+    const [isMuted, setIsMuted] = useState(false)
+    const [isPlaying, setIsPlaying] = useState(false) // Nouvel état pour suivre la lecture
+    const audioRef = useRef(null)
 
-    const handleSelect = (music) => {
+    useEffect(() => {
+        // Initialize audio
+        audioRef.current = new Audio()
+        audioRef.current.muted = isMuted
+
+        return () => {
+            if (audioRef.current) {
+                audioRef.current.pause()
+                audioRef.current = null
+            }
+        }
+    }, [])
+
+    const handleSelect = async (music) => {
         setSelectedMusic(music)
 
-        // Mettre à jour la source et lire la musique
         if (audioRef.current) {
-            audioRef.current.pause()
-            audioRef.current.src = music.src
-            audioRef.current.load()
-            audioRef.current.play()
+            try {
+                // Si une musique est déjà en cours, on l'arrête
+                if (isPlaying) {
+                    audioRef.current.pause()
+                    setIsPlaying(false)
+                }
+
+                // Change la source et lance la lecture
+                audioRef.current.src = music.src
+                await audioRef.current.play()
+                setIsPlaying(true)
+            } catch (error) {
+                console.error('Error playing audio:', error)
+                setIsPlaying(false)
+            }
         }
     }
 
     const handleMute = () => {
         setIsMuted((prev) => {
             const newMutedState = !prev
-            audioRef.current.muted = newMutedState // Appliquer la sourdine
+            if (audioRef.current) {
+                audioRef.current.muted = newMutedState
+            }
             return newMutedState
         })
     }
@@ -52,16 +78,18 @@ const MusicAmbience = () => {
                 Musique d'ambiance
             </h3>
 
-            <div className="flex gap-3 ">
+            <div className="flex gap-2">
                 <button
                     onClick={handleMute}
-                    className={`relative w-16 h-16 rounded-xl p-0.5 border-2 border-gray-500`}
+                    className={`relative w-16 h-16 rounded-xl p-0.5 border-2 border-[#0c0f1e7e]`}
                 >
                     <img
                         src={
-                            isMuted ? 'images/NoMuted.svg' : '/images/muted.svg'
+                            isMuted ? 'images/muted.svg' : '/images/NoMuted.svg'
                         }
-                        alt=""
+                        alt={
+                            isMuted ? 'Désactiver sourdine' : 'Activer sourdine'
+                        }
                         className="absolute bottom-4 left-4 p-0.5"
                     />
                 </button>
@@ -87,6 +115,10 @@ const MusicAmbience = () => {
                                     alt="icone check"
                                     className="h-5 w-5"
                                 />
+                                {/* {isPlaying &&
+                                    selectedMusic.src === music.src && (
+                                        <div className="absolute top-0 right-0 w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                                    )} */}
                             </div>
                         )}
                     </button>

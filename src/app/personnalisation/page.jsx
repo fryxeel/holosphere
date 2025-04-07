@@ -1,6 +1,6 @@
 'use client'
 import { Canvas, useLoader } from '@react-three/fiber'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import SnowGlobeSphere from '../../components/snowglobe/SnowGlobeSphere'
 import Base from '../../components/snowglobe/Socle'
@@ -8,10 +8,10 @@ import Controls from '../../components/snowglobe/Controls'
 import CaptureScene from '../../components/snowglobe/CaptureScene'
 import { TextureLoader } from 'three'
 import { Environment } from '@react-three/drei'
-import { useRef } from 'react'
 import FondBlanc from '../../components/FondBlanc.jsx'
 import MaterialSelector from '@/components/snowglobe/TextureSocle'
 import MusicAmbience from '@/components/snowglobe/MusicAmbience'
+import ImageSphere from '@/components/snowglobe/imageSphere'
 
 export default function SnowGlobe() {
     const [imageTexture, setImageTexture] = useState(null) // Texture pour la sphère
@@ -21,6 +21,7 @@ export default function SnowGlobe() {
     const [captureFunction, setCaptureFunction] = useState(null) //capture d'écran
     const pathname = usePathname()
     const fileInputRef = useRef(null)
+
     const themes = {
         summer: [
             {
@@ -101,6 +102,7 @@ export default function SnowGlobe() {
                         </h3>
                         <input type="range" min={0} max={100} />
                         <br />
+
                         <div className="py-6 flex flex-col gap-2">
                             <h4 className="font-semibold font-manrope text-span3">
                                 Vos propres images
@@ -149,72 +151,14 @@ export default function SnowGlobe() {
                                 souhaité dans la boule.
                             </p>
                         </div>
+
                         <div className="pb-6 flex flex-col gap-2">
                             <MaterialSelector
                                 onSelectMaterial={setMaterialTexture}
                             />
-
-                            {/* <div className="flex gap-2">
-                                {[
-                                    {
-                                        src: '/textures/Wood003_2K-JPG_Color.jpg',
-                                        text: 'Texture bois',
-                                    },
-                                    {
-                                        src: '/textures/Fabric062_2K-JPG_AmbientOcclusion.jpg',
-                                        text: 'Texture tissu',
-                                    },
-                                    {
-                                        src: '/textures/Asphalt025B_2K-JPG_Color.jpg',
-                                        text: 'Texture asphalte',
-                                    },
-                                    {
-                                        src: '/textures/NightSkyHDRI007_2K-TONEMAPPED.jpg',
-                                        text: 'Ciel nocturne',
-                                    },
-                                ].map((material, index) => (
-                                    <div key={index} className="text-center">
-                                        <img
-                                            className="bg-gray-200 cursor-pointer w-18 h-18 rounded-2xl"
-                                            onClick={() =>
-                                                handleMaterialClick(
-                                                    material.src
-                                                )
-                                            }
-                                            src={material.src}
-                                        />
-                                        <p>{material.text}</p>
-                                    </div>
-                                ))}
-                            </div> */}
                         </div>
                         <div className="pb-6 flex flex-col gap-2">
-                            
                             <MusicAmbience />
-                            {/* <div className="flex gap-2">
-                                {[
-                                    // Choisir la texture pour la base
-                                    '/textures/Wood003_2K-JPG_Color.jpg',
-                                    '/textures/Fabric062_2K-JPG_AmbientOcclusion.jpg',
-                                    '/textures/Asphalt025B_2K-JPG_Color.jpg',
-                                    '/textures/NightSkyHDRI007_2K-TONEMAPPED.jpg',
-                                ].map((materialTexture, index) => (
-                                    <img
-                                        key={index}
-                                        className="bg-gray-200 cursor-pointer w-18 h-18 rounded-2xl"
-                                        onClick={
-                                            () =>
-                                                handleMaterialClick(
-                                                    materialTexture
-                                                ) // Applique sur la base
-                                        }
-                                        src={materialTexture}
-                                    ></img>
-                                ))}
-                            </div>
-                            <p>
-                                <span>Échos de Mémoire </span>- Alain S.
-                            </p> */}
                         </div>
                     </FondBlanc>
                 </div>

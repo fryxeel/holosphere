@@ -1,0 +1,36 @@
+.itemMenu {
+    list-style: none;
+    color: #fff;
+    font: Manrope;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 123%; /* 19.68px */
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    opacity: 0.7;
+    transition: all 0.3s ease-out;
+
+    cursor: pointer;
+}
+
+.itemMenu:hover {
+    opacity: 1;
+    font-weight: 400;
+    letter-spacing: -0.08px;
+}
+
+.itemMenu.active {
+    opacity: 1;
+}
+
+.LineItemMenu {
+    opacity: 0;
+    background-color: #fff;
+    height: 1.5px;
+}
+
+.itemMenu.active .LineItemMenu {
+    opacity: 1;
+}

@@ -1,10 +1,15 @@
+'use client'
+
 import Link from 'next/link'
 import routes from '../../routes.jsx'
 import CTAButton from '../Buttons/CTAButton.jsx'
 import './styles.css'
+import MenuDesktop from '../Menu/MenuDesktop/index.jsx'
+import { usePathname } from 'next/navigation'
 
 export default function Header() {
-    const liClass = 'text-base opacity-70 font-regular font-manrope'
+    const pathname = usePathname()
+
     return (
         <header className=" text-white p-4 flex gap-4">
             <ul className="flex justify-around w-full items-center">
@@ -17,26 +22,7 @@ export default function Header() {
                         />
                     </Link>
                 </li>
-                <div className="flex justify-around gap-10">
-                    <li>
-                        <Link href={routes.home} className={liClass}>
-                            Accueil
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href={routes.personnalisation}
-                            className={liClass}
-                        >
-                            Personnalisation
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href={routes.story} className={liClass}>
-                            Notre histoire
-                        </Link>
-                    </li>
-                </div>
+                <MenuDesktop currentPage={pathname} />
                 <li>
                     <CTAButton href="get">Obtenir la vôtre</CTAButton>
                 </li>

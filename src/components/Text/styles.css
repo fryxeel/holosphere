@@ -1,0 +1,78 @@
+.homeH1 {
+    /* H1 Title */
+    font-family: Recoleta SemiBold;
+    font-size: 96px;
+    font-style: normal;
+    line-height: 104px; /* 108.333% */
+}
+
+.homeH2 {
+    /* H2 Section Title */
+    font-family: Recoleta SemiBold;
+    font-size: 48px;
+    font-style: normal;
+    line-height: 72px; /* 150% */
+}
+
+.homeH3 {
+    /* H3 Div Title */
+    font-family: Recoleta SemiBold;
+    font-size: 32px;
+    font-style: normal;
+    line-height: normal;
+}
+
+.otherH1 {
+    /* H1 Other Page */
+    font-family: Recoleta Regular;
+    font-size: 40px;
+    line-height: normal;
+}
+
+.otherH2 {
+    /* H2 Section Other Page */
+    font-family: Recoleta SemiBold;
+    font-size: 28.8px;
+    font-style: normal;
+    line-height: 40px; /* 138.889% */
+}
+
+.otherH3 {
+    /* H3 Small Div */
+    font-family: Manrope;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.body1 {
+    /* Big Text */
+    font-family: Recoleta Regular;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 72px; /* 112.5% */
+}
+
+.body2 {
+    /* Short Big Paragraph */
+    font: Manrope;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 350;
+    line-height: normal;
+}
+
+.body3 {
+    /* P Simple paragraph */
+    font: Manrope;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 22px;
+}
+
+.body3 span {
+    font-weight: 500;
+}

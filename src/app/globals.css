@@ -1,0 +1,104 @@
+@import 'tailwindcss';
+
+/* Fonts */
+/*@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');*/
+/* Ci dessous la version avec la FONT LOCALE */
+@font-face {
+    font-family: 'Manrope';
+    font-weight: 200 800;
+    font-style: normal;
+    src: url('/fonts/Manrope/Manrope-VariableFont_wght.ttf') format('ttf');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Recoleta Regular';
+    src: url('/fonts/Recoleta/Recoleta Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Recoleta Medium';
+    src: url('/fonts/Recoleta/Recoleta Medium.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Recoleta Light';
+    src: url('/fonts/Recoleta/Recoleta Light.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Recoleta Bold';
+    src: url('/fonts/Recoleta/Recoleta Bold.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Recoleta Black';
+    src: url('/fonts/Recoleta/Recoleta Black.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Recoleta SemiBold';
+    src: url('/fonts/Recoleta/Recoleta SemiBold.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Recoleta Thin';
+    src: url('/fonts/Recoleta/Recoleta Thin.woff2') format('woff2');
+    font-display: swap;
+}
+
+:root {
+    --color-gradient: radial-gradient(
+        179.27% 115.06% at 9.74% -6.22%,
+        #fcdaaf 0%,
+        #e99dbc 13.14%,
+        #8c64c5 26.31%,
+        #252d5a 62.27%,
+        #0c0f1e 100%
+    );
+
+    /* Fonts */
+    --font-manrope: 'Manrope', sans-serif;
+    --font-recoleta: 'Recoleta', serif;
+
+    /* taille / hauteur + font */
+    --h1: 96px; /*var(--font-weight-medium); h1 Title*/
+    --h2: 48px; /*var(--font-weight-medium); h2 section Title*/
+    --h3: 32px; /*var(--font-weight-medium); h3 div title [font:var(--text-h3-r)]*/
+    --span1: 40px; /*var(--font-weight-medium); h1 Title*/
+    --span2: 28.8px; /*var(--font-weight-bold); h2 other page*/
+    --span3: 18px; /*var(--font-weight-semibold); h3 small div*/
+
+    --spana: 64px; /*var(--font-weight-regular); h1 Title*/
+    --spanb: 26px / 32px; /*var(--font-weight-regular); h1 Title*/
+    --p: 16px; /*var(--font-weight-regular); h1 Title*/
+}
+
+@theme inline {
+    --font-manrope: 'Manrope', sans-serif;
+    --font-recoleta: 'Recoleta Medium', serif;
+
+    --text-h1: var(--h1);
+    --text-h2: var(--h2);
+    --text-h3: var(--h3);
+    --text-span1: var(--span1);
+    --text-span2: var(--span2);
+    --text-span3: var(--span3);
+
+    --leading-h1: calc(var(--h1) * 1.08);
+    --leading-h2: calc(var(--h2) * 1.5);
+    --leading-h3: calc(var(--h3) * 2);
+    --leading-span1: calc(var(--span1) * 1.4);
+    --leading-span2: calc(var(--span2) * 1.7);
+    /**/
+    --leading-spana: calc(var(--spana) * 1.1);
+    --leading-spanb: calc(var(--spanb) * 1.2);
+}
+
+body {
+    background: var(--color-gradient);
+}

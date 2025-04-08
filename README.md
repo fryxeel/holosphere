@@ -10,3 +10,21 @@ Créer une plateforme en ligne pour présenter Holosphere, ses fonctionnalités 
 ---
 
 💡 *Holosphere, une nouvelle manière de partager vos souvenirs en hologrammes.*
+
+## Faire fonctionner
+
+Une fois avoir pull tous les fichiers nécessaires, installer toutes les dépendances 
+```bash
+npm install
+```
+
+Il est possible que le node ne soit pas installé ou à la dernière version, dans ce cas faire
+```bash
+npm install node
+```
+
+Si tout est bon, lancer le site avec 
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

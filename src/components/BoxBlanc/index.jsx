@@ -1,7 +1,7 @@
 import React from 'react'
 import clsx from 'clsx'
 
-const FondBlanc = ({ children, className }) => {
+const BoxBlanc = ({ children, className }) => {
     return (
         <div
             className={clsx(
@@ -16,4 +16,4 @@ const FondBlanc = ({ children, className }) => {
     )
 }
 
-export default FondBlanc
+export default BoxBlanc

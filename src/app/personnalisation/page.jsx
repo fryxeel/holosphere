@@ -8,7 +8,7 @@ import Controls from '../../components/snowglobe/Controls'
 import CaptureScene from '../../components/snowglobe/CaptureScene'
 import { TextureLoader } from 'three'
 import { Environment } from '@react-three/drei'
-import FondBlanc from '../../components/FondBlanc.jsx'
+import BoxBlanc from '../../components/BoxBlanc/index.jsx'
 import MaterialSelector from '@/components/snowglobe/TextureSocle'
 import MusicAmbience from '@/components/snowglobe/MusicAmbience'
 
@@ -117,7 +117,7 @@ export default function SnowGlobe() {
             </div>
             <div className="flex flex-row w-full min-h-screen">
                 <div className="flex flex-col items-center w-full p-10">
-                    <FondBlanc className="w-sm h-full">
+                    <BoxBlanc className="w-sm h-full">
                         <h3 className="font-recoleta text-span2 font-medium">
                             Outils de création
                         </h3>
@@ -210,7 +210,7 @@ export default function SnowGlobe() {
                         <div className="pb-6 flex flex-col gap-2">
                             <MusicAmbience />
                         </div>
-                    </FondBlanc>
+                    </BoxBlanc>
                 </div>
                 <div className="w-full flex items-center flex-col p-10">
                     <div className="w-full h-full">
@@ -273,7 +273,7 @@ export default function SnowGlobe() {
                 </div>
                 <div className="flex flex-col w-full h-full">
                     <div className="flex justify-center w-full p-10 font-manrope flex-grow">
-                        <FondBlanc className="w-sm min-h-full flex flex-col">
+                        <BoxBlanc className="w-sm min-h-full flex flex-col">
                             <h3 className="font-recoleta text-span2 font-medium">
                                 Éléments du thème
                             </h3>
@@ -316,10 +316,10 @@ export default function SnowGlobe() {
                                     )
                                 })}
                             </div>
-                        </FondBlanc>
+                        </BoxBlanc>
                     </div>
                     <div className="flex justify-center w-full p-10 font-manrope">
-                        <FondBlanc className="w-sm flex-shrink-0">
+                        <BoxBlanc className="w-sm flex-shrink-0">
                             <div className="flex flex-col gap-4">
                                 <button
                                     onClick={() =>
@@ -339,7 +339,7 @@ export default function SnowGlobe() {
                                     exclusives, jusqu’à 50% !
                                 </p>
                             </div>
-                        </FondBlanc>
+                        </BoxBlanc>
                     </div>
                 </div>
             </div>

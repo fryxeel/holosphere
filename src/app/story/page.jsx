@@ -1,4 +1,4 @@
-import FondBlanc from '@/components/BoxBlanc'
+import FondBlanc from '@/components/FondBlanc'
 import Body from '@/components/Text/Body'
 import Title from '@/components/Text/Title'
 

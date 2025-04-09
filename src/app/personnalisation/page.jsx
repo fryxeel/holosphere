@@ -8,13 +8,13 @@ import Controls from '../../components/snowglobe/Controls'
 import CaptureScene from '../../components/snowglobe/CaptureScene'
 import { TextureLoader } from 'three'
 import { Environment } from '@react-three/drei'
-import FondBlanc from '../../components/FondBlanc.jsx'
+import BoxBlanc from '../../components/BoxBlanc/index.jsx'
 import MaterialSelector from '@/components/snowglobe/TextureSocle'
 import MusicAmbience from '@/components/snowglobe/MusicAmbience'
-import ImageSphere from '@/components/snowglobe/imageSphere'
 
 export default function SnowGlobe() {
     const [imageTexture, setImageTexture] = useState(null) // Texture pour la sphère
+    const [selectedImageTexture, setSelectedImageTexture] = useState(null) // Stockage local de l'image sélectionnée
     const [materialTexture, setMaterialTexture] = useState(null) // Texture pour la base
     const [selectedTheme, setselectedTheme] = useState([])
     const [themeImages, setImageThemes] = useState([]) // models pour sphere3D
@@ -43,14 +43,38 @@ export default function SnowGlobe() {
         ],
     }
 
+    const imageSpheres = [
+        {
+            src: '/images/zerry_pfp.png',
+            alt: 'pfp zerry',
+        },
+        {
+            src: '/images/pfp_pogachar_capxelio.png',
+            alt: 'pfp pogachar',
+        },
+        {
+            src: '/images/pfp_revan.png',
+            alt: 'pfp revan',
+        },
+    ]
+
     const handleThemeClick = (theme) => {
         setselectedTheme(themes[theme]) // Charge les objets du thème pour la sphère 3D
         setImageThemes(themes[theme]) // Met à jour la liste des images affichées
     }
 
-    const handleRemoveThemeObject = (index) => {
-        setselectedTheme((prev) => prev.filter((_, i) => i !== index))
-        setImageThemes((prev) => prev.filter((_, i) => i !== index))
+    const handleToggleThemeObject = (item) => {
+        const isAlreadySelected = selectedTheme.includes(item)
+
+        if (isAlreadySelected) {
+            // Enlève l’objet de la scène
+            setselectedTheme((prev) => prev.filter((i) => i !== item))
+            // ici tu peux aussi enlever l'objet du monde 3D (si tu as une méthode pour ça)
+        } else {
+            // Ajoute l’objet à la scène
+            setselectedTheme((prev) => [...prev, item])
+            // ici tu peux aussi rajouter l'objet dans le monde 3D
+        }
     }
 
     // Charger les textures
@@ -93,7 +117,7 @@ export default function SnowGlobe() {
             </div>
             <div className="flex flex-row w-full min-h-screen">
                 <div className="flex flex-col items-center w-full p-10">
-                    <FondBlanc className="w-sm h-full">
+                    <BoxBlanc className="w-sm h-full">
                         <h3 className="font-recoleta text-span2 font-medium">
                             Outils de création
                         </h3>
@@ -107,21 +131,47 @@ export default function SnowGlobe() {
                             <h4 className="font-semibold font-manrope text-span3">
                                 Vos propres images
                             </h4>
-                            <div className="flex gap-2">
-                                {[
-                                    // Choisir l'image pour la sphère
-                                    '/images/zerry_pfp.png',
-                                    '/images/pfp_pogachar_capxelio.png',
-                                    '/images/pfp_pogachar_capxelio.png',
-                                ].map((image, index) => (
-                                    <img
+                            <div className="flex items-center gap-2">
+                                {imageSpheres.map((image, index) => (
+                                    <button
                                         key={index}
-                                        className="bg-gray-200 cursor-pointer w-18 h-18 rounded-2xl"
-                                        title="coucou"
-                                        src={image}
-                                        onClick={() => handleImageClick(image)} // Applique sur la sphère
-                                    ></img>
+                                        className={`relative w-18 h-18 rounded-[10px] p-0.5 border-2 overflow-hidden ${
+                                            selectedImageTexture === image.src
+                                                ? 'border-black'
+                                                : 'border-transparent'
+                                        }`}
+                                        onClick={() => {
+                                            handleImageClick(image.src)
+                                            setSelectedImageTexture(image.src)
+                                        }}
+                                    >
+                                        <img
+                                            src={image.src}
+                                            alt={image.alt}
+                                            className="w-full h-full rounded-lg"
+                                        />
+
+                                        {selectedImageTexture === image.src && (
+                                            <div
+                                                className="absolute top-0 right-0 z-10"
+                                                onClick={(e) => {
+                                                    e.stopPropagation() // Pour ne pas déclencher le onClick du <button>
+                                                    setSelectedImageTexture(
+                                                        null
+                                                    )
+                                                    handleImageClick(null)
+                                                }}
+                                            >
+                                                <img
+                                                    src="/images/less.svg"
+                                                    alt="Icône remove"
+                                                    className="h-[28px] w-[28px]"
+                                                />
+                                            </div>
+                                        )}
+                                    </button>
                                 ))}
+
                                 <input
                                     ref={fileInputRef} // Ajoute la référence ici
                                     type="file"
@@ -134,7 +184,7 @@ export default function SnowGlobe() {
                                         onClick={() =>
                                             fileInputRef.current.click()
                                         } // Déclenche le clic sur l'input caché
-                                        className="cta-button-black w-18 h-18 flex-col gap-1 py-2.5 px-1.5 rounded-2xl"
+                                        className="cta-button-black w-16 h-16 flex-col gap-1 py-2.5 px-1.5 rounded-2xl"
                                     >
                                         <img
                                             className="w-4.5 h-4.5"
@@ -160,7 +210,7 @@ export default function SnowGlobe() {
                         <div className="pb-6 flex flex-col gap-2">
                             <MusicAmbience />
                         </div>
-                    </FondBlanc>
+                    </BoxBlanc>
                 </div>
                 <div className="w-full flex items-center flex-col p-10">
                     <div className="w-full h-full">
@@ -223,7 +273,7 @@ export default function SnowGlobe() {
                 </div>
                 <div className="flex flex-col w-full h-full">
                     <div className="flex justify-center w-full p-10 font-manrope flex-grow">
-                        <FondBlanc className="w-sm min-h-full flex flex-col">
+                        <BoxBlanc className="w-sm min-h-full flex flex-col">
                             <h3 className="font-recoleta text-span2 font-medium">
                                 Éléments du thème
                             </h3>
@@ -231,22 +281,45 @@ export default function SnowGlobe() {
                                 Pièces pour Noël
                             </h3>
                             <div className="grid grid-cols-3 gap-2 p-1 min-h-[120px]">
-                                {themeImages.map((item, index) => (
-                                    <img
-                                        key={index}
-                                        src={item.img}
-                                        alt="Objet du thème"
-                                        className="w-20 h-20 rounded-lg shadow-md cursor-pointer"
-                                        onClick={() =>
-                                            handleRemoveThemeObject(index)
-                                        }
-                                    />
-                                ))}
+                                {themeImages.map((item, index) => {
+                                    const isActive =
+                                        selectedTheme.includes(item)
+
+                                    return (
+                                        <div
+                                            key={index}
+                                            className={`relative w-[88px] h-[88px] p-1 rounded-lg transition-all border-2 cursor-pointer ${
+                                                isActive
+                                                    ? 'border-black'
+                                                    : 'border-transparent'
+                                            }`}
+                                            onClick={() =>
+                                                handleToggleThemeObject(item)
+                                            }
+                                        >
+                                            <img
+                                                src={item.img}
+                                                alt="Objet du thème"
+                                                className="w-20 h-20 rounded-lg"
+                                            />
+
+                                            {isActive && (
+                                                <div className="absolute bottom-0 left-0 z-10">
+                                                    <img
+                                                        src="/images/Checked.svg"
+                                                        alt="Icône checked"
+                                                        className="h-[28px] w-[28px]"
+                                                    />
+                                                </div>
+                                            )}
+                                        </div>
+                                    )
+                                })}
                             </div>
-                        </FondBlanc>
+                        </BoxBlanc>
                     </div>
                     <div className="flex justify-center w-full p-10 font-manrope">
-                        <FondBlanc className="w-sm flex-shrink-0">
+                        <BoxBlanc className="w-sm flex-shrink-0">
                             <div className="flex flex-col gap-4">
                                 <button
                                     onClick={() =>
@@ -266,7 +339,7 @@ export default function SnowGlobe() {
                                     exclusives, jusqu’à 50% !
                                 </p>
                             </div>
-                        </FondBlanc>
+                        </BoxBlanc>
                     </div>
                 </div>
             </div>

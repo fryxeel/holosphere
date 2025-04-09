@@ -30,7 +30,7 @@ const MaterialSelector = ({ onSelectMaterial }) => {
                 {materials.map((material) => (
                     <button
                         key={material.src}
-                        className={`relative w-16 h-16 rounded-xl overflow-hidden p-0.5 box-border border-2 ${
+                        className={`relative w-16 h-16 rounded-[10px] p-0.5 border-2 overflow-hidden ${
                             selectedMaterial === material.src
                                 ? 'border-black'
                                 : 'border-transparent'
@@ -40,14 +40,14 @@ const MaterialSelector = ({ onSelectMaterial }) => {
                         <img
                             src={material.src}
                             alt={material.text}
-                            className="w-14 h-14 object-cover rounded-lg"
+                            className="w-full h-full rounded-lg"
                         />
                         {selectedMaterial === material.src && (
-                            <div className="absolute bottom-0 left-0 rounded-full p-0.5">
+                            <div className="absolute bottom-0 left-0 z-10">
                                 <img
                                     src="/images/Checked.svg"
                                     alt="icone check"
-                                    className="h-5 w-5"
+                                    className="h-[28px] w-[28px]"
                                 />
                             </div>
                         )}

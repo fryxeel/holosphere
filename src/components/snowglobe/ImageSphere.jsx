@@ -19,10 +19,10 @@ const ImageSphere = ({ onSelectTexture }) => {
     const fileInputRef = useRef(null)
     const [imageTexture, setImageTexture] = useState(null) // Stockage local de l'image sélectionnée
 
-    const handleImageClick = (imageSrc) => {
-        setImageTexture(imageSrc) // Mise à jour locale
-        onSelectTexture(imageSrc) // Envoi au parent
-    }
+    // const handleImageClick = (imageSrc) => {
+    //     setImageTexture(imageSrc) // Mise à jour locale
+    //     onSelectTexture(imageSrc) // Envoi au parent
+    // }
 
     // Transformation de l'image en base64 pour l'afficher en texture
     const handleImageSelect = (e) => {

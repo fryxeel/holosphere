@@ -55,8 +55,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 56px;
-    height: 56px;
+    width: 64px;
+    height: 64px;
 }
 
 .cta-button-black::before {

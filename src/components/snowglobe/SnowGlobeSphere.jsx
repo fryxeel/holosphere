@@ -1,5 +1,5 @@
 'use client'
-import { useLoader, useThree } from '@react-three/fiber'
+import { useLoader } from '@react-three/fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { useMemo } from 'react'
 import { clone } from 'three/examples/jsm/utils/SkeletonUtils'
@@ -7,6 +7,12 @@ import { clone } from 'three/examples/jsm/utils/SkeletonUtils'
 const SnowGlobeSphere = ({ texture, selectedTheme }) => {
     // Charger tous les modèles en une seule fois avec useMemo
     const models = useMemo(() => {
+        if (
+            !selectedTheme ||
+            selectedTheme.some((item) => item.model === null)
+        ) {
+            return [] // Retourne un tableau vide pour le thème "default"
+        }
         return (
             selectedTheme?.map((item) => {
                 const originalModel = useLoader(GLTFLoader, item.model)

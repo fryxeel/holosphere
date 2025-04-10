@@ -39,7 +39,7 @@
 
 .otherH3 {
     /* H3 Small Div */
-    font-family: Manrope;
+    font: Manrope;
     font-size: 18px;
     font-style: normal;
     font-weight: 600;

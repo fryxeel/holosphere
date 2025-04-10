@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import Title from '../Text/Title'
+import Body from '../Text/Body'
+import Icon from '../Icon'
 
 const MaterialSelector = ({ onSelectMaterial }) => {
     const materials = [
@@ -23,9 +26,9 @@ const MaterialSelector = ({ onSelectMaterial }) => {
 
     return (
         <div className="space-y-3">
-            <h4 className="font-semibold font-manrope text-span3 ">
+            <Title className="font-semibold font-manrope text-span3 ">
                 Matériau du socle
-            </h4>
+            </Title>
             <div className="flex gap-2">
                 {materials.map((material) => (
                     <button
@@ -44,19 +47,21 @@ const MaterialSelector = ({ onSelectMaterial }) => {
                         />
                         {selectedMaterial === material.src && (
                             <div className="absolute bottom-0 left-0 z-10">
-                                <img
-                                    src="/images/Checked.svg"
-                                    alt="icone check"
-                                    className="h-[28px] w-[28px]"
-                                />
+                                <div className="bg-black rounded-lg border-2 border-white">
+                                    <Icon
+                                        color={'white'}
+                                        name={'check'}
+                                        height={24}
+                                    />
+                                </div>
                             </div>
                         )}
                     </button>
                 ))}
             </div>
-            <p className="text-sm font-regular">
+            <Body hierarchy={3}>
                 {materials.find((m) => m.src === selectedMaterial)?.text}
-            </p>
+            </Body>
         </div>
     )
 }

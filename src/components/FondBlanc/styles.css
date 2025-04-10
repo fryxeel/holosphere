@@ -9,7 +9,6 @@
     display: flex;
     width: calc(100vw + 12px);
     max-width: 1800px;
-    height: 4904px;
     padding: 4px;
     flex-direction: column;
     align-items: flex-start;

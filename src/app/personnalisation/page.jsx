@@ -211,11 +211,10 @@ export default function SnowGlobe() {
                                         }
                                         className="cta-button-black w-16 h-16 flex-col gap-1 py-2.5 px-1.5 rounded-2xl"
                                     >
-                                        <img
-                                            className="w-4.5 h-4.5"
-                                            src="/images/Download.svg"
-                                            alt=""
-                                        />
+                                        <Icon
+                                            name={'dowload-image'}
+                                            height={18}
+                                        ></Icon>
                                         Ajouter
                                     </button>
                                 </div>

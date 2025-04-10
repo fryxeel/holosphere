@@ -4,6 +4,7 @@ import {
     ArrowDownToLine,
     VolumeOff,
     CircleDashed,
+    ImagePlus,
 } from 'lucide-react'
 
 function Icon({ name, color = 'white', height = 16 }) {
@@ -34,6 +35,8 @@ function Icon({ name, color = 'white', height = 16 }) {
             return <VolumeOff size={height} color={color} />
         case 'circle-dashed':
             return <CircleDashed size={height} color={color} />
+        case 'dowload-image':
+            return <ImagePlus size={height} color={color} />
         default:
             return 'Error: Unavailable icon name! '
     }

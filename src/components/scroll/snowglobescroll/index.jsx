@@ -1,10 +1,14 @@
-import React from 'react'
-
-const SnowGlobeScroll = () => {
+'use client'
+import { Canvas } from '@react-three/fiber'
+import AnimatedSnowGlobe from '../snowglobescrollAnimated'
+import { forwardRef } from 'react'
+const SnowGlobeScroll = ({ scrollContainerRef }) => {
     return (
-        <div className="absolute z-10">
-            <div className="">SnowGlobeScroll</div>
-        </div>
+        <Canvas camera={{ position: [60, 30, 8], fov: 10 }}>
+            <ambientLight />
+            <directionalLight position={[5, 5, 5]} intensity={2} />
+            <AnimatedSnowGlobe ref={scrollContainerRef} />
+        </Canvas>
     )
 }
 

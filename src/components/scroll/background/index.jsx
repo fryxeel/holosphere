@@ -3,8 +3,8 @@ import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-import SnowGlobeScroll from '../snowglobescroll'
-
+//import SnowGlobeScroll from '../snowglobescrollAnimated'
+import SnowGlobeScroll from '../snowGlobeScroll'
 gsap.registerPlugin(ScrollTrigger)
 
 export default function MultiBackgroundScroll() {
@@ -67,15 +67,10 @@ export default function MultiBackgroundScroll() {
 
     return (
         <div ref={containerRef} className="relative">
-            <section
-                ref={sectionRef}
-                className="h-[100vh] w-full flex items-center justify-center text-white text-4xl font-bold sticky top-0"
-            ></section>
-
-            {/* Espace pour le défilement */}
-            <div className="h-[300vh]">
-                <SnowGlobeScroll/>
-            </div>
+            <section className="h-screen w-full flex items-center justify-center text-white text-4xl font-bold sticky top-0">
+                <SnowGlobeScroll scrollContainerRef={containerRef} />
+            </section>
+            <div className="h-[300vh]"></div>
         </div>
     )
 }

@@ -24,6 +24,11 @@ export default function Home() {
                                     expérience sensorielle et interactive
                                     unique.
                                 </Body>
+                                <Body>
+                                    <span className="text-center">
+                                        Vous êtes prêt ?
+                                    </span>
+                                </Body>
                             </div>
                             <div className="flex justify-center items-center gap-10">
                                 <CTAButton href="vue3D">

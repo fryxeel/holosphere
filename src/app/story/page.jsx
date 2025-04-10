@@ -11,7 +11,7 @@ export default function Story() {
                     Holosphere : La Magie des Souvenirs Réinventée
                 </Title>
             </div>
-            <FondBlanc className="h-screen w-full">
+            <FondBlanc cssClass="py-30">
                 <Title hierarchy={2}>Pourquoi HoloSphere ?</Title>
                 <Body>
                     Chez <span>HoloSphere</span>, nous croyons que les souvenirs

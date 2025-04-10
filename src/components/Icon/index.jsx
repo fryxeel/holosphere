@@ -1,4 +1,4 @@
-import { DynamicIcon } from 'lucide-react/dynamic'
+import { Check, Minus, ArrowDownToLine } from 'lucide-react'
 
 function Icon({ name, color = 'white', height = 16 }) {
     switch (name) {
@@ -18,8 +18,14 @@ function Icon({ name, color = 'white', height = 16 }) {
                     />
                 </svg>
             )
+        case 'check':
+            return <Check />
+        case 'minus':
+            return <Minus />
+        case 'download':
+            return <ArrowDownToLine />
         default:
-            return <DynamicIcon name={name} color={color} size={height} />
+            return 'Error: Unavailable icon name! '
     }
 }
 

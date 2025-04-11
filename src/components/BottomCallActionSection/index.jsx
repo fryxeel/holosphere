@@ -13,8 +13,10 @@ function BottomCallActionSection() {
                     vers vos souvenirs.
                 </Body>
                 <div className="flex gap-4 justify-center items-center flex-row flex-wrap">
-                    <CTAButton href="get">Commander maintenant</CTAButton>
-                    <CTAButton href="get" variant="secondary">
+                    <CTAButton href="get" iconName="shoppingBag">
+                        Commander maintenant
+                    </CTAButton>
+                    <CTAButton href="/" variant="secondary">
                         Découvrir
                     </CTAButton>
                 </div>

@@ -76,6 +76,10 @@
     --spana: 64px; /*var(--font-weight-regular); h1 Title*/
     --spanb: 26px / 32px; /*var(--font-weight-regular); h1 Title*/
     --p: 16px; /*var(--font-weight-regular); h1 Title*/
+
+    /* Couleur */
+    --dark: #0d0f1e;
+    --light: #fff;
 }
 
 @theme inline {
@@ -97,6 +101,20 @@
     /**/
     --leading-spana: calc(var(--spana) * 1.1);
     --leading-spanb: calc(var(--spanb) * 1.2);
+
+    /* COULEUR CLAIR ET FONCEE */
+
+    --color-dark: var(--dark);
+    --color-light: var(--light);
+
+    --bg-dark: var(--dark);
+    --bg-light: var(--light);
+
+    --border-dark: var(--dark);
+    --border-light: var(--light);
+
+    --text-dark: var(--dark);
+    --text-light: var(--light);
 }
 
 body {

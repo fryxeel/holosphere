@@ -1,4 +1,11 @@
-import { Check, Minus, ArrowDownToLine } from 'lucide-react'
+import {
+    Check,
+    Minus,
+    ArrowDownToLine,
+    VolumeOff,
+    CircleDashed,
+    ImagePlus,
+} from 'lucide-react'
 
 function Icon({ name, color = 'white', height = 16 }) {
     switch (name) {
@@ -19,11 +26,17 @@ function Icon({ name, color = 'white', height = 16 }) {
                 </svg>
             )
         case 'check':
-            return <Check />
+            return <Check size={height} color={color} />
         case 'minus':
-            return <Minus />
+            return <Minus size={height} color={color} />
         case 'download':
-            return <ArrowDownToLine />
+            return <ArrowDownToLine size={height} color={color} />
+        case 'mute':
+            return <VolumeOff size={height} color={color} />
+        case 'circle-dashed':
+            return <CircleDashed size={height} color={color} />
+        case 'dowload-image':
+            return <ImagePlus size={height} color={color} />
         default:
             return 'Error: Unavailable icon name! '
     }

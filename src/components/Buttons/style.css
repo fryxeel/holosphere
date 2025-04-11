@@ -51,12 +51,12 @@
     font-weight: 600;
     font-style: normal;
     font-size: 15px;
-    border-radius: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 64px;
     height: 64px;
+    border-radius: 8px;
 }
 
 .cta-button-black::before {
@@ -68,7 +68,7 @@
     bottom: -4px;
     border: 2px solid #000000;
     transition: opacity 300ms ease-out;
-    border-radius: 1.25rem;
+    border-radius: 10px;
 }
 
 .cta-button-black:hover::before {

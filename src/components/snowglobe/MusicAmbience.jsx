@@ -1,4 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
+import Title from '../Text/Title'
+import Body from '../Text/Body'
+import Icon from '../Icon'
 
 const MusicAmbience = () => {
     const musicAmbiences = [
@@ -20,18 +23,15 @@ const MusicAmbience = () => {
             author: 'Daft Punk',
             image: 'https://upload.wikimedia.org/wikipedia/en/3/39/Tron_Legacy_Soundtrack.jpg',
         },
+        // ... autres musiques
     ]
 
-    const [selectedMusic, setSelectedMusic] = useState(musicAmbiences[0])
-    const [isMuted, setIsMuted] = useState(false)
-    const [isPlaying, setIsPlaying] = useState(false) // Nouvel état pour suivre la lecture
+    const [selectedMusic, setSelectedMusic] = useState(null)
+    const [isPlaying, setIsPlaying] = useState(false)
     const audioRef = useRef(null)
 
     useEffect(() => {
-        // Initialize audio
         audioRef.current = new Audio()
-        audioRef.current.muted = isMuted
-
         return () => {
             if (audioRef.current) {
                 audioRef.current.pause()
@@ -41,63 +41,46 @@ const MusicAmbience = () => {
     }, [])
 
     const handleSelect = async (music) => {
-        setSelectedMusic(music)
-
-        if (audioRef.current) {
-            try {
-                // Si une musique est déjà en cours, on l'arrête
-                if (isPlaying) {
-                    audioRef.current.pause()
-                    setIsPlaying(false)
-                }
-
-                // Change la source et lance la lecture
+        try {
+            {
                 audioRef.current.src = music.src
                 await audioRef.current.play()
+                setSelectedMusic(music)
                 setIsPlaying(true)
-            } catch (error) {
-                console.error('Error playing audio:', error)
-                setIsPlaying(false)
             }
+        } catch (error) {
+            console.error('Error playing audio:', error)
+            setIsPlaying(false)
         }
     }
 
-    const handleMute = () => {
-        setIsMuted((prev) => {
-            const newMutedState = !prev
-            if (audioRef.current) {
-                audioRef.current.muted = newMutedState
-            }
-            return newMutedState
-        })
+    const handlePauseAll = () => {
+        if (audioRef.current) {
+            audioRef.current.pause()
+            setIsPlaying(false)
+        }
+        setSelectedMusic(null)
     }
 
     return (
         <div className="space-y-3">
-            <h3 className="font-semibold font-manrope text-span3">
-                Musique d'ambiance
-            </h3>
+            <Title hierarchy={3}>Musique d'ambiance</Title>
 
             <div className="flex gap-2">
                 <button
-                    onClick={handleMute}
-                    className={`relative w-16 h-16 rounded-xl p-0.5 border-2 border-[#0c0f1e7e]`}
+                    onClick={handlePauseAll}
+                    className="relative w-16 h-16 rounded-xl p-0.5 border-2 border-[#0c0f1e7e]"
                 >
-                    <img
-                        src={
-                            isMuted ? 'images/muted.svg' : '/images/NoMuted.svg'
-                        }
-                        alt={
-                            isMuted ? 'Désactiver sourdine' : 'Activer sourdine'
-                        }
-                        className="absolute bottom-4 left-4 p-0.5"
-                    />
+                    <div className="absolute bottom-4 left-4 p-0.5">
+                        <Icon name={'mute'} height={24} color={'black'}></Icon>
+                    </div>
                 </button>
+
                 {musicAmbiences.map((music) => (
                     <button
                         key={music.src}
                         className={`relative w-16 h-16 rounded-[10px] p-0.5 border-2 overflow-hidden ${
-                            selectedMusic.src === music.src
+                            selectedMusic?.src === music.src
                                 ? 'border-black'
                                 : 'border-transparent'
                         }`}
@@ -108,25 +91,29 @@ const MusicAmbience = () => {
                             alt={music.title}
                             className="w-full h-full rounded-lg"
                         />
-                        {selectedMusic.src === music.src && (
+                        {selectedMusic?.src === music.src && (
                             <div className="absolute bottom-0 left-0 z-10">
-                                <img
-                                    src="/images/Checked.svg"
-                                    alt="icone check"
-                                    className="h-[28px] w-[28px]"
-                                />
-                                {/* {isPlaying &&
-                                    selectedMusic.src === music.src && (
-                                        <div className="absolute top-0 right-0 w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                                    )} */}
+                                <div className="bg-black rounded-lg border-2 border-white">
+                                    <Icon
+                                        color={'white'}
+                                        name={'check'}
+                                        height={24}
+                                    />
+                                </div>
+                                {isPlaying && (
+                                    <div className="absolute top-0 right-0"></div>
+                                )}
                             </div>
                         )}
                     </button>
                 ))}
             </div>
-            <p>
-                <span>{selectedMusic.title} </span>- {selectedMusic.author}.
-            </p>
+
+            {selectedMusic && (
+                <Body hierarchy={3}>
+                    <span>{selectedMusic.title}</span> - {selectedMusic.author}
+                </Body>
+            )}
         </div>
     )
 }

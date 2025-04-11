@@ -1,5 +1,5 @@
 function ClassicBox({ children, cssClass = '' }) {
-    return <div className={'flex flex-col ' + cssClass}>{children}</div>
+    return <div className={'px-4 flex flex-col ' + cssClass}>{children}</div>
 }
 
 export default ClassicBox

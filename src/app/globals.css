@@ -65,6 +65,9 @@
     --font-manrope: 'Manrope', sans-serif;
     --font-recoleta: 'Recoleta', serif;
 
+    --font-button: 'Manrope', sans-serif;
+    --font-button-weight: 380;
+
     /* taille / hauteur + font */
     --h1: 96px; /*var(--font-weight-medium); h1 Title*/
     --h2: 48px; /*var(--font-weight-medium); h2 section Title*/
@@ -122,4 +125,9 @@ body {
     overflow-x: hidden;
     width: 100%;
     position: relative;
+}
+
+.button-typo {
+    font: var(--font-button);
+    font-weight: var(--font-button-weight);
 }

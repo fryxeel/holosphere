@@ -6,6 +6,8 @@ import {
     CircleDashed,
     ImagePlus,
     ShoppingBag,
+    ShoppingCart,
+    Share2,
 } from 'lucide-react'
 
 function Icon({ name, color = 'white', height = 16 }) {
@@ -38,8 +40,12 @@ function Icon({ name, color = 'white', height = 16 }) {
             return <Minus size={height} color={color} />
         case 'mute':
             return <VolumeOff size={height} color={color} />
+        case 'share':
+            return <Share2 size={height} color={color} />
         case 'shoppingBag':
             return <ShoppingBag size={height} color={color} />
+        case 'shoppingCart':
+            return <ShoppingCart size={height} color={color} />
         default:
             return 'Error: Unavailable icon name! '
     }

@@ -24,7 +24,9 @@ export default function Header() {
                 </li>
                 <MenuDesktop currentPage={pathname} />
                 <li>
-                    <CTAButton href="get">Obtenir la vôtre</CTAButton>
+                    <CTAButton href="get" iconName="shoppingBag">
+                        Obtenir la vôtre
+                    </CTAButton>
                 </li>
             </ul>
         </header>

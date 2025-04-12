@@ -286,8 +286,8 @@ export default function Story() {
                         Notre équipe est composée de quatre rêveurs aux talents
                         complémentaires :
                     </Body>
-                    <ClassicSection cssClass="!flex-row !gap-y-12 !gap-[8%] md:!gap-[6%] flex-wrap !items-start">
-                        <ClassicBox cssClass="gap-4 max-w-4/9 md:max-w-1/5">
+                    <ClassicSection cssClass="!flex-row !gap-y-12 !gap-[2%] md:!gap-[6%] flex-wrap !items-start">
+                        <ClassicBox cssClass="gap-4 max-w-6/13 md:max-w-1/5">
                             <img
                                 src="/images/teamFrancisco.jpg"
                                 alt="Francisco"
@@ -301,7 +301,7 @@ export default function Story() {
                                 projet.
                             </Body>
                         </ClassicBox>
-                        <ClassicBox cssClass="gap-4 max-w-4/9 md:max-w-1/5">
+                        <ClassicBox cssClass="gap-4 max-w-6/13 md:max-w-1/5">
                             <img
                                 src="/images/teamFrancisco.jpg"
                                 alt="Francisco"
@@ -315,7 +315,7 @@ export default function Story() {
                                 expressives.
                             </Body>
                         </ClassicBox>
-                        <ClassicBox cssClass="gap-4 max-w-4/9 md:max-w-1/5">
+                        <ClassicBox cssClass="gap-4 max-w-6/13 md:max-w-1/5">
                             <img
                                 src="/images/teamFrancisco.jpg"
                                 alt="Francisco"
@@ -329,7 +329,7 @@ export default function Story() {
                                 l’expérience utilisateur.
                             </Body>
                         </ClassicBox>
-                        <ClassicBox cssClass="gap-4 max-w-4/9 md:max-w-1/5">
+                        <ClassicBox cssClass="gap-4 max-w-6/13 md:max-w-1/5">
                             <img
                                 src="/images/teamFrancisco.jpg"
                                 alt="Francisco"

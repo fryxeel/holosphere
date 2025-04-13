@@ -26,16 +26,14 @@ const MaterialSelector = ({ onSelectMaterial }) => {
 
     return (
         <div className="space-y-3">
-            <Title className="font-semibold font-manrope text-span3 ">
-                Matériau du socle
-            </Title>
+            <Title>Matériau du socle</Title>
             <div className="flex gap-2">
                 {materials.map((material) => (
                     <button
                         key={material.src}
                         className={`relative w-16 h-16 rounded-[10px] p-0.5 border-2 overflow-hidden ${
                             selectedMaterial === material.src
-                                ? 'border-black'
+                                ? 'border-dark'
                                 : 'border-transparent'
                         }`}
                         onClick={() => handleSelect(material.src)}
@@ -47,11 +45,11 @@ const MaterialSelector = ({ onSelectMaterial }) => {
                         />
                         {selectedMaterial === material.src && (
                             <div className="absolute bottom-0 left-0 z-10">
-                                <div className="bg-black rounded-lg border-2 border-white">
+                                <div className="bg-dark p-[2px] rounded-lg border-2 border-white">
                                     <Icon
                                         color={'white'}
                                         name={'check'}
-                                        height={24}
+                                        height={20}
                                     />
                                 </div>
                             </div>
@@ -59,7 +57,7 @@ const MaterialSelector = ({ onSelectMaterial }) => {
                     </button>
                 ))}
             </div>
-            <Body hierarchy={3}>
+            <Body>
                 {materials.find((m) => m.src === selectedMaterial)?.text}
             </Body>
         </div>

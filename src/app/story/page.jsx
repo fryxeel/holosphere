@@ -15,11 +15,11 @@ export default function Story() {
                 </Title>
             </div>
             <FondBlanc cssClass="px-6 md:px-10 lg:px-16 py-12 md:py-18 lg:py-30 flex flex-col justify-center items-center gap-36">
-                <ClassicSection>
+                <ClassicSection cssClass="md:flex-row">
                     <img
                         src="/images/HolosphereMockup1.png"
                         alt="Mockup de l'Holosphère"
-                        className="md:max-w-100 rounded-3xl"
+                        className="md:max-w-100 md:max-h-100 rounded-3xl"
                     />
                     <ClassicBox cssClass="gap-7 lg:gap-10">
                         <Title hierarchy={2}>Pourquoi HoloSphere ?</Title>
@@ -104,14 +104,20 @@ export default function Story() {
                     </ClassicBox>
                 </ClassicSection>
                 <ClassicSection>
-                    <img
-                        src="/images/HolosphereMockup2.png"
-                        alt="Mockup de l'Holosphère sur une table basse"
-                        className="rounded-3xl"
-                    />
+                    <picture>
+                        <source
+                            media="(min-width: 640px)"
+                            srcSet="/images/HolosphereMockup2.png"
+                        />
+                        <img
+                            src="/images/HolosphereMockup2_small.png"
+                            alt="Mockup de l'Holosphère sur une table basse"
+                            className="rounded-3xl"
+                        />
+                    </picture>
                 </ClassicSection>
-                <ClassicSection cssClass="pt-20">
-                    <ClassicBox cssClass="gap-5">
+                <ClassicSection cssClass="lg:pt-20">
+                    <ClassicBox cssClass="gap-5 px-8 lg:px-0">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="42"
@@ -143,22 +149,22 @@ export default function Story() {
                             </svg>
                         </div>
                     </ClassicBox>
-                    <div className="w-16/10 h-100 rounded-3xl bg-[#FDE3C3] flex justify-center align-center">
+                    <div className="lg:w-16/10 h-100 rounded-3xl bg-[#FDE3C3] flex justify-center align-center mt-10 lg:mt-0">
                         <img
                             src="images/HolosphereMockup3.png"
                             alt="Holosphère fond transparent"
-                            className="scale-210 -translate-y-6"
+                            className="h-100 scale-180 sm:scale-210 -translate-y-6"
                         />
                     </div>
                 </ClassicSection>
-                <ClassicSection cssClass="justify-center h-110 relative">
+                <ClassicSection cssClass="justify-center items-center !flex-col h-110 py-130 sm:py-100 lg:py-0 relative">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="1089"
                         height="343"
                         viewBox="0 0 1089 343"
                         fill="none"
-                        className="absolute"
+                        className="hidden absolute translate-y-13 scale-x-105 scale-y-110 lg:block"
                     >
                         <path
                             d="M263.353 8.53265C179.798 48.4944 33.5568 63.0267 12.916 52.2715C-8.44382 41.1416 6.56413 20.9433 28.4426 27.9051C43.5393 32.7089 92.9075 89.7954 77.2534 147.15C57.4872 219.571 64.4362 298.256 157.596 320.302C218.816 334.789 469.708 343.213 596.307 339.466C722.905 335.72 766.263 280.329 749.89 255.512C731.594 227.781 700.162 255.103 725.026 275.05C749.89 294.996 887.734 313.525 972.304 298.256C1046.85 284.796 1101.2 231.886 1083.71 167.131C1066.09 101.867 1015.35 11.0302 825.45 2.28857"
@@ -166,28 +172,47 @@ export default function Story() {
                             strokeWidth="4"
                         />
                     </svg>
-                    <ClassicBox cssClass="gap-4 w-1/5 z-2 min-h-40">
-                        <Title hierarchy={3}>Émotion</Title>
-                        <Body>
-                            Chaque HoloSphere est conçu pour éveiller les
-                            sentiments les plus sincères et raviver la magie de
-                            vos souvenirs les plus précieux.
-                        </Body>
-                    </ClassicBox>
-                    <ClassicBox cssClass="gap-4 w-1/5 z-2 min-h-40">
-                        <Title hierarchy={3}>Connexion Humaine</Title>
-                        <Body>
-                            Un véritable lien entre les générations, favorisant
-                            les échanges et les moments partagés.
-                        </Body>
-                    </ClassicBox>
-                    <ClassicBox cssClass="gap-4 w-1/5 z-2 min-h-40">
-                        <Title hierarchy={3}>Innovation</Title>
-                        <Body>
-                            Réinventer la boule à neige en une expérience
-                            interactive et sensorielle unique.
-                        </Body>
-                    </ClassicBox>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="474"
+                        height="740"
+                        viewBox="0 0 474 740"
+                        fill="none"
+                        className="absolute lg:hidden scale-y-130 sm:scale-y-105 sm:scale-x-130 md:scale-x-150"
+                    >
+                        <path
+                            d="M111.257 2.70068C71.85 94.134 29.2567 132.251 9.43382 98.0945C-8.26674 67.5953 12.7473 19.9852 28.8647 51.9094C39.4634 72.9026 30.8701 188.632 23.4872 319.86C14.1649 485.562 19.5373 643.848 85.3905 698.501C137.246 741.537 226.502 744.686 301.345 726.842C381.257 707.789 450.159 618.1 415.714 588.709C395.727 571.656 383.918 606.554 402.465 630.696C421.013 654.838 471.656 676.458 471.656 570.442C471.656 447.56 423.96 404.755 415.714 256.593C407.402 107.268 436.909 22.7017 347.348 2.70064"
+                            stroke="#FCDAAF"
+                            strokeWidth="4"
+                        />
+                    </svg>
+                    <Title hierarchy={2} cssClass="max-w-1/2 text-center">
+                        Nos valeurs fondatrices
+                    </Title>
+                    <div className="justify-center items-center relative flex flex-col lg:flex-row gap-13 lg:gap-8">
+                        <ClassicBox cssClass="gap-4 w-3/5 lg:w-3/12 z-2 lg:min-h-40">
+                            <Title hierarchy={3}>Émotion</Title>
+                            <Body>
+                                Chaque HoloSphere est conçu pour éveiller les
+                                sentiments les plus sincères et raviver la magie
+                                de vos souvenirs les plus précieux.
+                            </Body>
+                        </ClassicBox>
+                        <ClassicBox cssClass="gap-4 w-3/5 lg:w-3/12 z-2 lg:min-h-40">
+                            <Title hierarchy={3}>Connexion Humaine</Title>
+                            <Body>
+                                Un véritable lien entre les générations,
+                                favorisant les échanges et les moments partagés.
+                            </Body>
+                        </ClassicBox>
+                        <ClassicBox cssClass="gap-4 w-3/5 lg:w-3/12 z-2 lg:min-h-40">
+                            <Title hierarchy={3}>Innovation</Title>
+                            <Body>
+                                Réinventer la boule à neige en une expérience
+                                interactive et sensorielle unique.
+                            </Body>
+                        </ClassicBox>
+                    </div>
                 </ClassicSection>
                 <ClassicSection>
                     <img
@@ -261,61 +286,60 @@ export default function Story() {
                         Notre équipe est composée de quatre rêveurs aux talents
                         complémentaires :
                     </Body>
-                    <ClassicSection>
-                        <ClassicBox cssClass="gap-4">
+                    <ClassicSection cssClass="!flex-row !gap-y-12 !gap-[2%] md:!gap-[6%] flex-wrap !items-start">
+                        <ClassicBox cssClass="gap-4 max-w-6/13 md:max-w-1/5">
                             <img
                                 src="/images/teamFrancisco.jpg"
                                 alt="Francisco"
                                 className="rounded-2xl"
                             />
                             <Body>
-                                Francisco, lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit. Duis consectetur
-                                magna ut turpis commodo interdum. Aliquam nec
-                                purus velit. Etiam rhoncus mauris vel molestie
-                                auctor. Ut faucibus tristique hendrerit.
+                                Francisco, spécialisé en design 3D, Francisco
+                                donne du relief à l’univers d’Holosphère. Il
+                                façonne les volumes et les animations en
+                                cohérence avec la direction artistique du
+                                projet.
                             </Body>
                         </ClassicBox>
-                        <ClassicBox cssClass="gap-4">
+                        <ClassicBox cssClass="gap-4 max-w-6/13 md:max-w-1/5">
                             <img
                                 src="/images/teamFrancisco.jpg"
                                 alt="Francisco"
                                 className="rounded-2xl"
                             />
                             <Body>
-                                Francisco, lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit. Duis consectetur
-                                magna ut turpis commodo interdum. Aliquam nec
-                                purus velit. Etiam rhoncus mauris vel molestie
-                                auctor. Ut faucibus tristique hendrerit.
+                                Céline travaille sur des aspects plus graphiques
+                                et illustratifs du projet. Elle décline la
+                                direction artistique avec soin à travers des
+                                compositions claires, harmonieuses et
+                                expressives.
                             </Body>
                         </ClassicBox>
-                        <ClassicBox cssClass="gap-4">
+                        <ClassicBox cssClass="gap-4 max-w-6/13 md:max-w-1/5">
                             <img
                                 src="/images/teamFrancisco.jpg"
                                 alt="Francisco"
                                 className="rounded-2xl"
                             />
                             <Body>
-                                Francisco, lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit. Duis consectetur
-                                magna ut turpis commodo interdum. Aliquam nec
-                                purus velit. Etiam rhoncus mauris vel molestie
-                                auctor. Ut faucibus tristique hendrerit.
+                                Axel conçoit l’interactivité du site, en mêlant
+                                design d’interface et développement. Il a aussi
+                                contribué à poser les bases de la direction
+                                artistique, centrée sur l’émotion et
+                                l’expérience utilisateur.
                             </Body>
                         </ClassicBox>
-                        <ClassicBox cssClass="gap-4">
+                        <ClassicBox cssClass="gap-4 max-w-6/13 md:max-w-1/5">
                             <img
                                 src="/images/teamFrancisco.jpg"
                                 alt="Francisco"
                                 className="rounded-2xl"
                             />
                             <Body>
-                                Francisco, lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit. Duis consectetur
-                                magna ut turpis commodo interdum. Aliquam nec
-                                purus velit. Etiam rhoncus mauris vel molestie
-                                auctor. Ut faucibus tristique hendrerit.
+                                Eliott, développeur principal du projet, il fait
+                                preuve d’une rigueur précieuse. Son travail
+                                garantit une solution technique fiable et
+                                fluide, essentielle à l’expérience utilisateur.
                             </Body>
                         </ClassicBox>
                     </ClassicSection>

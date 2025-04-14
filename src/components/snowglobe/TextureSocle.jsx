@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import Title from '../Text/Title'
+import Body from '../Text/Body'
+import Icon from '../Icon'
 
 const MaterialSelector = ({ onSelectMaterial }) => {
     const materials = [
@@ -23,16 +26,14 @@ const MaterialSelector = ({ onSelectMaterial }) => {
 
     return (
         <div className="space-y-3">
-            <h4 className="font-semibold font-manrope text-span3 ">
-                Matériau du socle
-            </h4>
+            <Title>Matériau du socle</Title>
             <div className="flex gap-2">
                 {materials.map((material) => (
                     <button
                         key={material.src}
                         className={`relative w-16 h-16 rounded-[10px] p-0.5 border-2 overflow-hidden ${
                             selectedMaterial === material.src
-                                ? 'border-black'
+                                ? 'border-dark'
                                 : 'border-transparent'
                         }`}
                         onClick={() => handleSelect(material.src)}
@@ -44,19 +45,21 @@ const MaterialSelector = ({ onSelectMaterial }) => {
                         />
                         {selectedMaterial === material.src && (
                             <div className="absolute bottom-0 left-0 z-10">
-                                <img
-                                    src="/images/Checked.svg"
-                                    alt="icone check"
-                                    className="h-[28px] w-[28px]"
-                                />
+                                <div className="bg-dark p-[2px] rounded-lg border-2 border-white">
+                                    <Icon
+                                        color={'white'}
+                                        name={'check'}
+                                        height={20}
+                                    />
+                                </div>
                             </div>
                         )}
                     </button>
                 ))}
             </div>
-            <p className="text-sm font-regular">
+            <Body>
                 {materials.find((m) => m.src === selectedMaterial)?.text}
-            </p>
+            </Body>
         </div>
     )
 }

@@ -1,4 +1,14 @@
-import { DynamicIcon } from 'lucide-react/dynamic'
+import {
+    Check,
+    Minus,
+    ArrowDownToLine,
+    VolumeOff,
+    CircleDashed,
+    ImagePlus,
+    ShoppingBag,
+    ShoppingCart,
+    Share2,
+} from 'lucide-react'
 
 function Icon({ name, color = 'white', height = 16 }) {
     switch (name) {
@@ -18,8 +28,26 @@ function Icon({ name, color = 'white', height = 16 }) {
                     />
                 </svg>
             )
+        case 'circle-dashed':
+            return <CircleDashed size={height} color={color} />
+        case 'check':
+            return <Check size={height} color={color} />
+        case 'download':
+            return <ArrowDownToLine size={height} color={color} />
+        case 'dowload-image':
+            return <ImagePlus size={height} color={color} />
+        case 'minus':
+            return <Minus size={height} color={color} />
+        case 'mute':
+            return <VolumeOff size={height} color={color} />
+        case 'share':
+            return <Share2 size={height} color={color} />
+        case 'shoppingBag':
+            return <ShoppingBag size={height} color={color} />
+        case 'shoppingCart':
+            return <ShoppingCart size={height} color={color} />
         default:
-            return <DynamicIcon name={name} color={color} size={height} />
+            return 'Error: Unavailable icon name! '
     }
 }
 

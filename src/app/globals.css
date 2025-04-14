@@ -65,6 +65,9 @@
     --font-manrope: 'Manrope', sans-serif;
     --font-recoleta: 'Recoleta', serif;
 
+    --font-button: 'Manrope', sans-serif;
+    --font-button-weight: 380;
+
     /* taille / hauteur + font */
     --h1: 96px; /*var(--font-weight-medium); h1 Title*/
     --h2: 48px; /*var(--font-weight-medium); h2 section Title*/
@@ -76,6 +79,10 @@
     --spana: 64px; /*var(--font-weight-regular); h1 Title*/
     --spanb: 26px / 32px; /*var(--font-weight-regular); h1 Title*/
     --p: 16px; /*var(--font-weight-regular); h1 Title*/
+
+    /* Couleur */
+    --dark: #0d0f1e;
+    --light: #fff;
 }
 
 @theme inline {
@@ -97,8 +104,30 @@
     /**/
     --leading-spana: calc(var(--spana) * 1.1);
     --leading-spanb: calc(var(--spanb) * 1.2);
+
+    /* COULEUR CLAIR ET FONCEE */
+
+    --color-dark: var(--dark);
+    --color-light: var(--light);
+
+    --bg-dark: var(--dark);
+    --bg-light: var(--light);
+
+    --border-dark: var(--dark);
+    --border-light: var(--light);
+
+    --text-dark: var(--dark);
+    --text-light: var(--light);
 }
 
 body {
     background: var(--color-gradient);
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.button-typo {
+    font: var(--font-button);
+    font-weight: var(--font-button-weight);
 }

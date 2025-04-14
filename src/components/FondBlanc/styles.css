@@ -2,22 +2,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
+    width: 100%;
 }
 
 .fondBlancWrapper {
     display: flex;
     width: calc(100vw + 12px);
     max-width: 1800px;
-    height: 4904px;
     padding: 4px;
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
     flex-shrink: 0;
 
     border-radius: 52px;
     border: 2px solid #fff;
+}
+
+.fondBlancWrapper.smaller {
+    width: 90vw;
 }
 
 .fondBlanc {
@@ -25,4 +27,5 @@
     align-self: stretch;
     border-radius: 48px;
     background: #fff;
+    width: 100%;
 }

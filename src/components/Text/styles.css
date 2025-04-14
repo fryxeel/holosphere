@@ -70,6 +70,10 @@
     line-height: normal;
 }
 
+.body2 span {
+    font-weight: 700;
+}
+
 .body3 {
     /* P Simple paragraph */
     font: Manrope;

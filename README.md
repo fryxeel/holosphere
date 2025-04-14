@@ -26,7 +26,7 @@ Il est possible que le node ne soit pas installé ou à la dernière version, da
 npm install node
 ```
 
-Si tout est bonn, lancer le site avec
+Si tout est bon, lancer le site avec
 
 ```bash
 npm run dev

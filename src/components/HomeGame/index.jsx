@@ -5,7 +5,7 @@ import Body from '../Text/Body'
 
 const HomeGame = () => {
     return (
-        <div className="bg-[#8C64C5] h-screen">
+        <div className="bg-[#8C64C5] h-screen p-15">
             <BoxBlanc className="">
                 <div></div>
                 <div>
@@ -20,7 +20,7 @@ const HomeGame = () => {
                     <div>
                         <Body hierarchy={2}>
                             Devenez <span>sculpteur de souvenir</span> l’espace
-                            d’un instant et
+                            d’un instant et{' '}
                             <span>explorez toutes les possibilités</span> depuis
                             votre imagination.
                         </Body>

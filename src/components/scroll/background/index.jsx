@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import SnowGlobeScroll from '@/components/scroll/SnowGlobeScroll'
+import SnowGlobeScroll from '@/components/scroll/snowGlobeScroll/index'
 import BoxBlanc from '@/components/BoxBlanc'
 import Title from '@/components/Text/Title'
 

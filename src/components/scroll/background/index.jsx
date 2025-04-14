@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import SnowGlobeScroll from '../snowGlobeScroll'
+import SnowGlobeScroll from '@/components/scroll/SnowGlobeScroll'
 import BoxBlanc from '@/components/BoxBlanc'
 import Title from '@/components/Text/Title'
 
@@ -152,9 +152,7 @@ export default function MultiBackgroundScroll() {
                             rendant plus vivants que jamais.
                         </BoxBlanc>
                         <BoxBlanc className="feature-text text-2 opacity-0 absolute mx-auto w-[80%] max-w-2xl">
-                            <Title hierarchy={3}>
-                                Un moment. Une mélodie
-                            </Title>
+                            <Title hierarchy={3}>Un moment. Une mélodie</Title>
                             Grâce à son enceinte intégrée, chaque souvenir est
                             accompagné d’une musique synchronisée, renforçant
                             l’émotion du moment.

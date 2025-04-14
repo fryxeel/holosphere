@@ -54,17 +54,19 @@ const Base = ({ textureDuMateriel }) => {
             </group>
 
             {/* Logo de la base */}
-            <group rotation={[0, Math.PI / 9, 0]}>
-                <Plane
-                    args={[0.5, 0.5]}
-                    position={[0, -1.2, 1.75]}
-                    rotation={[0, 0, 0]}
-                >
-                    <meshStandardMaterial
-                        map={textureLogo}
-                        transparent={true}
-                    />
-                </Plane>
+            <group rotation={[0, 0, 0]}>
+                <group rotation={[0, Math.PI / 9, 0]}>
+                    <Plane
+                        args={[0.5, 0.5]}
+                        position={[0, -1.2, 1.75]}
+                        rotation={[0, 0, 0]}
+                    >
+                        <meshStandardMaterial
+                            map={textureLogo}
+                            transparent={true}
+                        />
+                    </Plane>
+                </group>
             </group>
         </>
     )

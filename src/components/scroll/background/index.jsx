@@ -43,7 +43,7 @@ export default function MultiBackgroundScroll() {
             .addLabel('phase3') // Fin texte 2, début texte 3
             .to(sectionRef.current, { backgroundColor: '#FCDAAF', duration: 3 })
             .addLabel('phase4') // Fin texte 3, début texte 4
-            .to(sectionRef.current, { backgroundColor: '#8C64C5', duration: 3 })
+            .to(sectionRef.current, { backgroundColor: '#0C0F1E', duration: 3 })
             .addLabel('end') // Fin texte 4
 
         // ✨ Texte 1 - Visible pendant toute la phase1

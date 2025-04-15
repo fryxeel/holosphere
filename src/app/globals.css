@@ -83,6 +83,8 @@
     /* Couleur */
     --dark: #0d0f1e;
     --light: #fff;
+
+    --orange: #f6961c;
 }
 
 @theme inline {
@@ -112,6 +114,7 @@
 
     --bg-dark: var(--dark);
     --bg-light: var(--light);
+    --bg-orange: var(--orange);
 
     --border-dark: var(--dark);
     --border-light: var(--light);

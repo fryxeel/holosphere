@@ -5,6 +5,7 @@ import ScrollVideo from '@/components/scroll/video/index.jsx'
 import HomeText from '@/components/HomeText/index.jsx'
 import BackgroundScroll from '@/components/scroll/background/index.jsx'
 import HomeGame from '@/components/HomeGame/index.jsx'
+import Carousel from '@/components/Carousel/Carousel.jsx'
 
 export default function Home() {
     return (
@@ -115,6 +116,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+            <Carousel />
         </>
     )
 }

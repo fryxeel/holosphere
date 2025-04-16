@@ -60,6 +60,12 @@
         #252d5a 62.27%,
         #0c0f1e 100%
     );
+    --color-gradientNewletter: linear-gradient(
+        127deg,
+        rgba(252, 218, 175, 0.8) 1.33%,
+        rgba(233, 157, 188, 0.8) 40.53%,
+        rgba(140, 100, 197, 0.8) 96.14%
+    );
 
     /* Fonts */
     --font-manrope: 'Manrope', sans-serif;
@@ -133,4 +139,14 @@ body {
 .button-typo {
     font: var(--font-button);
     font-weight: var(--font-button-weight);
+}
+
+.fond-news-letter {
+    background: linear-gradient(
+        127deg,
+        rgba(252, 218, 175, 0.8) 1.33%,
+        rgba(233, 157, 188, 0.8) 40.53%,
+        rgba(140, 100, 197, 0.8) 96.14%
+    );
+    filter: blur(100px);
 }

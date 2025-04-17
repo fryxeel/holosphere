@@ -11,7 +11,7 @@ import BottomCallActionSection from '@/components/BottomCallActionSection/index.
 export default function Home() {
     return (
         <>
-            <div className="flex justify-center items-center text-white 2xl:pt-20 2xl:pb-10">
+            <div className="flex justify-center items-center text-white h-[calc(95vh-100px)] pt-20">
                 {' '}
                 {/* pt-65"*/}
                 <div className="flex flex-col h-[60vh]">

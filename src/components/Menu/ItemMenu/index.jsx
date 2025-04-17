@@ -8,6 +8,7 @@ function ItemMenu({
     iconName = false,
     mobile = false,
 }) {
+    const lineClass = active && mobile ? 'LineItemMenuMobile' : 'LineItemMenu'
     return (
         <li
             className={`${mobile ? 'itemMenuMobile' : 'itemMenu'} ${
@@ -16,18 +17,15 @@ function ItemMenu({
         >
             <span
                 className={`${active ? 'active' : ''} ${
-                    mobile ? 'text-dark !opacity-100' : ''
+                    mobile ? 'text-dark' : ''
                 } flex gap-2`}
             >
                 {iconName && (
-                    <Icon
-                        color={mobile ? 'black' : 'inherit'}
-                        name={iconName}
-                    />
+                    <Icon color={mobile ? 'black' : 'white'} name={iconName} />
                 )}
                 {children}
             </span>
-            <div className="LineItemMenu" />
+            <div className={lineClass} />
         </li>
     )
 }

@@ -35,7 +35,7 @@ export default function MobileMenu({ open, setOpen, currentPage }) {
 
             <Link href={routes.home} onClick={() => setOpen(false)}>
                 <ItemMenu active={currentPage == '/'} mobile>
-                    accueil
+                    Accueil
                 </ItemMenu>
             </Link>
             <Link href={routes.personnalisation} onClick={() => setOpen(false)}>
@@ -52,11 +52,11 @@ export default function MobileMenu({ open, setOpen, currentPage }) {
                     Notre histoire
                 </ItemMenu>
             </Link>
-            <Link href={routes.get} onClick={() => setOpen(false)}>
-                <CTAButton onClick={() => setOpen(false)} darkBG>
-                    Obtener la votre
+            <div onClick={() => setOpen(false)}>
+                <CTAButton href="/get" darkBG>
+                    Obtenir la vôtre
                 </CTAButton>
-            </Link>
+            </div>
         </nav>
     )
 }

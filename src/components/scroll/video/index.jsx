@@ -9,10 +9,13 @@ export default function ScrollVideo() {
     const videoRef = useRef(null)
 
     useEffect(() => {
-        if (videoRef.current) {
+        if (videoRef.current && window.innerWidth >= 1024) {
             gsap.fromTo(
                 videoRef.current,
-                { width: '50vw' },
+                {
+                    width: '60vw',
+                    transformOrigin: 'center',
+                },
                 {
                     width: '100vw',
                     scrollTrigger: {
@@ -29,16 +32,18 @@ export default function ScrollVideo() {
 
     return (
         <div className="flex justify-center ">
-            <video
-                ref={videoRef}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="h-[100vh] object-cover rounded-3xl"
-            >
-                <source src="videos/video.mp4" type="video/mp4" />
-            </video>
+            <div className="w-full aspect-[19/9] lg:aspect-auto lg:h-[100vh] overflow-hidden rounded-3xl">
+                <video
+                    ref={videoRef}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-[60vw] lg:w-[60vw] h-full object-cover mx-auto will-change-[width] rounded-3xl"
+                >
+                    <source src="videos/video.mp4" type="video/mp4" />
+                </video>
+            </div>
         </div>
     )
 }

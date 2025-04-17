@@ -4,7 +4,7 @@ import routes from '../../../routes.jsx'
 
 function MenuDesktop({ currentPage }) {
     return (
-        <ul className="flex gap-16">
+        <ul className="flex gap-12 lg:gap-18">
             <Link href={routes.home}>
                 <ItemMenu active={currentPage == '/'}>Accueil</ItemMenu>
             </Link>

@@ -2,9 +2,9 @@ import ItemMenu from '../ItemMenu'
 import Link from 'next/link'
 import routes from '../../../routes.jsx'
 
-function MenuDesktop({ currentPage }) {
+function MenuDesktop({ currentPage, cssClass = '' }) {
     return (
-        <ul className="flex gap-16">
+        <ul className={`${cssClass} flex gap-16`}>
             <Link href={routes.home}>
                 <ItemMenu active={currentPage == '/'}>Accueil</ItemMenu>
             </Link>

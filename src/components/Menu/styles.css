@@ -47,12 +47,12 @@
     text-align: center;
 }
 
-.LineItemMenu {
+.LineItemMenuMobile {
     opacity: 0;
     background-color: #0d0f1e;
     height: 1.5px;
 }
 
-.itemMenuMobile.active .LineItemMenu {
+.itemMenuMobile.active .LineItemMenuMobile {
     opacity: 1;
 }

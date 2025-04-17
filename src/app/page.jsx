@@ -11,10 +11,8 @@ import BottomCallActionSection from '@/components/BottomCallActionSection/index.
 export default function Home() {
     return (
         <>
-            <div className="flex justify-center items-center text-white h-[calc(95vh-100px)] pt-20">
-                {' '}
-                {/* pt-65"*/}
-                <div className="flex flex-col h-[60vh]">
+            <div className="flex justify-center items-center text-white h-[calc(95vh-100px)]">
+                <div className="flex flex-col">
                     <div className="flex flex-col justify-center items-center max-w-5xl gap-16">
                         <div>
                             <Title

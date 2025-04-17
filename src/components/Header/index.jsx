@@ -21,7 +21,7 @@ export default function Header() {
                     <Link href={routes.home}>
                         <img
                             className="h-10"
-                            src="/images/logos/logo-home-white.svg"
+                            src="/images/logos/logo-home-black.svg"
                             alt="Logo Holosphere"
                         />
                     </Link>

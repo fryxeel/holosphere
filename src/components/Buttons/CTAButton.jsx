@@ -10,7 +10,7 @@ export default function CTAButton({
     className = '',
     darkBG = false,
     iconName = false,
-    onClick,
+    onclick,
 }) {
     // Définir un thème par défaut
     const defaultVariantTheme =
@@ -74,7 +74,7 @@ export default function CTAButton({
         <Link
             href={href}
             className={clsx(variantSwitcher, className)}
-            onClick={onClick}
+            onClick={onclick}
         >
             {children}
             {iconName && <Icon name={iconName} height={18} color={iconColor} />}

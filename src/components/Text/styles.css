@@ -3,7 +3,7 @@
     font-family: Recoleta Medium;
     font-size: clamp(64px, 5vw, 96px);
     font-style: normal;
-    line-height: 104px; /* 108.333% */
+    line-height: clamp(68px, 5.417vw, 104px); /* 108.333% */
 }
 
 .homeH2 {
@@ -58,7 +58,7 @@
 .body1 span {
     font-family: Recoleta SemiBold;
     font-size: clamp(42px, 3.333vw, 64px);
-    line-height: 72px;
+    line-height: clamp(59px, 3.75vw, 72px);
 }
 
 .body2 {

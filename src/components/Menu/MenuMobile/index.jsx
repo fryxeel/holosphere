@@ -5,10 +5,17 @@ import routes from '../../../routes.jsx'
 export default function MobileMenu({ open, setOpen }) {
     return (
         <nav
-            className={`fixed top-0 left-0 w-full h-full bg-black text-white flex flex-col items-center justify-center gap-6 z-40 transition-transform duration-300 ${
+            className={`fixed top-0 left-0 w-full h-full bg-white text-dark flex flex-col items-center justify-center gap-6 z-40 transition-transform duration-300 ${
                 open ? 'translate-x-0' : '-translate-x-full'
             }`}
         >
+            <Link href={routes.home}>
+                <img
+                    className="h-10"
+                    src="/images/logos/logo-home-black.svg"
+                    alt="Logo Holosphere"
+                />
+            </Link>
             <Link href={routes.home} onClick={() => setOpen(false)}>
                 Accueil
             </Link>

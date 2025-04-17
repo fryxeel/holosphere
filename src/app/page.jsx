@@ -15,19 +15,19 @@ export default function Home() {
                 {' '}
                 {/* pt-65"*/}
                 <div className="flex flex-col h-[60vh]">
-                    <div className="flex flex-col justify-center items-center w-5xl gap-16">
+                    <div className="flex flex-col justify-center items-center max-w-5xl gap-16">
                         <div>
                             <Title
                                 homePage
                                 hierarchy={1}
-                                cssClass="text-center"
+                                cssClass="text-center text-pretty"
                             >
                                 Capturez vos souvenirs en hologramme
                             </Title>
                         </div>
                         <div className="flex flex-col gap-8">
-                            <div className="w-xl">
-                                <Body cssClass="opacity-70 text-center">
+                            <div className="max-w-xl">
+                                <Body cssClass="opacity-70 text-center text-pretty">
                                     Une sphère immersive qui projette vos
                                     souvenirs en images et en musique, pour une
                                     expérience sensorielle et interactive
@@ -35,7 +35,7 @@ export default function Home() {
                                 </Body>
                             </div>
                             <div className="flex justify-center items-center gap-10">
-                                <CTAButton className="" href="vue3D">
+                                <CTAButton href="vue3D">
                                     Commander maintenant
                                 </CTAButton>
                                 <CTAButton href="test" variant="secondary">
@@ -56,9 +56,13 @@ export default function Home() {
 
                 {/* Contenu net par-dessus */}
                 <div className="relative p-6 h-full flex justify-center items-center">
-                    <div className="flex justify-center flex-col pr-40 isolate">
+                    <div className="flex justify-center flex-col isolate">
                         <div>
-                            <Title hierarchy={2} homePage cssClass="text-white">
+                            <Title
+                                hierarchy={2}
+                                homePage
+                                cssClass="text-white "
+                            >
                                 Newsletter
                             </Title>
                             <Body
@@ -70,7 +74,6 @@ export default function Home() {
                                 première commande !
                             </Body>
                         </div>
-
                         <div className="flex flex-col sm:flex-row items-stretch w-full max-w-120 gap-2 sm:gap-0">
                             <input
                                 type="email"
@@ -82,7 +85,7 @@ export default function Home() {
                             </button>
                         </div>
                         {/* Arrondis SVG autour du texte */}
-                        <svg
+                        {/* <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="1090"
                             height="344"
@@ -99,7 +102,7 @@ export default function Home() {
                         </svg>
 
                         {/* Avion SVG */}
-                        <svg
+                        {/* <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="94"
                             height="84"
@@ -115,7 +118,8 @@ export default function Home() {
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                             />
-                        </svg>
+                        </svg>{' '}
+                         */}
                     </div>
                 </div>
             </div>

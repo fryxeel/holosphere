@@ -4,7 +4,7 @@ import Body from '../Text/Body'
 const HomeText = () => {
     return (
         <div>
-            <div className="flex items-center flex-col pt-70 px-70 gap-12">
+            <div className="flex items-center flex-col pt-70 sm:px-70 gap-12">
                 <div>
                     <Body
                         hierarchy={3}

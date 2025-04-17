@@ -87,6 +87,15 @@
     font-weight: 600;
 }
 
+.body4 {
+    /*P /get delivery table*/
+    font-family: Manrope;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22px;
+}
+
 /* ----------------- Small devices ----------------- */
 
 @media (max-width: 768px) {

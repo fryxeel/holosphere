@@ -89,7 +89,7 @@
     /* Couleur */
     --dark: #0d0f1e;
     --light: #fff;
-
+    --violet: #9747ff;
     --orange: #f6961c;
 }
 
@@ -124,9 +124,11 @@
 
     --border-dark: var(--dark);
     --border-light: var(--light);
+    --border-orange: var(--orange);
 
     --text-dark: var(--dark);
     --text-light: var(--light);
+    --text-violet: var(--violet);
 }
 
 body {

@@ -68,6 +68,7 @@ export default function SnowGlobe() {
         } else {
             // Ajoute l’objet à la scène
             setselectedTheme((prev) => [...prev, item])
+
             // ici tu peux aussi rajouter l'objet dans le monde 3D
         }
     }
@@ -105,12 +106,22 @@ export default function SnowGlobe() {
     const handleImageSelect = (e) => {
         const file = e.target.files[0]
         if (file) {
+            const src = URL.createObjectURL(file)
             const newImage = {
-                src: URL.createObjectURL(file),
+                src,
                 alt: file.name,
             }
+
+            // 1. On ajoute directement l'image
             setImageSphere((prev) => [...prev, newImage])
-            // Réinitialise l'input pour permettre la reselection
+
+            // 2. On applique immédiatement comme texture de la sphère
+            setImageTexture(src)
+
+            // 3. On met à jour l'image sélectionnée dans l'UI
+            setSelectedImageTexture(src)
+
+            // Reset de l'input
             e.target.value = null
         }
     }

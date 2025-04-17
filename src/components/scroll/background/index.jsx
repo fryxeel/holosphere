@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import SnowGlobeScroll from '../snowGlobeScroll'
+import SnowGlobeScroll from '@/components/scroll/snowglobescroll/index'
 import BoxBlanc from '@/components/BoxBlanc'
 import Title from '@/components/Text/Title'
 
@@ -43,7 +43,7 @@ export default function MultiBackgroundScroll() {
             .addLabel('phase3') // Fin texte 2, début texte 3
             .to(sectionRef.current, { backgroundColor: '#FCDAAF', duration: 3 })
             .addLabel('phase4') // Fin texte 3, début texte 4
-            .to(sectionRef.current, { backgroundColor: '#8C64C5', duration: 3 })
+            .to(sectionRef.current, { backgroundColor: '#0C0F1E', duration: 3 })
             .addLabel('end') // Fin texte 4
 
         // ✨ Texte 1 - Visible pendant toute la phase1
@@ -143,32 +143,44 @@ export default function MultiBackgroundScroll() {
 
                     {/* Tous les textes superposés */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                        <BoxBlanc className="feature-text text-1 opacity-0 absolute mx-auto w-[80%] max-w-2xl">
-                            <Title hierarchy={3}>
+                        <BoxBlanc
+                            padding={false}
+                            className="feature-text text-1 opacity-0 absolute mx-auto w-[80%] max-w-2xl"
+                        >
+                            <Title hierarchy={3} homePage>
                                 Des souvenirs qui prennent vie
                             </Title>
                             L’HoloSphere projette vos photos et vidéos sous
                             forme d’hologrammes au centre de la sphère, les
                             rendant plus vivants que jamais.
                         </BoxBlanc>
-                        <BoxBlanc className="feature-text text-2 opacity-0 absolute mx-auto w-[80%] max-w-2xl">
-                            <Title hierarchy={3}>
+                        <BoxBlanc
+                            padding={false}
+                            className="feature-text text-2 opacity-0 absolute mx-auto w-[80%] max-w-2xl"
+                        >
+                            <Title hierarchy={3} homePage>
                                 Un moment. Une mélodie
                             </Title>
                             Grâce à son enceinte intégrée, chaque souvenir est
                             accompagné d’une musique synchronisée, renforçant
                             l’émotion du moment.
                         </BoxBlanc>
-                        <BoxBlanc className="feature-text text-3 opacity-0 absolute mx-auto w-[80%] max-w-2xl">
-                            <Title hierarchy={3}>
+                        <BoxBlanc
+                            padding={false}
+                            className="feature-text text-3 opacity-0 absolute mx-auto w-[80%] max-w-2xl"
+                        >
+                            <Title hierarchy={3} homePage>
                                 Un geste, une nouvelle histoire
                             </Title>
                             Un simple mouvement suffit : secoue l’HoloSphere
                             pour changer d’image ou de vidéo et revivre un autre
                             souvenir instantanément.
                         </BoxBlanc>
-                        <BoxBlanc className="feature-text text-4 opacity-0 absolute mx-auto w-[80%] max-w-2xl">
-                            <Title hierarchy={3}>
+                        <BoxBlanc
+                            padding={false}
+                            className="feature-text text-4 opacity-0 absolute mx-auto w-[80%] max-w-2xl"
+                        >
+                            <Title hierarchy={3} homePage>
                                 Un partage magique en famille
                             </Title>
                             Connectez plusieurs HoloSpheres et partagez vos

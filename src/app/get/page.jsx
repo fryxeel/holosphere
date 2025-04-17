@@ -58,6 +58,7 @@ export default function Get() {
                                 darkBG
                                 iconName="shoppingCart"
                                 className="w-full"
+                                href="panier"
                             >
                                 Ajouter au panier
                             </CTAButton>

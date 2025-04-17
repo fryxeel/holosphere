@@ -5,6 +5,7 @@ const routes = {
     story: '/story',
     get: '/get',
     personnalisation: '/personnalisation',
+    panier: '/panier',
 }
 
 export default routes

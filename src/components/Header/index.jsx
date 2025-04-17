@@ -45,7 +45,7 @@ export default function Header() {
                     <Burger open={open} setOpen={setOpen} />
                 </li>
             </ul>
-            <MobileMenu open={open} setOpen={setOpen} />
+            <MobileMenu currentPage={pathname} open={open} setOpen={setOpen} />
         </header>
     )
 }

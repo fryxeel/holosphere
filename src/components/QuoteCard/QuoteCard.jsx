@@ -1,7 +1,7 @@
 import React from 'react'
 import Body from '@/components/Text/Body'
 
-const QuoteCard = ({ quote, author, date = '', white }) => {
+const QuoteCard = ({ quote, author, date = '', homePage = false }) => {
     return (
         <>
             <svg
@@ -18,7 +18,7 @@ const QuoteCard = ({ quote, author, date = '', white }) => {
             </svg>
             <Body
                 cssClass={`${
-                    white ? 'text-white w-full' : 'text-dark'
+                    homePage ? 'text-white w-full' : 'text-dark'
                 } text-right text-pretty`}
                 hierarchy={1}
             >
@@ -26,7 +26,7 @@ const QuoteCard = ({ quote, author, date = '', white }) => {
             </Body>
 
             <div className="flex justify-between">
-                <Body cssClass={`${white ? 'text-white' : 'text-dark'}`}>
+                <Body cssClass={`${homePage ? 'text-white' : 'text-dark'}`}>
                     {author} {date}
                 </Body>
 

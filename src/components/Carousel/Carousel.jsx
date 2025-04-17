@@ -61,7 +61,6 @@ export default function QuoteCarousel() {
                     navigation
                     pagination={{ clickable: true }}
                     loop={true}
-                    autoplay={true}
                     centeredSlides={true}
                     className="!pb-20"
                     breakpoints={{
@@ -82,7 +81,7 @@ export default function QuoteCarousel() {
                     {quotes.map((quote, i) => (
                         <SwiperSlide key={i}>
                             <div className="h-full">
-                                <QuoteCard {...quote} white />
+                                <QuoteCard {...quote} homePage />
                             </div>
                         </SwiperSlide>
                     ))}

@@ -63,7 +63,7 @@
 
 .body2 {
     /* Short Big Paragraph */
-    font: Manrope;
+    font-family: Manrope;
     font-size: 26px;
     font-style: normal;
     font-weight: 350;
@@ -76,15 +76,15 @@
 
 .body3 {
     /* P Simple paragraph */
-    font: Manrope;
+    font-family: Manrope;
     font-size: 16px;
     font-style: normal;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 22px;
 }
 
 .body3 span {
-    font-weight: 500;
+    font-weight: 600;
 }
 
 /* ----------------- Small devices ----------------- */

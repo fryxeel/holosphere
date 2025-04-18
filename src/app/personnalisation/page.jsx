@@ -37,18 +37,44 @@ export default function SnowGlobe() {
                 model: '/models/summer/quiver/quiver_tree_02_1k.gltf',
                 position: [0, -1.5, 1],
                 scale: 1,
+                rotation: [0, 0, 0],
                 img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
             },
             {
                 model: '/models/summer/tree/tree_small_02_1k.gltf',
                 position: [1, -1.5, 0],
                 scale: 0.4,
+                rotation: [0, 0, 0],
                 img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
             },
         ],
         winter: [
-            { model: '/models/snowman.glb', position: [0, -1, 0] },
-            { model: '/models/pine_tree.glb', position: [2, -1, -1] },
+            {
+                model: '/models/winter/shrub-sorrel/shrub_sorrel_01_1k.gltf',
+                position: [0.5, -1.4, 0],
+                scale: 8,
+                rotation: [0, Math.PI / 3, 0],
+
+                img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
+            },
+        ],
+        spring: [
+            {
+                model: '/models/winter/shrub-sorrel/shrub_sorrel_01_1k.gltf',
+                position: [0.5, -1.4, 0],
+                scale: 8,
+                rotation: [0, Math.PI / 3, 0],
+                img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
+            },
+        ],
+        valentine: [
+            {
+                model: '/models/winter/shrub-sorrel/shrub_sorrel_01_1k.gltf',
+                position: [0.5, -1.4, 0],
+                scale: 8,
+                rotation: [0, Math.PI / 3, 0],
+                img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
+            },
         ],
     }
 
@@ -142,9 +168,6 @@ export default function SnowGlobe() {
                 <div className="flex flex-col items-center w-full pt-10">
                     <BoxBlanc className="w-sm h-max-[40vh]">
                         <Title hierarchy={2}>Outils de création</Title>
-                        {/* <Title hierarchy={3}>Agrandissement</Title>
-                        <input type="range" min={0} max={100} />
-                        <br /> */}
 
                         <div className="py-6 flex flex-col gap-2">
                             <Title hierarchy={3}>Vos propres images</Title>
@@ -289,8 +312,11 @@ export default function SnowGlobe() {
                                 <div>Thème à appliquer</div>
                                 <div className="px-2 bg-gray-200 rounded-[8px]">
                                     {currentTheme === 'default' && 'Par défaut'}
-                                    {currentTheme === 'summer' && 'Été'}
+                                    {currentTheme === 'summer' && 'Eté'}
                                     {currentTheme === 'winter' && 'Hiver'}
+                                    {currentTheme === 'spring' && 'Printemps'}
+                                    {currentTheme === 'Valentine' &&
+                                        'Saint-Valentin'}
                                 </div>
                             </div>
                             <div className="flex items-center gap-2">
@@ -307,12 +333,24 @@ export default function SnowGlobe() {
                                 <button
                                     onClick={() => handleThemeClick('summer')}
                                 >
-                                    été
+                                    Eté
                                 </button>
                                 <button
                                     onClick={() => handleThemeClick('winter')}
                                 >
-                                    hiver
+                                    Hiver
+                                </button>
+                                <button
+                                    onClick={() => handleThemeClick('spring')}
+                                >
+                                    Printemps
+                                </button>
+                                <button
+                                    onClick={() =>
+                                        handleThemeClick('valentine')
+                                    }
+                                >
+                                    Saint-Valentin
                                 </button>
                             </div>
                         </div>
@@ -328,6 +366,10 @@ export default function SnowGlobe() {
                                     'Pièces pour le theme été'}
                                 {currentTheme === 'winter' &&
                                     'Pièces pour le theme de Noël'}
+                                {currentTheme === 'spring' &&
+                                    'Pièces pour le theme printemps'}
+                                {currentTheme === 'valentine' &&
+                                    'Pièces pour le theme de la Saint-Valentin'}
                             </Title>
                             <div className="grid grid-cols-3 gap-2 p-1 min-h-[120px]">
                                 {themeImages.map((item, index) => {

@@ -112,3 +112,41 @@
 .cta-button-black-panier:hover::before {
     opacity: 0;
 }
+
+@media (max-width: 1400px) {
+    .promo {
+        flex-wrap: wrap;
+    }
+    .input-promo {
+        width: 100%;
+    }
+    .cta-button-black-panier {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .promo {
+        flex-wrap: nowrap;
+    }
+    .input-promo {
+        width: 3/4;
+    }
+
+    .cta-button-black-panier {
+        width: auto;
+    }
+}
+
+@media (max-width: 500px) {
+    .cta-button-black-panier {
+        width: 100%;
+    }
+
+    .promo {
+        flex-wrap: wrap;
+    }
+    .input-promo {
+        width: 100%;
+    }
+}

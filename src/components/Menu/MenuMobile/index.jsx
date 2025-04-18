@@ -26,7 +26,7 @@ export default function MobileMenu({ open, setOpen, currentPage }) {
                 <Link href={routes.home} onClick={() => setOpen(false)}>
                     <img
                         className="h-10"
-                        src="/images/logos/logo-home-black.svg"
+                        src="/images/logos/logo-home-black-starsColored.svg"
                         alt="Logo Holosphere"
                     />
                 </Link>

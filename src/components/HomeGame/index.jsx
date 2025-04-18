@@ -14,22 +14,22 @@ const HomeGame = () => {
                         <div className="grid grid-cols-2 gap-4 h-full w-full 2xl:w-[50%]">
                             <img
                                 className="rounded-[40px]"
-                                src="/images/teamEliott.jpg"
+                                src="/images/sphereToSell/wood_base.svg"
                                 alt=""
                             />
                             <img
                                 className="rounded-[40px]"
-                                src="/images/teamEliott.jpg"
+                                src="/images/sphereToSell/white_base.svg"
                                 alt=""
                             />
                             <img
                                 className="rounded-[40px]"
-                                src="/images/teamEliott.jpg"
+                                src="/images/sphereToSell/sky_base.svg"
                                 alt=""
                             />
                             <img
                                 className="rounded-[40px]"
-                                src="/images/teamEliott.jpg"
+                                src="/images/sphereToSell/black_base.svg"
                                 alt=""
                             />
                         </div>

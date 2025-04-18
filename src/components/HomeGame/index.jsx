@@ -10,7 +10,7 @@ const HomeGame = () => {
         <div className="bg-dark p-10 pb-40 ">
             <BoxBlanc className={'w-full h-full'}>
                 <div className="w-full h-full flex justify-center items-center">
-                    <ClassicSection withMaxWidth={false} cssClass="p-9">
+                    <ClassicSection withMaxWidth={false} cssClass="p-6">
                         <div className="grid grid-cols-2 gap-4 h-full w-full 2xl:w-[50%]">
                             <img
                                 className="rounded-[40px]"
@@ -47,8 +47,8 @@ const HomeGame = () => {
                                     </Title>
                                 </div>
                             </div>
-                            <div className="py-10 md:w-full">
-                                <div className="pb-8 c text-pretty md:w-full">
+                            <div className="py-10 ">
+                                <div className="pb-8 c text-pretty w-full">
                                     <Body hierarchy={2}>
                                         Devenez{' '}
                                         <span>sculpteur de souvenir</span>{' '}
@@ -59,7 +59,7 @@ const HomeGame = () => {
                                         depuis votre imagination.
                                     </Body>
                                 </div>
-                                <div className="xl:w-1/2 2xl:w-1/2 lg:w-1/2">
+                                <div className="md:w-3/4 w-full">
                                     <CTAButton
                                         href="personnalisation"
                                         darkBG

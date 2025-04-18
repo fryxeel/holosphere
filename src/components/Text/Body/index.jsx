@@ -27,6 +27,8 @@ const Body = ({ children, hierarchy = 3, cssClass = '' }) => {
             return <p className={'body2  ' + cssClass}>{children}</p>
         case 3:
             return <p className={'body3 ' + cssClass}>{children}</p>
+        case 4:
+            return <p className={'body4 ' + cssClass}>{children}</p>
         default:
             return (
                 <p className={'body3 ' + cssClass}>

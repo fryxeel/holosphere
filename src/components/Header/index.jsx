@@ -21,7 +21,7 @@ export default function Header() {
                     <Link href={routes.home}>
                         <img
                             className="h-10"
-                            src="/images/logos/complet.svg"
+                            src="/images/logos/logo-home-black.svg"
                             alt="Logo Holosphere"
                         />
                     </Link>
@@ -45,7 +45,7 @@ export default function Header() {
                     <Burger open={open} setOpen={setOpen} />
                 </li>
             </ul>
-            <MobileMenu open={open} setOpen={setOpen} />
+            <MobileMenu currentPage={pathname} open={open} setOpen={setOpen} />
         </header>
     )
 }

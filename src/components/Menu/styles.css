@@ -1,17 +1,15 @@
 .itemMenu {
     list-style: none;
     color: #fff;
-    font: Manrope;
+    font-family: Manrope;
     font-size: 16px;
     font-weight: 300;
     line-height: 123%; /* 19.68px */
     display: flex;
     flex-direction: column;
     gap: 4px;
-
     opacity: 0.7;
     transition: all 0.3s ease-out;
-
     cursor: pointer;
 }
 
@@ -32,5 +30,29 @@
 }
 
 .itemMenu.active .LineItemMenu {
+    opacity: 1;
+}
+
+.itemMenuMobile {
+    list-style: none;
+    font-family: Manrope;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 123%; /* 19.68px */
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+    text-align: center;
+}
+
+.LineItemMenuMobile {
+    opacity: 0;
+    background-color: #0d0f1e;
+    height: 1.5px;
+}
+
+.itemMenuMobile.active .LineItemMenuMobile {
     opacity: 1;
 }

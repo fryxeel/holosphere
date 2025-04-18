@@ -20,6 +20,7 @@ const SnowGlobeSphere = ({ texture, selectedTheme }) => {
                     model: clone(originalModel.scene),
                     position: item.position,
                     scale: item.scale,
+                    rotation: item.rotation,
                 }
             }) || []
         )
@@ -57,6 +58,7 @@ const SnowGlobeSphere = ({ texture, selectedTheme }) => {
                     object={item.model}
                     position={item.position}
                     scale={item.scale}
+                    rotation={item.rotation}
                 />
             ))}
         </mesh>

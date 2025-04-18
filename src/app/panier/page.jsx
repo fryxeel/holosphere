@@ -39,7 +39,7 @@ const panier = () => {
                 </div>
 
                 <article className="flex flex-col-reverse lg:flex-row">
-                    <div className="xl:w-[70%] px-6 py-4">
+                    <div className="xl:w-[70%] sm:px-6 sm:py-4">
                         <Title
                             hierarchy={1}
                             homePage={false}
@@ -48,13 +48,13 @@ const panier = () => {
                             Validation de commande
                         </Title>
                         <div className="m-8">
-                            <div className="p-8">
+                            <div className="md:p-8 p-2">
                                 <Title hierarchy={3} cssClass="mb-4">
                                     Paiement express
                                 </Title>
-                                <div className="flex gap-4 mb-10 w-full">
+                                <div className="flex gap-4 flex-wrap mb-10 w-full">
                                     {/* Bouton Apple Pay */}
-                                    <div className="flex-1 bg-black rounded-lg flex items-center justify-center min-h-[60px]">
+                                    <div className="sm:flex-1 bg-black rounded-lg flex items-center justify-center min-h-[60px]">
                                         <img
                                             src="/images/Apple-Pay-Logo.svg"
                                             alt="Payer avec Apple Pay"
@@ -63,7 +63,7 @@ const panier = () => {
                                     </div>
 
                                     {/* Bouton Google Pay */}
-                                    <div className="flex-1 bg-[#F0F1F4] rounded-lg flex items-center justify-center min-h-[60px]">
+                                    <div className="sm:flex-1 bg-[#F0F1F4] rounded-lg flex items-center justify-center min-h-[60px]">
                                         <img
                                             src="/images/Google-Pay-Logo.svg"
                                             alt="Payer avec Google Pay"
@@ -72,7 +72,7 @@ const panier = () => {
                                     </div>
 
                                     {/* Bouton PayPal */}
-                                    <div className="flex-1 bg-[#F9C439] rounded-lg flex items-center justify-center min-h-[60px]">
+                                    <div className="sm:flex-1 bg-[#F9C439] rounded-lg flex items-center justify-center min-h-[60px]">
                                         <img
                                             src="/images/PayPal-logo.svg"
                                             alt="Payer avec PayPal"
@@ -132,7 +132,7 @@ const panier = () => {
                                             label="Pays"
                                             placeholder="France"
                                         />
-                                        <div className="grid grid-cols-2 gap-4">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                             <InputText
                                                 type="text"
                                                 name="lastname"
@@ -161,7 +161,7 @@ const panier = () => {
                                             label="Complément d'adresse (facultatif)"
                                             placeholder="Appartement, étage..."
                                         />
-                                        <div className="grid grid-cols-2 gap-4">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                             <InputText
                                                 type="text"
                                                 name="zipcode"
@@ -306,13 +306,13 @@ const panier = () => {
                                 <Title hierarchy={3} cssClass="mb-2">
                                     Code promotionnel
                                 </Title>
-                                <div className="flex items-center gap-2">
+                                <div className="flex items-center gap-2 promo">
                                     <InputText
                                         type="text"
                                         label="code promo"
                                         name="promo"
                                         placeholder="Un code promo? Tapez-le ici"
-                                        className="w-full lg:w-3/4"
+                                        className="w-full lg:w-3/4 input-promo"
                                     />
                                     <button className="cta-button-black-panier">
                                         Appliquer

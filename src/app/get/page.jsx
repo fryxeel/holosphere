@@ -290,7 +290,7 @@ export default function Get() {
                                         <span>projection personnalisables</span>{' '}
                                         (
                                         <a
-                                            className="text-[#8C64C5]"
+                                            className="text-[#8C64C5] underline underline-offset-4 hover:underline-offset-6"
                                             href="/personnalisation"
                                         >
                                             essayez dès à présent les outils de

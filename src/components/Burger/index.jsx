@@ -6,7 +6,7 @@ const Burger = ({ open, setOpen }) => {
             onClick={() => setOpen(!open)}
             aria-label="Ouvrir ou fermer le menu"
             aria-expanded={open}
-            className="relative w-8 h-8 flex items-center justify-center z-50"
+            className="relative w-8 h-8 flex items-center justify-center z-50 cursor-pointer"
         >
             <div className="relative w-6 h-5">
                 <span

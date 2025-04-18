@@ -1,11 +1,9 @@
 'use client'
 import React from 'react'
 import { useState } from 'react'
-import ClassicSection from '@/components/ClassicSection'
 import FondBlanc from '@/components/FondBlanc'
 import Body from '@/components/Text/Body'
 import Title from '@/components/Text/Title'
-import CTAButton from '@/components/Buttons/CTAButton'
 import Icon from '@/components/Icon'
 import CheckBoxInput from '@/components/Inputs/CheckBox/index.jsx'
 import InputText from '@/components/Inputs/InputText/index.jsx'
@@ -30,7 +28,7 @@ const panier = () => {
             <div className="h-4" />
 
             <FondBlanc smaller cssClass="p-6 ">
-                <div className="block lg:hidden px-6 py-4">
+                <div className="block lg:hidden sm:px-6 py-4">
                     {' '}
                     <Title hierarchy={1} homePage={false} cssClass="mb-2.5 ">
                         {' '}
@@ -47,14 +45,14 @@ const panier = () => {
                         >
                             Validation de commande
                         </Title>
-                        <div className="m-8">
+                        <div className="my-12 sm:mx-2 md:m-8">
                             <div className="md:p-8 p-2">
                                 <Title hierarchy={3} cssClass="mb-4">
                                     Paiement express
                                 </Title>
-                                <div className="flex gap-4 flex-wrap mb-10 w-full">
+                                <div className="flex gap-3 sm:gap-4 flex-wrap mb-10 w-full">
                                     {/* Bouton Apple Pay */}
-                                    <div className="sm:flex-1 bg-black rounded-lg flex items-center justify-center min-h-[60px]">
+                                    <div className="w-full sm:flex-1 bg-black rounded-lg flex items-center justify-center min-h-[60px] cursor-pointer">
                                         <img
                                             src="/images/Apple-Pay-Logo.svg"
                                             alt="Payer avec Apple Pay"
@@ -63,7 +61,7 @@ const panier = () => {
                                     </div>
 
                                     {/* Bouton Google Pay */}
-                                    <div className="sm:flex-1 bg-[#F0F1F4] rounded-lg flex items-center justify-center min-h-[60px]">
+                                    <div className="w-full sm:flex-1 bg-[#F0F1F4] rounded-lg flex items-center justify-center min-h-[60px] cursor-pointer">
                                         <img
                                             src="/images/Google-Pay-Logo.svg"
                                             alt="Payer avec Google Pay"
@@ -72,7 +70,7 @@ const panier = () => {
                                     </div>
 
                                     {/* Bouton PayPal */}
-                                    <div className="sm:flex-1 bg-[#F9C439] rounded-lg flex items-center justify-center min-h-[60px]">
+                                    <div className="w-full sm:flex-1 bg-[#F9C439] rounded-lg flex items-center justify-center min-h-[60px] cursor-pointer">
                                         <img
                                             src="/images/PayPal-logo.svg"
                                             alt="Payer avec PayPal"
@@ -244,22 +242,23 @@ const panier = () => {
                                 <div className="flex items-center gap-4 ">
                                     <div className="relative w-18 h-18 rounded-[10px] p-0.5 border-2 border-dark overflow-hidden">
                                         <img
-                                            src="/images/teamEliott.jpg"
+                                            src="/images/sphereToSell/black_base.png"
                                             alt=""
-                                            className="w-full h-full rounded-lg"
+                                            className="w-full h-full rounded-lg bg-light"
                                         />
-                                        <div className="absolute top-0 right-0 z-10">
+                                        <div className="absolute top-0 right-0 z-10 h-7 w-7">
                                             <div className="bg-dark p-[2px] rounded-lg border-2 border-white">
-                                                <Icon
-                                                    color="white"
-                                                    name="check"
-                                                    height={20}
-                                                />
+                                                <Body cssClass="text-center text-light !font-semibold">
+                                                    1
+                                                </Body>
                                             </div>
                                         </div>
                                     </div>
                                     <div>
-                                        <Title hierarchy={3}>
+                                        <Title
+                                            hierarchy={3}
+                                            cssClass="!font-semibold"
+                                        >
                                             Holosphere One
                                         </Title>
                                         <Body hierarchy={3}>
@@ -276,22 +275,23 @@ const panier = () => {
                                 <div className="flex items-center gap-4 ">
                                     <div className="relative w-18 h-18 rounded-[10px] p-0.5 border-2 border-dark overflow-hidden">
                                         <img
-                                            src="/images/teamEliott.jpg"
+                                            src="/images/sphereToSell/cable5m.png"
                                             alt=""
                                             className="w-full h-full rounded-lg"
                                         />
-                                        <div className="absolute top-0 right-0 z-10">
+                                        <div className="absolute top-0 right-0 z-10 h-7 w-7">
                                             <div className="bg-dark p-[2px] rounded-lg border-2 border-white">
-                                                <Icon
-                                                    color="white"
-                                                    name="check"
-                                                    height={20}
-                                                />
+                                                <Body cssClass="text-center text-light !font-semibold">
+                                                    1
+                                                </Body>
                                             </div>
                                         </div>
                                     </div>
                                     <div>
-                                        <Title hierarchy={3}>
+                                        <Title
+                                            hierarchy={3}
+                                            cssClass="!font-semibold"
+                                        >
                                             Câble de chargement
                                         </Title>
                                         <Body hierarchy={3}>Longueur 5m</Body>

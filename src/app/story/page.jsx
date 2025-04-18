@@ -264,7 +264,7 @@ export default function Story() {
                     <ClassicSection cssClass="!flex-row !gap-y-12 !gap-[2%] md:!gap-[6%] flex-wrap !items-start">
                         <ClassicBox cssClass="gap-4 max-w-6/13 md:max-w-1/5">
                             <img
-                                src="/images/teamFrancisco.jpg"
+                                src="/images/ourTeamPeople/Francisco.png"
                                 alt="Francisco"
                                 className="rounded-2xl"
                             />
@@ -278,8 +278,8 @@ export default function Story() {
                         </ClassicBox>
                         <ClassicBox cssClass="gap-4 max-w-6/13 md:max-w-1/5">
                             <img
-                                src="/images/teamFrancisco.jpg"
-                                alt="Francisco"
+                                src="/images/ourTeamPeople/Celine.png"
+                                alt="Céline"
                                 className="rounded-2xl"
                             />
                             <Body>
@@ -292,8 +292,8 @@ export default function Story() {
                         </ClassicBox>
                         <ClassicBox cssClass="gap-4 max-w-6/13 md:max-w-1/5">
                             <img
-                                src="/images/teamFrancisco.jpg"
-                                alt="Francisco"
+                                src="/images/ourTeamPeople/Axel.png"
+                                alt="Axel"
                                 className="rounded-2xl"
                             />
                             <Body>
@@ -306,8 +306,8 @@ export default function Story() {
                         </ClassicBox>
                         <ClassicBox cssClass="gap-4 max-w-6/13 md:max-w-1/5">
                             <img
-                                src="/images/teamFrancisco.jpg"
-                                alt="Francisco"
+                                src="/images/ourTeamPeople/Eliott.png"
+                                alt="Eliott"
                                 className="rounded-2xl"
                             />
                             <Body>

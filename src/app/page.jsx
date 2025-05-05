@@ -47,6 +47,7 @@ export default function Home() {
             <ScrollVideo />
             <HomeText />
             <BackgroundScroll />
+            
             <HomeGame />
             <div className="relative h-screen p-10">
                 {/* Fond flouté qui déborde largement */}

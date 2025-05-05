@@ -7,82 +7,73 @@ import ClassicSection from '../ClassicSection'
 
 const HomeGame = () => {
     return (
-        <div className="bg-dark p-10 pb-40 ">
-            <BoxBlanc className={'w-full h-full'}>
-                <div className="w-full h-full flex justify-center items-center">
-                    <ClassicSection withMaxWidth={false} cssClass="p-6">
-                        <div className="grid grid-cols-2 gap-4 h-full w-full 2xl:w-[50%]">
+        <>
+            <div className="bg-dark p-10 pb-40 ">
+                <BoxBlanc className={'w-full h-full'}>
+                    <div className="w-full h-full flex justify-center items-center">
+                        <ClassicSection withMaxWidth={false} cssClass="p-6">
                             <img
-                                className="rounded-[40px]"
-                                src="/images/sphereToSell/wood_base.svg"
+                                src="/images/CardsHomeGame.svg"
                                 alt=""
+                                className="w-full h-full"
                             />
-                            <img
-                                className="rounded-[40px]"
-                                src="/images/sphereToSell/white_base.svg"
-                                alt=""
-                            />
-                            <img
-                                className="rounded-[40px]"
-                                src="/images/sphereToSell/sky_base.svg"
-                                alt=""
-                            />
-                            <img
-                                className="rounded-[40px]"
-                                src="/images/sphereToSell/black_base.svg"
-                                alt=""
-                            />
-                        </div>
 
-                        <div className="flex flex-col justify-center max-w-2xl">
-                            <div>
+                            <div className="flex flex-col justify-center max-w-2xl">
                                 <div>
-                                    <Title
-                                        hierarchy={2}
-                                        homePage
-                                        cssClass="text-[var(--orange)] text-pretty"
-                                    >
-                                        Personnalisez la magie. <br /> Faites
-                                        vibrer votre monde
-                                    </Title>
+                                    <div>
+                                        <Title
+                                            hierarchy={2}
+                                            homePage
+                                            cssClass="text-[var(--orange)] text-pretty"
+                                        >
+                                            Modélisez votre Holosphère <br /> et
+                                            entrez dans le jeu !
+                                        </Title>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="py-10 ">
-                                <div className="pb-8 c text-pretty w-full">
-                                    <Body hierarchy={2}>
-                                        Devenez{' '}
-                                        <span>sculpteur de souvenir</span>{' '}
-                                        l’espace d’un instant et{' '}
-                                        <span>
-                                            explorez toutes les possibilités
-                                        </span>{' '}
-                                        depuis votre imagination.
+                                <div className="py-10 ">
+                                    <div className="pb-8 c text-pretty w-full">
+                                        <Body hierarchy={2}>
+                                            <span>
+                                                Imaginez, modelez, partagez
+                                            </span>{' '}
+                                            : utilisez le tag #Holosphere pour
+                                            débloquer{' '}
+                                            <span>
+                                                5% de réduction immédiate
+                                            </span>{' '}
+                                            et tenter de remporter{' '}
+                                            <span>-20%</span>
+                                            supplémentaires grâce à notre
+                                            concours hebdomadaire !
+                                        </Body>
+                                    </div>
+                                    <div className="md:w-3/4 w-full">
+                                        <CTAButton
+                                            href="personnalisation"
+                                            darkBG
+                                            iconName="filled_stars"
+                                        >
+                                            Devenir sculpteur de souvenir
+                                        </CTAButton>
+                                    </div>
+                                </div>
+
+                                <div className="md:w-2/3 lg:w-full sm:w-full">
+                                    <Body hierarchy={3} cssClass="w-full">
+                                        Laissez libre cours à votre créativité :
+                                        votre design ne vous engage pas à
+                                        l’achat, mais vous permet d’explorer
+                                        toutes les possibilités avant de vous
+                                        décider.
                                     </Body>
                                 </div>
-                                <div className="md:w-3/4 w-full">
-                                    <CTAButton
-                                        href="personnalisation"
-                                        darkBG
-                                        iconName="filled_stars"
-                                    >
-                                        Je personnalise mon Holosphere
-                                    </CTAButton>
-                                </div>
                             </div>
-
-                            <div className="md:w-2/3 lg:w-full sm:w-full">
-                                <Body hierarchy={3} cssClass="w-full">
-                                    Imaginez et personnalisez sans contrainte.
-                                    Une fois votre Holosphère entre vos mains,
-                                    vous pourrez toujours ajuster et enrichir
-                                    son contenu au gré de vos envies.
-                                </Body>
-                            </div>
-                        </div>
-                    </ClassicSection>
-                </div>
-            </BoxBlanc>
-        </div>
+                        </ClassicSection>
+                    </div>
+                </BoxBlanc>
+            </div>
+        </>
     )
 }
 

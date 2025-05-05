@@ -14,6 +14,7 @@ import MusicAmbience from '@/components/snowglobe/MusicAmbience'
 import Body from '@/components/Text/Body'
 import Title from '@/components/Text/Title'
 import Icon from '@/components/Icon'
+import ClassicSection from '@/components/ClassicSection'
 
 export default function SnowGlobe() {
     const [imageTexture, setImageTexture] = useState(null) // Texture pour la sphère
@@ -29,6 +30,8 @@ export default function SnowGlobe() {
     const pathname = usePathname()
 
     const [currentTheme, setCurrentTheme] = useState('default') // État pour le thème actif
+
+    const [showPopup, setShowPopup] = useState(true) //gestion du popUp
 
     const themes = {
         default: [],
@@ -156,6 +159,64 @@ export default function SnowGlobe() {
 
     return (
         <>
+            {showPopup && (
+                <div className="absolute w-full h-full backdrop-blur-[4px] top-0 bg-white/20 z-20 flex items-center justify-center">
+                    <BoxBlanc>
+                        <ClassicSection cssClass="p-20">
+                            <div className="flex flex-col gap-10">
+                                <img src="/images/popUpGame.svg" alt="" />
+                                <Body hierarchy={3} cssClass="gray">
+                                    Aucune obligation d’achat — explorez
+                                    librement, laissez parler votre créativité.
+                                </Body>
+                            </div>
+                            <div className="flex flex-col gap-8">
+                                <Title hierarchy={2}>
+                                    Bienvenue dans l’atelier Holosphère !
+                                </Title>
+                                <Body hierarchy={3}>
+                                    Prêt·e à créer la vôtre ? Voici les étapes :
+                                </Body>
+                                <ol className="list-decimal marker:text-orange pl-6 space-y-4">
+                                    <li>
+                                        <Body hierarchy={3}>
+                                            Choisissez un <span>thème</span> :
+                                            Noël, anniversaire, été… selon vos
+                                            envies du moment.
+                                        </Body>
+                                    </li>
+                                    <li>
+                                        <Body hierarchy={3}>
+                                            <span>
+                                                Personnalisez votre Holosphère
+                                            </span>{' '}
+                                            : ajoutez vos images, musiques et
+                                            customisez le socle.
+                                        </Body>
+                                    </li>
+                                    <li>
+                                        <Body hierarchy={3}>
+                                            Partagez avec le tag{' '}
+                                            <span>#Holosphere </span> pour :
+                                            <br />
+                                            ✅ -5% immédiat <br />
+                                            🎁 Jusqu’à -20% avec notre concours
+                                            hebdo !
+                                        </Body>
+                                    </li>
+                                </ol>
+                                <button
+                                    className="cta-button-black-popUp flex gap-2.5"
+                                    onClick={() => setShowPopup(false)}
+                                >
+                                    C'est parti <Icon name="arrowRight" />
+                                </button>
+                            </div>
+                        </ClassicSection>
+                    </BoxBlanc>
+                </div>
+            )}
+
             <div className="pt-[23px] pb-[75px] pl-[40px] pr-[40px] relative">
                 <h3 className="text-span3 text-center font-manrope text-white">
                     Mon atelier création

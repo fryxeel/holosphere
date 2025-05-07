@@ -227,7 +227,25 @@ export default function SnowGlobe() {
             </div>
             <div className="flex flex-row w-full min-h-screen">
                 <div className="flex flex-col items-center w-full pt-10">
-                    <BoxBlanc className="w-sm h-max-[40vh]">
+                    <BoxBlanc className="relative w-sm h-max-[40vh]">
+                        {currentTheme === 'default' && (
+                            <div className="absolute inset-0 z-15 bg-white/70 backdrop-blur-sm flex flex-col py-4 px-6 rounded-xl">
+                                <Title hierarchy={2}>Outils de création</Title>
+                                <div className="flex flex-col gap-2 justify-center items-center px-10 py-36">
+                                    <Icon
+                                        name={'filled_stars'}
+                                        color="black"
+                                        height={32}
+                                    />
+                                    <Body hierarchy={4}>
+                                        Prêt à commencer ?
+                                    </Body>
+                                    <Body hierarchy={3} cssClass="text-center">
+                                        Sélectionnez un thème juste en dessous.
+                                    </Body>
+                                </div>
+                            </div>
+                        )}
                         <Title hierarchy={2}>Outils de création</Title>
 
                         <div className="py-6 flex flex-col gap-2">
@@ -241,8 +259,12 @@ export default function SnowGlobe() {
                                         <button
                                             key={index}
                                             className={`relative w-18 h-18 rounded-[10px] p-0.5 border-2 overflow-hidden 
-                ${isActive ? 'border-black' : 'border-transparent'}
-                `}
+                                                                    ${
+                                                                        isActive
+                                                                            ? 'border-black'
+                                                                            : 'border-transparent'
+                                                                    }
+                                                                    `}
                                             onClick={() => {
                                                 if (isActive) {
                                                     // Désélectionne l'image (enlève bordure et texture sphère)
@@ -419,7 +441,31 @@ export default function SnowGlobe() {
                 </div>
                 <div className="flex flex-col w-full h-full pt-10 pb-10">
                     <div className="flex justify-center w-full flex-grow">
-                        <BoxBlanc className="w-sm min-h-full flex flex-col">
+                        <BoxBlanc className="w-sm min-h-full flex flex-col relative">
+                            {currentTheme === 'default' && (
+                                <div className="absolute inset-0 z-15 bg-white/70 backdrop-blur-sm flex flex-col py-4 px-6 rounded-xl">
+                                    <Title hierarchy={2}>
+                                        Éléments du thème
+                                    </Title>
+                                    <div className="flex flex-col gap-2 justify-center items-center p-10">
+                                        <Icon
+                                            name={'filled_stars'}
+                                            color="black"
+                                            height={32}
+                                        />
+                                        <Body hierarchy={4}>
+                                            Prêt à commencer ?
+                                        </Body>
+                                        <Body
+                                            hierarchy={3}
+                                            cssClass="text-center"
+                                        >
+                                            Sélectionnez un thème juste en
+                                            dessous.
+                                        </Body>
+                                    </div>
+                                </div>
+                            )}
                             <Title hierarchy={2}>Éléments du thème</Title>
                             <Title hierarchy={3}>
                                 {currentTheme === 'default' && 'Par défaut'}

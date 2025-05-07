@@ -213,7 +213,7 @@ export default function Story() {
                             </span>
                             , chaque étape a été un défi relevé avec
                             détermination et passion. Aujourd’hui, nous sommes
-                            fiers de proposer un produit qui incarne à la fois
+                            fiers de proposer un produit qui incarne à la fois{' '}
                             <span>la tradition et l'innovation</span>.
                         </Body>
                     </ClassicBox>

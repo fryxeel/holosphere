@@ -171,22 +171,28 @@ export default function SnowGlobe() {
                                 </Body>
                             </div>
                             <div className="flex flex-col gap-8">
-                                <Title hierarchy={2}>
+                                <Title hierarchy={2} cssClass="text-dark">
                                     Bienvenue dans l’atelier Holosphère !
                                 </Title>
-                                <Body hierarchy={3}>
+                                <Body hierarchy={3} cssClass="text-dark">
                                     Prêt·e à créer la vôtre ? Voici les étapes :
                                 </Body>
                                 <ol className="list-decimal marker:text-orange pl-6 space-y-4">
                                     <li>
-                                        <Body hierarchy={3}>
+                                        <Body
+                                            hierarchy={3}
+                                            cssClass="text-dark"
+                                        >
                                             Choisissez un <span>thème</span> :
                                             Noël, anniversaire, été… selon vos
                                             envies du moment.
                                         </Body>
                                     </li>
                                     <li>
-                                        <Body hierarchy={3}>
+                                        <Body
+                                            hierarchy={3}
+                                            cssClass="text-dark"
+                                        >
                                             <span>
                                                 Personnalisez votre Holosphère
                                             </span>{' '}
@@ -195,7 +201,10 @@ export default function SnowGlobe() {
                                         </Body>
                                     </li>
                                     <li>
-                                        <Body hierarchy={3}>
+                                        <Body
+                                            hierarchy={3}
+                                            cssClass="text-dark"
+                                        >
                                             Partagez avec le tag{' '}
                                             <span>#Holosphere </span> pour :
                                             <br />
@@ -230,26 +239,35 @@ export default function SnowGlobe() {
                     <BoxBlanc className="relative w-sm h-max-[40vh]">
                         {currentTheme === 'default' && (
                             <div className="absolute inset-0 z-15 bg-white/70 backdrop-blur-sm flex flex-col py-4 px-6 rounded-xl">
-                                <Title hierarchy={2}>Outils de création</Title>
+                                <Title hierarchy={2} cssClass="text-dark">
+                                    Outils de création
+                                </Title>
                                 <div className="flex flex-col gap-2 justify-center items-center px-10 py-36">
                                     <Icon
                                         name={'filled_stars'}
                                         color="black"
                                         height={32}
                                     />
-                                    <Body hierarchy={4}>
+                                    <Body hierarchy={4} cssClass="text-dark">
                                         Prêt à commencer ?
                                     </Body>
-                                    <Body hierarchy={3} cssClass="text-center">
+                                    <Body
+                                        hierarchy={3}
+                                        cssClass="text-center text-dark"
+                                    >
                                         Sélectionnez un thème juste en dessous.
                                     </Body>
                                 </div>
                             </div>
                         )}
-                        <Title hierarchy={2}>Outils de création</Title>
+                        <Title hierarchy={2} cssClass="text-dark">
+                            Outils de création
+                        </Title>
 
                         <div className="py-6 flex flex-col gap-2">
-                            <Title hierarchy={3}>Vos propres images</Title>
+                            <Title hierarchy={3} cssClass="text-dark">
+                                Vos propres images
+                            </Title>
                             <div className="flex items-center gap-2 flex-wrap">
                                 {/* Affiche d'abord les images existantes */}
                                 {imageSphere.map((image, index) => {
@@ -336,7 +354,7 @@ export default function SnowGlobe() {
                                     </button>
                                 </div>
                             </div>
-                            <Body hierarchy={3}>
+                            <Body hierarchy={3} cssClass="text-dark">
                                 <span>Astuce : </span>Cliquez sur l'image pour
                                 la projeter dans la sphère (une seule à la
                                 fois).
@@ -393,7 +411,7 @@ export default function SnowGlobe() {
                         <div className="flex flex-col bg-white rounded-2xl p-[11px] gap-3">
                             <div className="flex justify-between items-center">
                                 <div>Thème à appliquer</div>
-                                <div className="px-2 bg-gray-200 rounded-[8px]">
+                                <div className="px-2 bg-gray-200 rounded-[8px] ">
                                     {currentTheme === 'default' && 'Par défaut'}
                                     {currentTheme === 'summer' && 'Eté'}
                                     {currentTheme === 'winter' && 'Hiver'}
@@ -432,6 +450,7 @@ export default function SnowGlobe() {
                                     onClick={() =>
                                         handleThemeClick('valentine')
                                     }
+                                    className="text-dark"
                                 >
                                     Saint-Valentin
                                 </button>
@@ -444,7 +463,7 @@ export default function SnowGlobe() {
                         <BoxBlanc className="w-sm min-h-full flex flex-col relative">
                             {currentTheme === 'default' && (
                                 <div className="absolute inset-0 z-15 bg-white/70 backdrop-blur-sm flex flex-col py-4 px-6 rounded-xl">
-                                    <Title hierarchy={2}>
+                                    <Title hierarchy={2} cssClass="text-dark">
                                         Éléments du thème
                                     </Title>
                                     <div className="flex flex-col gap-2 justify-center items-center p-10">
@@ -453,12 +472,15 @@ export default function SnowGlobe() {
                                             color="black"
                                             height={32}
                                         />
-                                        <Body hierarchy={4}>
+                                        <Body
+                                            hierarchy={4}
+                                            cssClass="text-dark"
+                                        >
                                             Prêt à commencer ?
                                         </Body>
                                         <Body
                                             hierarchy={3}
-                                            cssClass="text-center"
+                                            cssClass="text-center text-dark"
                                         >
                                             Sélectionnez un thème juste en
                                             dessous.
@@ -466,8 +488,10 @@ export default function SnowGlobe() {
                                     </div>
                                 </div>
                             )}
-                            <Title hierarchy={2}>Éléments du thème</Title>
-                            <Title hierarchy={3}>
+                            <Title hierarchy={2} cssClass="text-dark">
+                                Éléments du thème
+                            </Title>
+                            <Title hierarchy={3} cssClass="text-dark">
                                 {currentTheme === 'default' && 'Par défaut'}
                                 {currentTheme === 'summer' &&
                                     'Pièces pour le theme été'}
@@ -525,27 +549,28 @@ export default function SnowGlobe() {
                     <div className="flex justify-center w-full pt-10 pb-10">
                         <BoxBlanc className="w-sm flex-shrink-0">
                             <div className="flex flex-col gap-4">
-                                <button
-                                    onClick={() =>
-                                        captureFunction && captureFunction()
-                                    }
-                                    className="cta-button-orange"
-                                >
-                                    <Body hierarchy={3}>
-                                        Télécharger ma création
-                                    </Body>
-
-                                    <Icon
-                                        name={'download'}
-                                        color={'black'}
-                                    ></Icon>
-                                </button>
-                                <Body hierarchy={3}>
+                                <Title hierarchy={3} cssClass="text-dark">
+                                    Imaginez, modelez, partagez !
+                                </Title>
+                                <Body hierarchy={3} cssClass="text-dark">
                                     Partagez votre création avec le tag{' '}
                                     <span>#holosphere</span> et tentez de
                                     remporter des réductions exclusives, jusqu’à
                                     50% !
                                 </Body>
+                                {/* onClick={() =>
+                                        captureFunction && captureFunction()
+                                    } */}
+                                <button className="cta-button-orange">
+                                    <Body hierarchy={3} cssClass="text-dark">
+                                        Débloquer mes réductions
+                                    </Body>
+
+                                    <Icon
+                                        name={'arrowRight'}
+                                        color={'black'}
+                                    ></Icon>
+                                </button>
                             </div>
                         </BoxBlanc>
                     </div>

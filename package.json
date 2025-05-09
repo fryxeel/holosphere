@@ -9,7 +9,7 @@
         "lint": "next lint"
     },
     "dependencies": {
-        "@react-three/drei": "^10.0.4",
+        "@react-three/drei": "^10.0.7",
         "@react-three/fiber": "^9.1.0",
         "clsx": "^2.1.1",
         "gsap": "^3.12.7",

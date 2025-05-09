@@ -2,8 +2,6 @@
 import { Canvas, useLoader } from '@react-three/fiber'
 import { useState, useRef } from 'react'
 import { usePathname } from 'next/navigation'
-import SnowGlobeSphere from '../../components/snowglobe/SnowGlobeSphere'
-import Base from '../../components/snowglobe/Socle'
 import Controls from '../../components/snowglobe/Controls'
 import CaptureScene from '../../components/snowglobe/CaptureScene'
 import { TextureLoader } from 'three'
@@ -14,7 +12,8 @@ import MusicAmbience from '@/components/snowglobe/MusicAmbience'
 import Body from '@/components/Text/Body'
 import Title from '@/components/Text/Title'
 import Icon from '@/components/Icon'
-import ClassicSection from '@/components/ClassicSection'
+import SnowGlobetest from '@/components/snowglobetest'
+import PopUpGame from '@/components/PopUp/PopUpGame'
 
 export default function SnowGlobe() {
     const [imageTexture, setImageTexture] = useState(null) // Texture pour la sphère
@@ -22,7 +21,8 @@ export default function SnowGlobe() {
     const [selectedImageTexture, setSelectedImageTexture] = useState(null) // Stockage local de l'image sélectionnée
     const fileInputRef = useRef(null)
 
-    const [materialTexture, setMaterialTexture] = useState(null) // Texture pour la base
+    const [materialTexture, setMaterialTexture] = useState(null)
+    // Texture pour la base
     const [selectedTheme, setselectedTheme] = useState([])
 
     const [themeImages, setImageThemes] = useState([]) // models pour sphere3D
@@ -31,7 +31,7 @@ export default function SnowGlobe() {
 
     const [currentTheme, setCurrentTheme] = useState('default') // État pour le thème actif
 
-    const [showPopup, setShowPopup] = useState(true) //gestion du popUp
+    const [showPopup, setShowPopup] = useState(true)
 
     const themes = {
         default: [],
@@ -159,73 +159,7 @@ export default function SnowGlobe() {
 
     return (
         <>
-            {showPopup && (
-                <div className="absolute w-full h-full backdrop-blur-[4px] top-0 bg-white/20 z-20 flex items-center justify-center">
-                    <BoxBlanc>
-                        <ClassicSection cssClass="p-20">
-                            <div className="flex flex-col gap-10">
-                                <img src="/images/popUpGame.svg" alt="" />
-                                <Body hierarchy={3} cssClass="gray">
-                                    Aucune obligation d’achat — explorez
-                                    librement, laissez parler votre créativité.
-                                </Body>
-                            </div>
-                            <div className="flex flex-col gap-8">
-                                <Title hierarchy={2} cssClass="text-dark">
-                                    Bienvenue dans l’atelier Holosphère !
-                                </Title>
-                                <Body hierarchy={3} cssClass="text-dark">
-                                    Prêt·e à créer la vôtre ? Voici les étapes :
-                                </Body>
-                                <ol className="list-decimal marker:text-orange pl-6 space-y-4">
-                                    <li>
-                                        <Body
-                                            hierarchy={3}
-                                            cssClass="text-dark"
-                                        >
-                                            Choisissez un <span>thème</span> :
-                                            Noël, anniversaire, été… selon vos
-                                            envies du moment.
-                                        </Body>
-                                    </li>
-                                    <li>
-                                        <Body
-                                            hierarchy={3}
-                                            cssClass="text-dark"
-                                        >
-                                            <span>
-                                                Personnalisez votre Holosphère
-                                            </span>{' '}
-                                            : ajoutez vos images, musiques et
-                                            customisez le socle.
-                                        </Body>
-                                    </li>
-                                    <li>
-                                        <Body
-                                            hierarchy={3}
-                                            cssClass="text-dark"
-                                        >
-                                            Partagez avec le tag{' '}
-                                            <span>#Holosphere </span> pour :
-                                            <br />
-                                            ✅ -5% immédiat <br />
-                                            🎁 Jusqu’à -20% avec notre concours
-                                            hebdo !
-                                        </Body>
-                                    </li>
-                                </ol>
-                                <button
-                                    className="cta-button-black-popUp flex gap-2.5"
-                                    onClick={() => setShowPopup(false)}
-                                >
-                                    C'est parti <Icon name="arrowRight" />
-                                </button>
-                            </div>
-                        </ClassicSection>
-                    </BoxBlanc>
-                </div>
-            )}
-
+            {showPopup && <PopUpGame onClose={() => setShowPopup(false)} />}
             <div className="pt-[23px] pb-[75px] pl-[40px] pr-[40px] relative">
                 <h3 className="text-span3 text-center font-manrope text-white">
                     Mon atelier création
@@ -373,28 +307,15 @@ export default function SnowGlobe() {
                 </div>
                 <div className="w-full h-screen pt-10 flex items-center flex-col">
                     <div className="w-full h-full">
-                        <Canvas camera={{ position: [60, 30, 8], fov: 50 }}>
-                            <ambientLight intensity={0.8} />
-                            <directionalLight
-                                position={[5, 5, 5]}
-                                intensity={0.5}
-                            />
-                            <pointLight
-                                position={[10, 10, 10]}
-                                intensity={0.5}
-                            />
-                            <pointLight
-                                position={[-10, -10, -10]}
-                                intensity={0.5}
-                            />
+                        <Canvas camera={{ position: [0, 1.5, 5], fov: 50 }}>
                             <Controls />
-                            <SnowGlobeSphere
-                                texture={texture}
-                                selectedTheme={selectedTheme}
-                            />{' '}
-                            {/* Applique la texture à la sphère */}
-                            <Base textureDuMateriel={textureMaterial} />{' '}
-                            {/* Applique la texture à la base */}
+
+                            <SnowGlobetest
+                                rotation={[0, Math.PI / 2, 0]}
+                                scale={0.7}
+                                materialTexturePath={materialTexture}
+                            />
+
                             {isCapturePage && (
                                 <CaptureScene
                                     setCaptureFunction={setCaptureFunction}

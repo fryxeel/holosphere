@@ -1,11 +1,11 @@
 'use client'
 import React, { Suspense } from 'react'
-import { Canvas } from '@react-three/fiber'
+import { Canvas, useLoader } from '@react-three/fiber'
 import { Loader, Center } from '@react-three/drei'
 import SnowGlobetest from '../../components/snowglobetest'
 import Controls from '../../components/snowglobe/Controls.jsx'
 
-export default function App() {
+export default function App({}) {
     return (
         <>
             <div style={{ width: '100%', height: '100vh' }}>

@@ -4,6 +4,7 @@ import { OrbitControls } from '@react-three/drei'
 const Controls = () => {
     return (
         <OrbitControls
+            target={[0, 1.5, 0]}
             minAzimuthAngle={-Math.PI / 4}
             maxAzimuthAngle={Math.PI / 4}
             minPolarAngle={Math.PI / 6}

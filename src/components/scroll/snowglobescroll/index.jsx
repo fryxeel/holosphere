@@ -1,6 +1,7 @@
 'use client'
 import { Canvas } from '@react-three/fiber'
 import AnimatedSnowGlobe from '../snowglobescrollAnimated'
+import { OrbitControls } from '@react-three/drei'
 
 const SnowGlobeScroll = ({ scrollContainerRef }) => {
     return (

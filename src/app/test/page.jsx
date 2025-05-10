@@ -23,6 +23,7 @@ export default function App({}) {
                             <SnowGlobetest
                                 rotation={[0, Math.PI / 2, 0]}
                                 scale={0.7}
+                                home
                             />
                         </Center>
                     </Suspense>

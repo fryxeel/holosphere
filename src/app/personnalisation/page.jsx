@@ -14,7 +14,7 @@ import Title from '@/components/Text/Title'
 import Icon from '@/components/Icon'
 import SnowGlobetest from '@/components/snowglobetest'
 import PopUpGame from '@/components/PopUp/PopUpGame'
-
+import SnowGlobeSphere from '@/components/snowglobe/SnowGlobeSphere'
 export default function SnowGlobe() {
     const [imageTexture, setImageTexture] = useState(null) // Texture pour la sphère
     const [imageSphere, setImageSphere] = useState([]) //stockage des images mis par l'utilisateur
@@ -134,25 +134,26 @@ export default function SnowGlobe() {
     // Transformation de l'image en base64 pour l'afficher en texture
     const handleImageSelect = (e) => {
         const file = e.target.files[0]
-        if (file) {
-            const src = URL.createObjectURL(file)
+        if (!file) return
+
+        const reader = new FileReader()
+
+        reader.onload = (event) => {
+            const base64 = event.target.result
+
             const newImage = {
-                src,
+                src: base64,
                 alt: file.name,
             }
 
-            // 1. On ajoute directement l'image
             setImageSphere((prev) => [...prev, newImage])
-
-            // 2. On applique immédiatement comme texture de la sphère
-            setImageTexture(src)
-
-            // 3. On met à jour l'image sélectionnée dans l'UI
-            setSelectedImageTexture(src)
-
-            // Reset de l'input
-            e.target.value = null
+            setImageTexture(base64)
+            // <=== c'est ça que tu vas passer au composant 3D
+            setSelectedImageTexture(base64)
         }
+
+        reader.readAsDataURL(file)
+        e.target.value = null
     }
 
     const isCapturePage = pathname === '/personnalisation'
@@ -309,11 +310,16 @@ export default function SnowGlobe() {
                     <div className="w-full h-full">
                         <Canvas camera={{ position: [0, 1.5, 5], fov: 50 }}>
                             <Controls />
-
+                            <SnowGlobeSphere
+                                texture={texture}
+                                selectedTheme={selectedTheme}
+                                position={[0, 3, 0]}
+                            />
                             <SnowGlobetest
                                 rotation={[0, Math.PI / 2, 0]}
                                 scale={0.7}
                                 materialTexturePath={materialTexture}
+                                scaleSphere={1.2}
                             />
 
                             {isCapturePage && (

@@ -1,14 +1,27 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useLoader } from '@react-three/fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { MeshPhysicalMaterial, TextureLoader } from 'three'
+import {
+    MeshPhysicalMaterial,
+    MeshStandardMaterial,
+    TextureLoader,
+    DoubleSide,
+} from 'three'
 import { Environment } from '@react-three/drei'
+import SnowGlobeSphere from './snowglobe/SnowGlobeSphere'
 
-export function SnowGlobeContent({ materialTexturePath, ...props }) {
-    const model = useLoader(
-        GLTFLoader,
-        '/models/snowglobeFinal/bouleHolosphere.glb'
-    )
+export function SnowGlobeContent({
+    materialTexturePath,
+    sphereImageTexture,
+    scaleSphere,
+    home,
+    ...props
+}) {
+    const modelPath = home
+        ? '/models/snowglobeFinal/bouleHolosphere1.glb'
+        : '/models/snowglobeFinal/bouleHolosphere.glb'
+
+    const model = useLoader(GLTFLoader, modelPath)
 
     const woodTexture = useLoader(
         TextureLoader,
@@ -27,8 +40,10 @@ export function SnowGlobeContent({ materialTexturePath, ...props }) {
         '/textures/Fabric029_1K-PNG_Color.png'
     )
 
-    const [socleTexture, setSocleTexture] = useState(null)
+    const [socleTexture, setSocleTexture] = useState(null) // texture du socle bois etc..
+    const [sphereTexture, setSphereTexture] = useState(null) // image mis par l'utilisateur dans l'input file transformer en base 64
 
+    console.log(sphereImageTexture)
     // 🧠 refs pour ne créer qu'une seule fois les matériaux
     const glassMaterialRef = useRef()
     const mousseMaterialRef = useRef()
@@ -45,7 +60,7 @@ export function SnowGlobeContent({ materialTexturePath, ...props }) {
             metalness: 0.1,
             clearcoat: 1,
             clearcoatRoughness: 0,
-            thickness: 0.5,
+            thickness: 2,
             color: 'white',
         })
 
@@ -65,6 +80,17 @@ export function SnowGlobeContent({ materialTexturePath, ...props }) {
             })
         }
     }, [materialTexturePath])
+
+    //changement dynamique de l'image dans l'input file
+    useEffect(() => {
+        if (sphereImageTexture) {
+            const loader = new TextureLoader()
+            loader.load(sphereImageTexture, (texture) => {
+                //console.log('Texture chargée :', texture)
+                setSphereTexture(texture)
+            })
+        }
+    }, [sphereImageTexture])
 
     useEffect(() => {
         if (model && model.scene && glassMaterialRef.current) {
@@ -100,7 +126,24 @@ export function SnowGlobeContent({ materialTexturePath, ...props }) {
 
     return (
         <group {...props}>
-            <primitive object={model.scene} />
+            <primitive object={model.scene} scale={scaleSphere} />
+
+            {sphereTexture && (
+                <mesh
+                    position={[0, 0, 0]}
+                    rotation={[0, Math.PI / 2, 0]}
+                    renderOrder={1}
+                >
+                    <planeGeometry args={[10, 10]} />
+                    <meshBasicMaterial
+                        map={sphereTexture}
+                        transparent
+                        side={DoubleSide}
+                        depthWrite={false}
+                    />
+                </mesh>
+            )}
+
             <Environment
                 files="/environnement/poly_haven_studio_1k.hdr"
                 intensity={1}

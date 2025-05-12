@@ -169,8 +169,8 @@ export default function SnowGlobe() {
                     Sculptez votre souvenir
                 </h1>
             </div>
-            <div className="flex flex-row w-full min-h-screen">
-                <div className="flex flex-col items-center w-full pt-10">
+            <div className="flex flex-row w-full pt-10 min-h-screen">
+                <div className="flex flex-col items-center w-full">
                     <BoxBlanc className="relative w-sm h-max-[40vh]">
                         {currentTheme === 'default' && (
                             <div className="absolute inset-0 z-15 bg-white/70 backdrop-blur-sm flex flex-col py-4 px-6 rounded-xl">
@@ -306,8 +306,8 @@ export default function SnowGlobe() {
                         </div>
                     </BoxBlanc>
                 </div>
-                <div className="w-full h-screen pt-10 flex items-center flex-col">
-                    <div className="w-full h-full">
+                <div className="w-full flex items-center flex-col">
+                    <div className="w-[500px] h-[500px]">
                         <Canvas camera={{ position: [0, 1.5, 5], fov: 50 }}>
                             <Controls />
                             <SnowGlobeSphere
@@ -385,7 +385,7 @@ export default function SnowGlobe() {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col w-full h-full pt-10 pb-10">
+                <div className="flex flex-col w-full h-full">
                     <div className="flex justify-center w-full flex-grow">
                         <BoxBlanc className="w-sm min-h-full flex flex-col relative">
                             {currentTheme === 'default' && (
@@ -473,7 +473,7 @@ export default function SnowGlobe() {
                             </Body>
                         </BoxBlanc>
                     </div>
-                    <div className="flex justify-center w-full pt-10 pb-10">
+                    <div className="flex justify-center w-full pt-10">
                         <BoxBlanc className="w-sm flex-shrink-0">
                             <div className="flex flex-col gap-4">
                                 <Title hierarchy={3} cssClass="text-dark">

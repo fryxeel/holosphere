@@ -1,14 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useLoader } from '@react-three/fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import {
-    MeshPhysicalMaterial,
-    MeshStandardMaterial,
-    TextureLoader,
-    DoubleSide,
-} from 'three'
+import { MeshPhysicalMaterial, TextureLoader, DoubleSide } from 'three'
 import { Environment } from '@react-three/drei'
-import SnowGlobeSphere from './snowglobe/SnowGlobeSphere'
 
 export function SnowGlobeContent({
     materialTexturePath,
@@ -100,6 +94,7 @@ export function SnowGlobeContent({
 
             model.scene.traverse((child) => {
                 if (child.isMesh) {
+                    console.log(child.name)
                     const name = child.name.toLowerCase()
                     if (
                         name.includes('sphere') ||

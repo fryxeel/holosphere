@@ -8,7 +8,7 @@ import Icon from '../Icon/index'
 
 const PopUpGame = ({ onClose }) => {
     return (
-        <div className="absolute w-full h-full backdrop-blur-[4px] top-0 bg-white/20 z-20 flex items-center justify-center">
+        <div className="absolute w-full h-full backdrop-blur-sm top-0 bg-white/20 z-20 flex items-center justify-center">
             <BoxBlanc>
                 <ClassicSection cssClass="p-20">
                     <div className="flex flex-col gap-10">

@@ -53,17 +53,25 @@ export default function SnowGlobe() {
         ],
         winter: [
             {
-                model: '/models/winter/shrub-sorrel/shrub_sorrel_01_1k.gltf',
-                position: [0.5, -1.4, 0],
-                scale: 8,
-                rotation: [0, Math.PI / 3, 0],
-
+                model: '/models/winter/winter_tree__with_leaves/scene.gltf',
+                position: [1, -1.5, 0],
+                scale: 0.2,
+                rotation: [0, 0, 0],
                 img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
             },
         ],
         spring: [
             {
                 model: '/models/winter/shrub-sorrel/shrub_sorrel_01_1k.gltf',
+                position: [0.5, -1.4, 0],
+                scale: 8,
+                rotation: [0, Math.PI / 3, 0],
+                img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
+            },
+        ],
+        autumn: [
+            {
+                model: 'public/models/automn/stylized_autumn_tree/scene.gltf',
                 position: [0.5, -1.4, 0],
                 scale: 8,
                 rotation: [0, Math.PI / 3, 0],

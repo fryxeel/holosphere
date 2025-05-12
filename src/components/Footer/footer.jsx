@@ -5,8 +5,8 @@ import Icon from '../Icon'
 
 const Footer = () => {
     return (
-        <footer className="relative h-[700px] bg-[var(--violetfooter)] w-full">
-            <div className="flex pt-45 justify-center w-full h-full gap-60">
+        <footer className="relative h-full bg-[var(--violetfooter)] w-full">
+            <div className="flex py-45 justify-center items-center w-full h-full gap-60 flex-wrap">
                 <div className="flex flex-col gap-7">
                     <img
                         className="w-[79px] h-[96px]"
@@ -22,15 +22,21 @@ const Footer = () => {
                         </Body>
                     </div>
                     <div className="flex gap-3">
-                        <CTAButton variant={'primary'} onlyIcon>
-                            <Icon name={'instagram'} />
-                        </CTAButton>
-                        <CTAButton variant={'primary'} onlyIcon>
-                            <Icon name={'tiktok'} />
-                        </CTAButton>
-                        <CTAButton variant={'primary'} onlyIcon>
-                            <Icon name="twitter" />
-                        </CTAButton>
+                        <CTAButton
+                            variant={'primary'}
+                            onlyIcon
+                            iconName="instagram"
+                        ></CTAButton>
+                        <CTAButton
+                            variant={'primary'}
+                            onlyIcon
+                            iconName="tiktok"
+                        ></CTAButton>
+                        <CTAButton
+                            variant={'primary'}
+                            onlyIcon
+                            iconName="twitter"
+                        ></CTAButton>
                     </div>
                 </div>
                 <div className="flex flex-col gap-7">
@@ -71,7 +77,7 @@ const Footer = () => {
                 </div>
             </div>
             <img
-                className="w-full absolute bottom-0"
+                className="w-full"
                 src="/images/logos/HoloBigLogo.svg"
                 alt=""
             />

@@ -81,7 +81,9 @@ export default function CTAButton({
             onClick={onclick}
         >
             {children}
-            {iconName && <Icon name={iconName} height={18} color={iconColor} />}
+            {!onlyIcon && iconName && (
+                <Icon name={iconName} height={18} color={iconColor} />
+            )}
             {onlyIcon && iconName && (
                 <Icon name={iconName} height={18} color={iconColor} />
             )}

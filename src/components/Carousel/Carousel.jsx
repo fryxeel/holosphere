@@ -7,7 +7,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import QuoteCard from '@/components/QuoteCard/QuoteCard.jsx'
-
+import './style.css'
 const quotes = [
     {
         quote: 'Ma vie a radicalement changée',

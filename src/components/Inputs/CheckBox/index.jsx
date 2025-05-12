@@ -9,7 +9,6 @@ const CheckBoxInput = ({
     showLabel,
 }) => {
 
-    
     return (
         <label
             className={`inline-flex items-center cursor-pointer ${className}`}

@@ -13,7 +13,7 @@ function MenuDesktop({ currentPage, cssClass = '' }) {
                     active={currentPage == '/personnalisation'}
                     iconName="filled_stars"
                 >
-                    Personnalisation
+                    Modélisation
                 </ItemMenu>
             </Link>
             <Link href={routes.story}>

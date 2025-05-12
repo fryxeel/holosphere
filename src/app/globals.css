@@ -117,10 +117,12 @@
 
     --color-dark: var(--dark);
     --color-light: var(--light);
+    --color-orange: var(--orange);
 
     --bg-dark: var(--dark);
     --bg-light: var(--light);
     --bg-orange: var(--orange);
+    --bg-gradient: var(--color-gradient)
 
     --border-dark: var(--dark);
     --border-light: var(--light);
@@ -129,6 +131,7 @@
     --text-dark: var(--dark);
     --text-light: var(--light);
     --text-violet: var(--violet);
+    --text-orange: var(--orange);
 }
 
 body {
@@ -152,3 +155,5 @@ body {
     );
     filter: blur(100px);
 }
+
+

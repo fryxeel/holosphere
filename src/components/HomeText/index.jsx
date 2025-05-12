@@ -13,7 +13,7 @@ const HomeText = () => {
                         DÉCOUVREZ UNE NOUVELLE DIMENSION
                     </Body>
                 </div>
-                <div className=" ">
+                <div className="p-2.5 ">
                     <Body hierarchy={1} cssClass="text-white text-center">
                         L’HoloSphère allie technologie et émotion pour{' '}
                         <span>donner vie à vos souvenirs</span> à travers une

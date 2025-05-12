@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import { clsx } from 'clsx'
 import Link from 'next/link'
 import routes from '../../routes.jsx'
 import CTAButton from '../Buttons/CTAButton.jsx'
@@ -11,11 +12,17 @@ import MobileMenu from '../Menu/MenuMobile/index.jsx'
 
 export default function Header() {
     const pathname = usePathname()
+    const headerSticky = pathname === '/personnalisation'
     const dissimulGetButton = pathname === '/get'
     const [open, setOpen] = useState(false)
 
     return (
-        <header className="h-25 text-white p-4 flex gap-4">
+        <header
+            className={clsx(
+                'h-25 text-white p-4 flex gap-4',
+                headerSticky && 'sticky z-[9999999]'
+            )}
+        >
             <ul className="flex justify-around w-full items-center">
                 <li>
                     <Link href={routes.home}>

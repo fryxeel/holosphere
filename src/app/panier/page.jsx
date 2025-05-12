@@ -242,7 +242,7 @@ const panier = () => {
                                 <div className="flex items-center gap-4 ">
                                     <div className="relative w-18 h-18 rounded-[10px] p-0.5 border-2 border-dark overflow-hidden">
                                         <img
-                                            src="/images/sphereToSell/black_base.png"
+                                            src="/images/sphereToSell/black_base.svg"
                                             alt=""
                                             className="w-full h-full rounded-lg bg-light"
                                         />

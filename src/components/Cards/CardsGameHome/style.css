@@ -1,0 +1,11 @@
+.cardGameHome {
+    background: radial-gradient(
+            194.33% 194.33% at 13.62% 79.94%,
+            #fcdaaf 0%,
+            #e99dbc 13.14%,
+            #8c64c5 26.31%,
+            #252d5a 62.27%,
+            #0c0f1e 100%
+        ),
+        #0c0f1e;
+}

@@ -2,8 +2,6 @@
 import { Canvas, useLoader } from '@react-three/fiber'
 import { useState, useRef } from 'react'
 import { usePathname } from 'next/navigation'
-import SnowGlobeSphere from '../../components/snowglobe/SnowGlobeSphere'
-import Base from '../../components/snowglobe/Socle'
 import Controls from '../../components/snowglobe/Controls'
 import CaptureScene from '../../components/snowglobe/CaptureScene'
 import { TextureLoader } from 'three'
@@ -14,15 +12,17 @@ import MusicAmbience from '@/components/snowglobe/MusicAmbience'
 import Body from '@/components/Text/Body'
 import Title from '@/components/Text/Title'
 import Icon from '@/components/Icon'
-import ClassicSection from '@/components/ClassicSection'
-
+import SnowGlobetest from '@/components/snowglobetest'
+import PopUpGame from '@/components/PopUp/PopUpGame'
+import SnowGlobeSphere from '@/components/snowglobe/SnowGlobeSphere'
 export default function SnowGlobe() {
     const [imageTexture, setImageTexture] = useState(null) // Texture pour la sphère
     const [imageSphere, setImageSphere] = useState([]) //stockage des images mis par l'utilisateur
     const [selectedImageTexture, setSelectedImageTexture] = useState(null) // Stockage local de l'image sélectionnée
     const fileInputRef = useRef(null)
 
-    const [materialTexture, setMaterialTexture] = useState(null) // Texture pour la base
+    const [materialTexture, setMaterialTexture] = useState(null)
+    // Texture pour la base
     const [selectedTheme, setselectedTheme] = useState([])
 
     const [themeImages, setImageThemes] = useState([]) // models pour sphere3D
@@ -31,7 +31,7 @@ export default function SnowGlobe() {
 
     const [currentTheme, setCurrentTheme] = useState('default') // État pour le thème actif
 
-    const [showPopup, setShowPopup] = useState(true) //gestion du popUp
+    const [showPopup, setShowPopup] = useState(true)
 
     const themes = {
         default: [],
@@ -134,98 +134,33 @@ export default function SnowGlobe() {
     // Transformation de l'image en base64 pour l'afficher en texture
     const handleImageSelect = (e) => {
         const file = e.target.files[0]
-        if (file) {
-            const src = URL.createObjectURL(file)
+        if (!file) return
+
+        const reader = new FileReader()
+
+        reader.onload = (event) => {
+            const base64 = event.target.result
+
             const newImage = {
-                src,
+                src: base64,
                 alt: file.name,
             }
 
-            // 1. On ajoute directement l'image
             setImageSphere((prev) => [...prev, newImage])
-
-            // 2. On applique immédiatement comme texture de la sphère
-            setImageTexture(src)
-
-            // 3. On met à jour l'image sélectionnée dans l'UI
-            setSelectedImageTexture(src)
-
-            // Reset de l'input
-            e.target.value = null
+            setImageTexture(base64)
+            // <=== c'est ça que tu vas passer au composant 3D
+            setSelectedImageTexture(base64)
         }
+
+        reader.readAsDataURL(file)
+        e.target.value = null
     }
 
     const isCapturePage = pathname === '/personnalisation'
 
     return (
         <>
-            {showPopup && (
-                <div className="absolute w-full h-full backdrop-blur-[4px] top-0 bg-white/20 z-20 flex items-center justify-center">
-                    <BoxBlanc>
-                        <ClassicSection cssClass="p-20">
-                            <div className="flex flex-col gap-10">
-                                <img src="/images/popUpGame.svg" alt="" />
-                                <Body hierarchy={3} cssClass="gray">
-                                    Aucune obligation d’achat — explorez
-                                    librement, laissez parler votre créativité.
-                                </Body>
-                            </div>
-                            <div className="flex flex-col gap-8">
-                                <Title hierarchy={2} cssClass="text-dark">
-                                    Bienvenue dans l’atelier Holosphère !
-                                </Title>
-                                <Body hierarchy={3} cssClass="text-dark">
-                                    Prêt·e à créer la vôtre ? Voici les étapes :
-                                </Body>
-                                <ol className="list-decimal marker:text-orange pl-6 space-y-4">
-                                    <li>
-                                        <Body
-                                            hierarchy={3}
-                                            cssClass="text-dark"
-                                        >
-                                            Choisissez un <span>thème</span> :
-                                            Noël, anniversaire, été… selon vos
-                                            envies du moment.
-                                        </Body>
-                                    </li>
-                                    <li>
-                                        <Body
-                                            hierarchy={3}
-                                            cssClass="text-dark"
-                                        >
-                                            <span>
-                                                Personnalisez votre Holosphère
-                                            </span>{' '}
-                                            : ajoutez vos images, musiques et
-                                            customisez le socle.
-                                        </Body>
-                                    </li>
-                                    <li>
-                                        <Body
-                                            hierarchy={3}
-                                            cssClass="text-dark"
-                                        >
-                                            Partagez avec le tag{' '}
-                                            <span>#Holosphere </span> pour :
-                                            <br />
-                                            ✅ -5% immédiat <br />
-                                            🎁 Jusqu’à -20% avec notre concours
-                                            hebdo !
-                                        </Body>
-                                    </li>
-                                </ol>
-                                <button
-                                    className="cta-button-black-popUp flex gap-2.5"
-                                    onClick={() => setShowPopup(false)}
-                                >
-                                    C'est parti <Icon name="arrowRight" />
-                                </button>
-                            </div>
-                        </ClassicSection>
-                    </BoxBlanc>
-                </div>
-            )}
-
+            {showPopup && <PopUpGame onClose={() => setShowPopup(false)} />}
             <div className="pt-[23px] pb-[75px] pl-[40px] pr-[40px] relative">
                 <h3 className="text-span3 text-center font-manrope text-white">
                     Mon atelier création
@@ -234,8 +169,8 @@ export default function SnowGlobe() {
                     Sculptez votre souvenir
                 </h1>
             </div>
-            <div className="flex flex-row w-full min-h-screen">
-                <div className="flex flex-col items-center w-full pt-10">
+            <div className="flex flex-row w-full pt-10 min-h-screen">
+                <div className="flex flex-col items-center w-full">
                     <BoxBlanc className="relative w-sm h-max-[40vh]">
                         {currentTheme === 'default' && (
                             <div className="absolute inset-0 z-15 bg-white/70 backdrop-blur-sm flex flex-col py-4 px-6 rounded-xl">
@@ -371,30 +306,22 @@ export default function SnowGlobe() {
                         </div>
                     </BoxBlanc>
                 </div>
-                <div className="w-full h-screen pt-10 flex items-center flex-col">
-                    <div className="w-full h-full">
-                        <Canvas camera={{ position: [60, 30, 8], fov: 50 }}>
-                            <ambientLight intensity={0.8} />
-                            <directionalLight
-                                position={[5, 5, 5]}
-                                intensity={0.5}
-                            />
-                            <pointLight
-                                position={[10, 10, 10]}
-                                intensity={0.5}
-                            />
-                            <pointLight
-                                position={[-10, -10, -10]}
-                                intensity={0.5}
-                            />
+                <div className="w-full flex items-center flex-col">
+                    <div className="w-[500px] h-[500px]">
+                        <Canvas camera={{ position: [0, 1.5, 5], fov: 50 }}>
                             <Controls />
                             <SnowGlobeSphere
                                 texture={texture}
                                 selectedTheme={selectedTheme}
-                            />{' '}
-                            {/* Applique la texture à la sphère */}
-                            <Base textureDuMateriel={textureMaterial} />{' '}
-                            {/* Applique la texture à la base */}
+                                position={[0, 3, 0]}
+                            />
+                            <SnowGlobetest
+                                rotation={[0, Math.PI / 2, 0]}
+                                scale={0.7}
+                                materialTexturePath={materialTexture}
+                                scaleSphere={1.2}
+                            />
+
                             {isCapturePage && (
                                 <CaptureScene
                                     setCaptureFunction={setCaptureFunction}
@@ -458,7 +385,7 @@ export default function SnowGlobe() {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col w-full h-full pt-10 pb-10">
+                <div className="flex flex-col w-full h-full">
                     <div className="flex justify-center w-full flex-grow">
                         <BoxBlanc className="w-sm min-h-full flex flex-col relative">
                             {currentTheme === 'default' && (
@@ -546,7 +473,7 @@ export default function SnowGlobe() {
                             </Body>
                         </BoxBlanc>
                     </div>
-                    <div className="flex justify-center w-full pt-10 pb-10">
+                    <div className="flex justify-center w-full pt-10">
                         <BoxBlanc className="w-sm flex-shrink-0">
                             <div className="flex flex-col gap-4">
                                 <Title hierarchy={3} cssClass="text-dark">

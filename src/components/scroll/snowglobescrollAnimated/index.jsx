@@ -309,8 +309,8 @@ const AnimatedSnowGlobe = forwardRef((props, scrollRef) => {
         >
             {/* <SnowGlobeSphere />
             <Base /> */}
-            <SnowGlobetest />
-            <axesHelper args={[5, 5, 5]} position={[0, 0, 0]} />
+            <SnowGlobetest home />
+            {/* <axesHelper args={[5, 5, 5]} position={[0, 0, 0]} /> */}
             <Environment
                 files="/environnement/poly_haven_studio_1k.hdr"
                 intensity={0.3} // Légère augmentation de l'intensité

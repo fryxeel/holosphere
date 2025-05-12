@@ -27,7 +27,7 @@ const SnowGlobeSphere = ({ texture, selectedTheme }) => {
     }, [selectedTheme])
 
     return (
-        <mesh position={[0, 0.5, 0]} rotation={[0, 150, 0]}>
+        <mesh position={[0, 2.2, 0]} rotation={[0, 150, 0]}>
             <sphereGeometry args={[2, 64, 64]} />
             <meshPhysicalMaterial
                 transparent
@@ -41,11 +41,8 @@ const SnowGlobeSphere = ({ texture, selectedTheme }) => {
                 color="white"
             />
             {texture && (
-                <group position={[0, 0, 2]}>
-                    <mesh
-                        position={[0, 0, -2]}
-                        rotation={[0, Math.PI / 2.5, 0]}
-                    >
+                <group position={[0, 0, 0]}>
+                    <mesh position={[0, 0, 0]} rotation={[0, Math.PI / 4, 0]}>
                         <planeGeometry args={[2, 2]} />
                         <meshBasicMaterial map={texture} opacity={1} />
                     </mesh>

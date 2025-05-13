@@ -1,21 +1,23 @@
 'use client'
-import { Canvas, useLoader } from '@react-three/fiber'
-import { useState, useRef } from 'react'
+import { useLoader } from '@react-three/fiber'
+import { useEffect, useState, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import Controls from '../../components/snowglobe/Controls'
 import CaptureScene from '../../components/snowglobe/CaptureScene'
 import { TextureLoader } from 'three'
-import { Environment } from '@react-three/drei'
-import BoxBlanc from '../../components/BoxBlanc/index.jsx'
-import MaterialSelector from '@/components/snowglobe/TextureSocle'
-import MusicAmbience from '@/components/snowglobe/MusicAmbience'
 import Body from '@/components/Text/Body'
 import Title from '@/components/Text/Title'
-import Icon from '@/components/Icon'
 import SnowGlobetest from '@/components/snowglobetest'
 import PopUpGame from '@/components/PopUp/PopUpGame'
 import SnowGlobeSphere from '@/components/snowglobe/SnowGlobeSphere'
 import clsx from 'clsx'
+import ThemeSelectorPanel from '@/components/Modelisation/ThemeSelectorPanel/index.jsx'
+import GlobeViewerPanel from '@/components/Modelisation/GlobeViewerPanel/index.jsx'
+import GetDiscountByShare from '@/components/Modelisation/GetDiscountByShare/index.jsx'
+
+import CreationToolsPanel from '@/components/Modelisation/CreationToolsPanel/index.jsx'
+import { useMediaQuery } from 'react-responsive'
+import SwitchToolsElement from '@/components/Modelisation/SwitchToolsElement'
 
 export default function SnowGlobe() {
     const [imageTexture, setImageTexture] = useState(null) // Texture pour la sphère
@@ -33,7 +35,7 @@ export default function SnowGlobe() {
 
     const [currentTheme, setCurrentTheme] = useState('default') // État pour le thème actif
 
-    const [showPopup, setShowPopup] = useState(true) // DEBUG
+    const [showPopup, setShowPopup] = useState(false) // DEBUG
 
     const themes = {
         default: [],
@@ -46,45 +48,66 @@ export default function SnowGlobe() {
                 img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
             },
             {
-                model: '/models/summer/tree/tree_small_02_1k.gltf',
-                position: [1, -1.5, 0],
-                scale: 0.4,
+                model: '/models/summer/beach_ball/scene.gltf',
+                position: [1, -1.3, 0],
+                scale: 0.2,
                 rotation: [0, 0, 0],
                 img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
             },
         ],
         winter: [
             {
-                model: '/models/winter/winter_tree__with_leaves/scene.gltf',
-                position: [1, -1.5, 0],
-                scale: 0.2,
+                model: '/models/winter/blue_pine_under_snow/scene.gltf',
+                position: [-0.2, -1.5, 1],
+                scale: 0.004,
                 rotation: [0, 0, 0],
+                img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
+            },
+            {
+                model: '/models/winter/snow_man/scene.gltf',
+                position: [1, -1.22, 0],
+                scale: 0.2,
+                rotation: [0, Math.PI * 1.6, 0],
                 img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
             },
         ],
         spring: [
             {
-                model: '/models/winter/shrub-sorrel/shrub_sorrel_01_1k.gltf',
-                position: [0.5, -1.4, 0],
-                scale: 8,
+                model: '/models/spring/sakura__cherry_blossom/scene.gltf',
+                position: [0.6, -1.45, 0.5],
+                scale: 0.3,
                 rotation: [0, Math.PI / 3, 0],
                 img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
             },
         ],
         autumn: [
             {
-                model: 'public/models/automn/stylized_autumn_tree/scene.gltf',
-                position: [0.5, -1.4, 0],
-                scale: 8,
+                model: '/models/automn/stylized_autumn_tree/scene.gltf',
+                position: [0.8, -1.4, 0],
+                scale: 0.2,
+                rotation: [0, Math.PI / 3, 0],
+                img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
+            },
+            {
+                model: '/models/automn/pumpkins_model/scene.gltf',
+                position: [0.2, -1.4, 0.6],
+                scale: 0.1,
                 rotation: [0, Math.PI / 3, 0],
                 img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
             },
         ],
         valentine: [
             {
-                model: '/models/winter/shrub-sorrel/shrub_sorrel_01_1k.gltf',
-                position: [0.5, -1.4, 0],
-                scale: 8,
+                model: '/models/valentine/valentines_heart_balloons/scene.gltf',
+                position: [-0.2, -1.4, 1],
+                scale: 0.2,
+                rotation: [0, Math.PI / 3, 0],
+                img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
+            },
+            {
+                model: '/models/valentine/heart_air_balloon/scene.gltf',
+                position: [1, -1, 0],
+                scale: 0.1,
                 rotation: [0, Math.PI / 3, 0],
                 img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
             },
@@ -168,7 +191,141 @@ export default function SnowGlobe() {
 
     const isCapturePage = pathname === '/personnalisation'
 
-    return (
+    // Gérer le responsive avec react-responsive
+    const actualIsMobile = useMediaQuery({ maxWidth: 767 })
+    const actualIsTablet = useMediaQuery({ maxWidth: 1329 })
+    const [isMobile, setIsMobile] = useState(false) // valeur par défaut
+    const [isTablet, setIsTablet] = useState(false) // valeur par défaut
+
+    const [isClient, setIsClient] = useState(false)
+
+    useEffect(() => {
+        setIsClient(true) // Ne passe à true qu’après le premier rendu côté client
+    }, [])
+
+    useEffect(() => {
+        if (isClient) {
+            setIsMobile(actualIsMobile)
+            setIsTablet(actualIsTablet)
+        }
+    }, [isClient, actualIsMobile, actualIsTablet])
+
+    return isMobile ? (
+        <main
+            className={clsx(
+                'w-full flex justify-center items-center',
+                showPopup ? 'opacity-50' : ''
+            )}
+        >
+            <section className="flex flex-col gap-12 max-w-400 w-full justify-between p-4 pt-8 2xl:p-8">
+                <div className="flex flex-col gap-4 w-full">
+                    <Title hierarchy={1} cssClass="text-light">
+                        Sculptez votre souvenir
+                    </Title>
+                    <Body cssClass="text-light">
+                        Laissez parler votre intuition : une belle idée peut
+                        faire naître une Holosphère unique… et peut-être vous
+                        faire gagner.
+                    </Body>
+                </div>
+
+                <GlobeViewerPanel
+                    texture={texture}
+                    materialTexture={materialTexture}
+                    selectedTheme={selectedTheme}
+                    currentTheme={currentTheme}
+                    isCapturePage={isCapturePage}
+                    setCaptureFunction={setCaptureFunction}
+                    handleThemeClick={handleThemeClick}
+                    SnowGlobeSphere={SnowGlobeSphere}
+                    SnowGlobetest={SnowGlobetest}
+                    Controls={Controls}
+                    CaptureScene={CaptureScene}
+                    forSmallerScreens
+                    key="globeMobile"
+                />
+
+                <SwitchToolsElement
+                    currentTheme={currentTheme}
+                    imageSphere={imageSphere}
+                    selectedImageTexture={selectedImageTexture}
+                    setSelectedImageTexture={setSelectedImageTexture}
+                    handleImageClick={handleImageClick}
+                    handleImageSelect={handleImageSelect}
+                    fileInputRef={fileInputRef}
+                    setMaterialTexture={setMaterialTexture}
+                    selectedTheme={selectedTheme}
+                    themeImages={themeImages}
+                    handleToggleThemeObject={handleToggleThemeObject}
+                    captureFunction={captureFunction}
+                />
+
+                <GetDiscountByShare
+                    captureFunction={captureFunction}
+                    forSmallerScreens
+                />
+            </section>
+        </main>
+    ) : isTablet ? (
+        <main
+            className={clsx(
+                'w-full flex justify-center items-center',
+                showPopup ? 'opacity-50' : ''
+            )}
+        >
+            <section className="h-[calc(100vh_-_100px)] max-h-250 flex flex-row max-w-400 w-full min-h-0 justify-between gap-8 p-4 pt-8 2xl:p-8">
+                <div className="relative flex flex-col gap-11 w-full justify-between h-full max-h-full overflow-hidden">
+                    <div className="flex flex-col max-w-135 gap-4 w-full">
+                        <Title hierarchy={1} cssClass="text-light">
+                            Sculptez votre souvenir
+                        </Title>
+                        <Body cssClass="text-light">
+                            Laissez parler votre intuition : une belle idée peut
+                            faire naître une Holosphère unique… et peut-être
+                            vous faire gagner.
+                        </Body>
+                    </div>
+
+                    <GlobeViewerPanel
+                        texture={texture}
+                        materialTexture={materialTexture}
+                        selectedTheme={selectedTheme}
+                        currentTheme={currentTheme}
+                        isCapturePage={isCapturePage}
+                        setCaptureFunction={setCaptureFunction}
+                        handleThemeClick={handleThemeClick}
+                        SnowGlobeSphere={SnowGlobeSphere}
+                        SnowGlobetest={SnowGlobetest}
+                        Controls={Controls}
+                        CaptureScene={CaptureScene}
+                        isTablet
+                        key="globeTablet"
+                    />
+                </div>
+                <div className="flex flex-col gap-11 min-w-94 w-94 justify-between h-full overflow-y-auto overflow-x-hidden pr-3 rounded-2xl">
+                    <SwitchToolsElement
+                        currentTheme={currentTheme}
+                        imageSphere={imageSphere}
+                        selectedImageTexture={selectedImageTexture}
+                        setSelectedImageTexture={setSelectedImageTexture}
+                        handleImageClick={handleImageClick}
+                        handleImageSelect={handleImageSelect}
+                        fileInputRef={fileInputRef}
+                        setMaterialTexture={setMaterialTexture}
+                        selectedTheme={selectedTheme}
+                        themeImages={themeImages}
+                        handleToggleThemeObject={handleToggleThemeObject}
+                        captureFunction={captureFunction}
+                    />
+
+                    <GetDiscountByShare
+                        captureFunction={captureFunction}
+                        forSmallerScreens
+                    />
+                </div>
+            </section>
+        </main>
+    ) : (
         <>
             {showPopup && <PopUpGame onClose={() => setShowPopup(false)} />}
             <main
@@ -192,362 +349,43 @@ export default function SnowGlobe() {
                                 peut-être vous faire gagner.
                             </Body>
                         </div>
-                        <BoxBlanc
-                            className="relative w-sm flex-1 min-h-0"
-                            interClassName="flex flex-col flex-1 min-h-0"
-                        >
-                            {currentTheme === 'default' && (
-                                <div className="absolute inset-0 z-15 flex flex-col justify-center items-center">
-                                    <div className="flex flex-col gap-2 justify-center items-center px-10 py-36 max-w-70">
-                                        <Icon
-                                            name={'filled_stars'}
-                                            color="black"
-                                            height={32}
-                                        />
-                                        <Body
-                                            hierarchy={4}
-                                            cssClass="text-dark"
-                                        >
-                                            Prêt à commencer ?
-                                        </Body>
-                                        <Body
-                                            hierarchy={3}
-                                            cssClass="text-center text-dark"
-                                        >
-                                            Sélectionnez un thème avant tout.
-                                        </Body>
-                                    </div>
-                                </div>
-                            )}
-                            <Title hierarchy={2} cssClass="text-dark">
-                                Outils de création
-                            </Title>
 
-                            <article
-                                className={clsx(
-                                    'flex-1 min-h-0 overflow-y-auto pl-1 -translate-x-1',
-                                    currentTheme === 'default' &&
-                                        'opacity-10 blur-sm'
-                                )}
-                            >
-                                <div className="py-6 flex flex-col gap-2">
-                                    <Title hierarchy={3} cssClass="text-dark">
-                                        Vos propres images
-                                    </Title>
-                                    <div className="flex items-center gap-2 flex-wrap">
-                                        {/* Affiche d'abord les images existantes */}
-                                        {imageSphere.map((image, index) => {
-                                            const isActive =
-                                                selectedImageTexture ===
-                                                image.src
-                                            return (
-                                                <button
-                                                    key={index}
-                                                    className={`relative w-18 h-18 rounded-[10px] p-0.5 border-2 overflow-hidden 
-                                                                    ${
-                                                                        isActive
-                                                                            ? 'border-black'
-                                                                            : 'border-transparent'
-                                                                    }
-                                                                    `}
-                                                    onClick={() => {
-                                                        if (isActive) {
-                                                            // Désélectionne l'image (enlève bordure et texture sphère)
-                                                            setSelectedImageTexture(
-                                                                null
-                                                            )
-                                                            handleImageClick(
-                                                                null
-                                                            )
-                                                        } else {
-                                                            // Sélectionne l'image (ajoute bordure et texture sphère)
-                                                            setSelectedImageTexture(
-                                                                image.src
-                                                            )
-                                                            handleImageClick(
-                                                                image.src
-                                                            )
-                                                        }
-                                                    }}
-                                                >
-                                                    <img
-                                                        src={image.src}
-                                                        alt={image.alt}
-                                                        className={`w-full h-full rounded-lg `}
-                                                    />
-
-                                                    <div
-                                                        className="absolute top-0 right-0 z-10"
-                                                        onClick={(e) => {
-                                                            e.stopPropagation()
-                                                            // Si c'était l'image sélectionnée, on la désélectionne aussi
-                                                            if (isActive) {
-                                                                setSelectedImageTexture(
-                                                                    null
-                                                                )
-                                                                handleImageClick(
-                                                                    null
-                                                                )
-                                                            }
-                                                        }}
-                                                    >
-                                                        {isActive && (
-                                                            <div className="bg-black rounded-lg border-2 border-white">
-                                                                <Icon
-                                                                    name={
-                                                                        'minus'
-                                                                    }
-                                                                    height={24}
-                                                                />
-                                                            </div>
-                                                        )}
-                                                    </div>
-                                                </button>
-                                            )
-                                        })}
-
-                                        <input
-                                            ref={fileInputRef}
-                                            type="file"
-                                            className="hidden"
-                                            onChange={handleImageSelect}
-                                            accept="image/*"
-                                        />
-
-                                        <div>
-                                            <button
-                                                onClick={() =>
-                                                    fileInputRef.current.click()
-                                                }
-                                                className="cta-button-black w-16 h-16 flex-col gap-1 py-2.5 px-1.5 rounded-2xl"
-                                            >
-                                                <Icon
-                                                    name={'dowload-image'}
-                                                    height={18}
-                                                ></Icon>
-                                                Ajouter
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <Body hierarchy={3} cssClass="text-dark">
-                                        <span>Astuce : </span>Cliquez sur
-                                        l'image pour la projeter dans la sphère
-                                        (une seule à la fois).
-                                    </Body>
-                                </div>
-
-                                <div className="pb-6 flex flex-col gap-2">
-                                    <MaterialSelector
-                                        onSelectMaterial={setMaterialTexture}
-                                    />
-                                </div>
-                                <div className="pb-6 flex flex-col gap-2">
-                                    <MusicAmbience />
-                                </div>
-                            </article>
-                        </BoxBlanc>
-                    </div>
-                    <div className="relative flex flex-col gap-11 max-w-144 w-1/3 2xl:w-3/7 justify-center h-full">
-                        <div className="w-full [aspect-ratio:1/1] -translate-y-4">
-                            <Canvas camera={{ position: [0, 1.5, 5], fov: 50 }}>
-                                <Controls />
-                                <SnowGlobeSphere
-                                    texture={texture}
-                                    selectedTheme={selectedTheme}
-                                    position={[0, 3, 0]}
-                                />
-                                <SnowGlobetest
-                                    rotation={[0, Math.PI / 2, 0]}
-                                    scale={0.7}
-                                    materialTexturePath={materialTexture}
-                                    scaleSphere={1.2}
-                                />
-
-                                {isCapturePage && (
-                                    <CaptureScene
-                                        setCaptureFunction={setCaptureFunction}
-                                    />
-                                )}
-                                <Environment
-                                    files="/environnement/poly_haven_studio_1k.hdr"
-                                    intensity={0}
-                                />
-                            </Canvas>
-                        </div>
-
-                        <div className="absolute bottom-0 rounded-[20px] border-white border-2 p-1 w-full">
-                            <div className="flex flex-col bg-white rounded-2xl p-[11px] gap-3">
-                                <div className="flex justify-between items-center">
-                                    <div>Thème à appliquer</div>
-                                    <div className="px-2 bg-gray-200 rounded-[8px] ">
-                                        {currentTheme === 'default' && 'Aucun'}
-                                        {currentTheme === 'summer' && 'Eté'}
-                                        {currentTheme === 'winter' && 'Hiver'}
-                                        {currentTheme === 'spring' &&
-                                            'Printemps'}
-                                        {currentTheme === 'Valentine' &&
-                                            'Saint-Valentin'}
-                                    </div>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <button
-                                        onClick={() =>
-                                            handleThemeClick('summer')
-                                        }
-                                    >
-                                        Eté
-                                    </button>
-                                    <button
-                                        onClick={() =>
-                                            handleThemeClick('winter')
-                                        }
-                                    >
-                                        Hiver
-                                    </button>
-                                    <button
-                                        onClick={() =>
-                                            handleThemeClick('spring')
-                                        }
-                                    >
-                                        Printemps
-                                    </button>
-                                    <button
-                                        onClick={() =>
-                                            handleThemeClick('valentine')
-                                        }
-                                        className="text-dark"
-                                    >
-                                        Saint-Valentin
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                        <CreationToolsPanel
+                            currentTheme={currentTheme}
+                            imageSphere={imageSphere}
+                            selectedImageTexture={selectedImageTexture}
+                            setSelectedImageTexture={setSelectedImageTexture}
+                            handleImageClick={handleImageClick}
+                            handleImageSelect={handleImageSelect}
+                            fileInputRef={fileInputRef}
+                            setMaterialTexture={setMaterialTexture}
+                            key="toolsDesktop"
+                        />
                     </div>
 
-                    <div className="flex flex-col gap-8 max-w-96 w-2/7 justify-end h-full">
-                        <BoxBlanc
-                            className="relative w-sm flex-1 min-h-0"
-                            interClassName="flex flex-col flex-1 min-h-0"
-                        >
-                            {currentTheme === 'default' && (
-                                <div className="absolute inset-0 z-15 flex flex-col justify-center items-center">
-                                    <div className="flex flex-col gap-2 justify-center items-center px-10 py-36 max-w-70">
-                                        <Icon
-                                            name={'filled_stars'}
-                                            color="black"
-                                            height={32}
-                                        />
-                                        <Body
-                                            hierarchy={4}
-                                            cssClass="text-dark"
-                                        >
-                                            Prêt à commencer ?
-                                        </Body>
-                                        <Body
-                                            hierarchy={3}
-                                            cssClass="text-center text-dark"
-                                        >
-                                            Sélectionnez un thème avant tout.
-                                        </Body>
-                                    </div>
-                                </div>
-                            )}
-                            <Title hierarchy={2} cssClass="text-dark">
-                                Éléments du thème
-                            </Title>
+                    <GlobeViewerPanel
+                        texture={texture}
+                        materialTexture={materialTexture}
+                        selectedTheme={selectedTheme}
+                        currentTheme={currentTheme}
+                        isCapturePage={isCapturePage}
+                        setCaptureFunction={setCaptureFunction}
+                        handleThemeClick={handleThemeClick}
+                        SnowGlobeSphere={SnowGlobeSphere}
+                        SnowGlobetest={SnowGlobetest}
+                        Controls={Controls}
+                        CaptureScene={CaptureScene}
+                        key="globeDesktop"
+                    />
 
-                            <article
-                                className={clsx(
-                                    'flex-1 min-h-0 overflow-y-auto pl-1 -translate-x-1',
-                                    currentTheme === 'default' &&
-                                        'opacity-10 blur-sm'
-                                )}
-                            >
-                                <Title hierarchy={3} cssClass="text-dark">
-                                    {currentTheme === 'default' && 'Aucun'}
-                                    {currentTheme === 'summer' &&
-                                        "Pièces pour l'été"}
-                                    {currentTheme === 'winter' &&
-                                        'Pièces pour Noël'}
-                                    {currentTheme === 'spring' &&
-                                        'Pièces pour le printemps'}
-                                    {currentTheme === 'valentine' &&
-                                        'Pièces pour la Saint-Valentin'}
-                                </Title>
-                                <div className="grid grid-cols-3 gap-2 p-1 min-h-[120px]">
-                                    {themeImages.map((item, index) => {
-                                        const isActive =
-                                            selectedTheme.includes(item)
-
-                                        return (
-                                            <div
-                                                key={index}
-                                                className={`relative w-[88px] h-[88px] p-1 rounded-lg transition-all border-2 cursor-pointer ${
-                                                    isActive
-                                                        ? 'border-black'
-                                                        : 'border-transparent'
-                                                }`}
-                                                onClick={() =>
-                                                    handleToggleThemeObject(
-                                                        item
-                                                    )
-                                                }
-                                            >
-                                                <img
-                                                    src={item.img}
-                                                    alt="Objet du thème"
-                                                    className="w-20 h-20 rounded-lg"
-                                                />
-
-                                                {isActive && (
-                                                    <div className="absolute bottom-0 left-0 z-10">
-                                                        <div className="bg-black rounded-lg border-2 border-white">
-                                                            <Icon
-                                                                color={'white'}
-                                                                name={'check'}
-                                                                height={24}
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                )}
-                                            </div>
-                                        )
-                                    })}
-                                </div>
-                                <Body hierarchy={3}>
-                                    <span>Astuce :</span> Sélectionnez ou
-                                    retirez les éléments à projeter selon le
-                                    thème choisi.
-                                </Body>
-                            </article>
-                        </BoxBlanc>
-                        <BoxBlanc className="w-sm flex-shrink-0">
-                            <div className="flex flex-col gap-4">
-                                <Title hierarchy={3} cssClass="text-dark">
-                                    Imaginez, modelez, partagez !
-                                </Title>
-                                <Body hierarchy={3} cssClass="text-dark">
-                                    Partagez votre création avec le tag{' '}
-                                    <span>#holosphere</span> et tentez de
-                                    remporter des réductions exclusives, jusqu’à
-                                    50% !
-                                </Body>
-                                {/* onClick={() =>
-                                        captureFunction && captureFunction()
-                                    } */}
-                                <button className="cta-button-orange">
-                                    <Body hierarchy={3} cssClass="text-dark">
-                                        Débloquer mes réductions
-                                    </Body>
-
-                                    <Icon
-                                        name={'arrowRight'}
-                                        color={'black'}
-                                    ></Icon>
-                                </button>
-                            </div>
-                        </BoxBlanc>
-                    </div>
+                    <ThemeSelectorPanel
+                        currentTheme={currentTheme}
+                        selectedTheme={selectedTheme}
+                        themeImages={themeImages}
+                        handleToggleThemeObject={handleToggleThemeObject}
+                        captureFunction={captureFunction}
+                        key="themeDesktop"
+                    />
                 </section>
             </main>
         </>

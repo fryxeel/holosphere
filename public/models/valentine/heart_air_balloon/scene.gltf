@@ -1,0 +1,601 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 17062,
+      "max": [
+        6.686219215393066,
+        5.823241710662842,
+        22.690231323242188
+      ],
+      "min": [
+        -6.686219215393066,
+        -5.467708587646484,
+        6.806990623474121
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 204744,
+      "componentType": 5126,
+      "count": 17062,
+      "max": [
+        0.9999573230743408,
+        1.0,
+        0.9998891353607178
+      ],
+      "min": [
+        -0.9999573230743408,
+        -1.0,
+        -0.9998152256011963
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 17062,
+      "max": [
+        0.9999967217445374,
+        0.9998775124549866,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -0.999994158744812,
+        -0.9999344944953918,
+        -1.0,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 17062,
+      "max": [
+        0.9980509281158447,
+        0.9979211688041687
+      ],
+      "min": [
+        0.0019490892300382257,
+        0.0019490892300382257
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 68736,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 409488,
+      "componentType": 5126,
+      "count": 9081,
+      "max": [
+        1.4561736583709717,
+        0.7285456657409668,
+        3.49719500541687
+      ],
+      "min": [
+        -1.4276114702224731,
+        -0.6700834035873413,
+        0.1266613006591797
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 518460,
+      "componentType": 5126,
+      "count": 9081,
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 272992,
+      "componentType": 5126,
+      "count": 9081,
+      "max": [
+        0.999114453792572,
+        0.9999850988388062,
+        0.9998026490211487,
+        1.0
+      ],
+      "min": [
+        -0.9992946982383728,
+        -0.999965488910675,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 136496,
+      "componentType": 5126,
+      "count": 9081,
+      "max": [
+        0.9995030164718628,
+        0.9788122177124023
+      ],
+      "min": [
+        0.0004969952860847116,
+        0.0004969952860847116
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 274944,
+      "componentType": 5125,
+      "count": 49812,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 627432,
+      "componentType": 5126,
+      "count": 6386,
+      "max": [
+        4.423416614532471,
+        4.082244873046875,
+        12.411598205566406
+      ],
+      "min": [
+        -4.395971298217773,
+        -3.927121639251709,
+        0.001491546630859375
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 704064,
+      "componentType": 5126,
+      "count": 6386,
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 418288,
+      "componentType": 5126,
+      "count": 6386,
+      "max": [
+        0.9999454021453857,
+        0.9999452233314514,
+        0.9987694621086121,
+        1.0
+      ],
+      "min": [
+        -0.9951881170272827,
+        -0.9949055910110474,
+        -0.9987592101097107,
+        -1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 209144,
+      "componentType": 5126,
+      "count": 6386,
+      "max": [
+        0.9955231547355652,
+        0.9780669212341309
+      ],
+      "min": [
+        0.0013406167272478342,
+        0.005403727293014526
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 474192,
+      "componentType": 5125,
+      "count": 20928,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "Kyyy_24 (https://sketchfab.com/luckyardrianto27)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/heart-air-balloon-90de6d1e5d4b4a3093617e4d926835ac",
+      "title": "Heart air balloon"
+    },
+    "generator": "Sketchfab-12.56.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 557904,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 260232,
+      "byteOffset": 557904,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 780696,
+      "byteOffset": 818136,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 520464,
+      "byteOffset": 1598832,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 2119296,
+      "uri": "scene.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/Love_ballon_baseColor.png"
+    },
+    {
+      "uri": "textures/Love_ballon_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/Love_ballon_normal.png"
+    },
+    {
+      "uri": "textures/couple_baseColor.png"
+    },
+    {
+      "uri": "textures/couple_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/couple_normal.png"
+    },
+    {
+      "uri": "textures/TailAndBase_baseColor.png"
+    },
+    {
+      "uri": "textures/TailAndBase_metallicRoughness.png"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Love_ballon",
+      "normalTexture": {
+        "index": 2
+      },
+      "occlusionTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "metallicRoughnessTexture": {
+          "index": 1
+        }
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "couple",
+      "normalTexture": {
+        "index": 5
+      },
+      "occlusionTexture": {
+        "index": 4
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 3
+        },
+        "metallicFactor": 0.0,
+        "metallicRoughnessTexture": {
+          "index": 4
+        }
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "TailAndBase",
+      "normalTexture": {
+        "index": 5
+      },
+      "occlusionTexture": {
+        "index": 7
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 6
+        },
+        "metallicFactor": 0.0,
+        "metallicRoughnessTexture": {
+          "index": 7
+        }
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Love balloon_Love_ballon_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "couple_couple_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 6,
+            "POSITION": 5,
+            "TANGENT": 7,
+            "TEXCOORD_0": 8
+          },
+          "indices": 9,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "TailAndBase_TailAndBase_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 11,
+            "POSITION": 10,
+            "TANGENT": 12,
+            "TEXCOORD_0": 13
+          },
+          "indices": 14,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.009999999776482582,
+        0.0,
+        0.0,
+        -0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "090887f2b6f34df3849b592b36590f5f.fbx"
+    },
+    {
+      "children": [
+        3,
+        5,
+        7
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4
+      ],
+      "matrix": [
+        100.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.629206793918314e-05,
+        -99.99999999999868,
+        0.0,
+        0.0,
+        99.99999999999868,
+        -1.629206793918314e-05,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Love balloon"
+    },
+    {
+      "mesh": 0,
+      "name": "Love balloon_Love_ballon_0"
+    },
+    {
+      "children": [
+        6
+      ],
+      "matrix": [
+        100.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.629206793918314e-05,
+        -99.99999999999868,
+        0.0,
+        0.0,
+        99.99999999999868,
+        -1.629206793918314e-05,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "couple"
+    },
+    {
+      "mesh": 1,
+      "name": "couple_couple_0"
+    },
+    {
+      "children": [
+        8
+      ],
+      "matrix": [
+        100.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.629206793918314e-05,
+        -99.99999999999868,
+        0.0,
+        0.0,
+        99.99999999999868,
+        -1.629206793918314e-05,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "TailAndBase"
+    },
+    {
+      "mesh": 2,
+      "name": "TailAndBase_TailAndBase_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    },
+    {
+      "sampler": 0,
+      "source": 3
+    },
+    {
+      "sampler": 0,
+      "source": 4
+    },
+    {
+      "sampler": 0,
+      "source": 5
+    },
+    {
+      "sampler": 0,
+      "source": 6
+    },
+    {
+      "sampler": 0,
+      "source": 7
+    }
+  ]
+}

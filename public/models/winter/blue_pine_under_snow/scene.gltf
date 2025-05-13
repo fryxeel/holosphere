@@ -1,0 +1,353 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 29134,
+      "max": [
+        168.17999267578125,
+        181.66000366210938,
+        478.95001220703125
+      ],
+      "min": [
+        -179.88999938964844,
+        -187.94000244140625,
+        61.83000183105469
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 349608,
+      "componentType": 5126,
+      "count": 29134,
+      "max": [
+        0.9998958110809326,
+        0.9999980926513672,
+        0.999971866607666
+      ],
+      "min": [
+        -0.9999525547027588,
+        -0.9999695420265198,
+        -0.9999554753303528
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 29134,
+      "max": [
+        0.7217699885368347,
+        12.680509567260742
+      ],
+      "min": [
+        0.003640000009909272,
+        -3.5548999309539795
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 101028,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 699216,
+      "componentType": 5126,
+      "count": 26397,
+      "max": [
+        171.91000366210938,
+        164.77999877929688,
+        439.6499938964844
+      ],
+      "min": [
+        -164.99000549316406,
+        -155.08999633789063,
+        93.37999725341797
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 1015980,
+      "componentType": 5126,
+      "count": 26397,
+      "max": [
+        0.9999526143074036,
+        0.9999901056289673,
+        0.9999903440475464
+      ],
+      "min": [
+        -0.9998568892478943,
+        -1.0,
+        -0.9999144077301025
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 233072,
+      "componentType": 5126,
+      "count": 26397,
+      "max": [
+        0.7217699885368347,
+        12.680509567260742
+      ],
+      "min": [
+        0.003640000009909272,
+        -3.5548999309539795
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 404112,
+      "componentType": 5125,
+      "count": 91236,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 1332744,
+      "componentType": 5126,
+      "count": 941,
+      "max": [
+        34.86000061035156,
+        37.869998931884766,
+        559.4000244140625
+      ],
+      "min": [
+        -47.689998626708984,
+        -34.83000183105469,
+        0.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 1344036,
+      "componentType": 5126,
+      "count": 941,
+      "max": [
+        0.9999997615814209,
+        0.9985653758049011,
+        0.9968096613883972
+      ],
+      "min": [
+        -1.0,
+        -0.9975498914718628,
+        -0.5523398518562317
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 444248,
+      "componentType": 5126,
+      "count": 941,
+      "max": [
+        0.9966199994087219,
+        6.6097798347473145
+      ],
+      "min": [
+        0.006209999788552523,
+        -0.6362900137901306
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 769056,
+      "componentType": 5125,
+      "count": 2376,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "1-3D.com (https://sketchfab.com/1-3D.com)",
+      "license": "CC-BY-SA-4.0 (http://creativecommons.org/licenses/by-sa/4.0/)",
+      "source": "https://sketchfab.com/3d-models/blue-pine-under-snow-d5846c9412974ad99b450aff134ff561",
+      "title": "Blue pine under snow"
+    },
+    "generator": "Sketchfab-12.78.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 778560,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 451776,
+      "byteOffset": 778560,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1355328,
+      "byteOffset": 1230336,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 2585664,
+      "uri": "scene.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/Snow_baseColor.jpeg"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Snow",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.8775069760053563
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "Trunk",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Object_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Object_1",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 5,
+            "POSITION": 4,
+            "TEXCOORD_0": 6
+          },
+          "indices": 7,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Object_2",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 9,
+            "POSITION": 8,
+            "TEXCOORD_0": 10
+          },
+          "indices": 11,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2,
+        3,
+        4
+      ],
+      "name": "bluePineSnow.obj.cleaner.materialmerger.gles"
+    },
+    {
+      "mesh": 0,
+      "name": "Object_2"
+    },
+    {
+      "mesh": 1,
+      "name": "Object_3"
+    },
+    {
+      "mesh": 2,
+      "name": "Object_4"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    }
+  ]
+}

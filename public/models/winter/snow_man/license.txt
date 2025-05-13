@@ -1,0 +1,11 @@
+Model Information:
+* title:	Snow Man
+* source:	https://sketchfab.com/3d-models/snow-man-3eb36fb823fc472c8b44a49f871a9874
+* author:	sagarpatel0604 (https://sketchfab.com/sagarpatel0604)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Snow Man" (https://sketchfab.com/3d-models/snow-man-3eb36fb823fc472c8b44a49f871a9874) by sagarpatel0604 (https://sketchfab.com/sagarpatel0604) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

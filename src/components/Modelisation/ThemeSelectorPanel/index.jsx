@@ -27,7 +27,9 @@ const ThemeSelectorPanel = ({
                 )}
                 className={clsx(
                     'relative ',
-                    forSmallerScreens ? 'md:w-80' : 'w-sm flex-1 min-h-0'
+                    forSmallerScreens
+                        ? 'md:w-80 md:h-full'
+                        : 'w-sm flex-1 min-h-0'
                 )}
             >
                 {currentTheme === 'default' && (

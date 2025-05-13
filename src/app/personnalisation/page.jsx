@@ -245,7 +245,7 @@ export default function SnowGlobe() {
             )}
         >
             <section className="h-[calc(100vh_-_100px)] max-h-250 flex flex-row max-w-400 w-full min-h-0 justify-between gap-8 p-4 pt-8 2xl:p-8">
-                <div className="flex flex-col gap-11 w-full justify-between h-full">
+                <div className="relative flex flex-col gap-11 w-full justify-between h-full max-h-full overflow-hidden">
                     <div className="flex flex-col max-w-135 gap-4 w-full">
                         <Title hierarchy={1} cssClass="text-light">
                             Sculptez votre souvenir
@@ -273,7 +273,7 @@ export default function SnowGlobe() {
                         key="globeTablet"
                     />
                 </div>
-                <div className="flex flex-col gap-11 min-w-94 w-94 justify-between h-full overflow-y-auto overflow-x-hidden pr-3">
+                <div className="flex flex-col gap-11 min-w-94 w-94 justify-between h-full overflow-y-auto overflow-x-hidden pr-3 rounded-2xl">
                     <SwitchToolsElement
                         currentTheme={currentTheme}
                         imageSphere={imageSphere}

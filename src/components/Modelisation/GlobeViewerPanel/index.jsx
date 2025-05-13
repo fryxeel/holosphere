@@ -23,12 +23,12 @@ const GlobeViewerPanel = ({
     return (
         <div
             className={clsx(
-                'relative flex justify-center h-full',
+                'flex justify-center h-full',
                 forSmallerScreens
                     ? 'gap-8 flex-col-reverse'
                     : isTablet
                     ? 'flex-col gap-11 items-center'
-                    : 'flex-col gap-11 max-w-144 w-1/3 2xl:w-3/7'
+                    : 'relative flex-col gap-11 max-w-144 w-1/3 2xl:w-3/7'
             )}
         >
             {/* Globe 3D */}

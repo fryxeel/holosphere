@@ -83,6 +83,10 @@
     line-height: 22px;
 }
 
+.body3.bolder {
+    font-weight: 500;
+}
+
 .body3 span {
     font-weight: 600;
 }

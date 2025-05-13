@@ -19,6 +19,7 @@
         "react": "^19.0.0-rc.1",
         "react-bits": "^1.0.5",
         "react-dom": "^19.0.0-rc.1",
+        "react-responsive": "^10.0.1",
         "swiper": "^11.2.6",
         "three": "^0.174.0"
     },

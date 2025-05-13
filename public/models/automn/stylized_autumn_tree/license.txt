@@ -1,0 +1,11 @@
+Model Information:
+* title:	Stylized Autumn Tree
+* source:	https://sketchfab.com/3d-models/stylized-autumn-tree-9a0f35a09ddd4810ad21b87a62a0bd8c
+* author:	3Dev (https://sketchfab.com/3Dev)
+
+Model License:
+* license type:	CC-BY-SA-4.0 (http://creativecommons.org/licenses/by-sa/4.0/)
+* requirements:	Author must be credited. Modified versions must have the same license. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Stylized Autumn Tree" (https://sketchfab.com/3d-models/stylized-autumn-tree-9a0f35a09ddd4810ad21b87a62a0bd8c) by 3Dev (https://sketchfab.com/3Dev) licensed under CC-BY-SA-4.0 (http://creativecommons.org/licenses/by-sa/4.0/)

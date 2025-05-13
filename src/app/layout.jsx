@@ -1,5 +1,5 @@
-import Header from '../components/Header/index.jsx'
 import './globals.css'
+import LayoutWrapper from '../components/layoutwrapper'
 
 export const metadata = {
     title: 'Holosphere',
@@ -11,9 +11,9 @@ export default function RootLayout({ children }) {
     return (
         <html lang="fr">
             <body>
-                <Header />
-                {children}
-                
+                <LayoutWrapper>
+                    {children}
+                </LayoutWrapper>
             </body>
         </html>
     )

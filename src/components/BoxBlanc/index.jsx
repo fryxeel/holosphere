@@ -1,7 +1,12 @@
 import React from 'react'
 import clsx from 'clsx'
 
-const BoxBlanc = ({ children, className, padding = true }) => {
+const BoxBlanc = ({
+    children,
+    className,
+    interClassName = '',
+    padding = true,
+}) => {
     return (
         <div
             className={clsx(
@@ -12,6 +17,7 @@ const BoxBlanc = ({ children, className, padding = true }) => {
             <div
                 className={clsx(
                     'bg-white rounded-2xl h-full',
+                    interClassName,
                     padding ? 'py-4 px-6' : 'py-8 px-10'
                 )}
             >

@@ -91,6 +91,7 @@
     --light: #fff;
     --violet: #9747ff;
     --orange: #f6961c;
+    --violetfooter: #422769;
 }
 
 @theme inline {
@@ -122,7 +123,8 @@
     --bg-dark: var(--dark);
     --bg-light: var(--light);
     --bg-orange: var(--orange);
-    --bg-gradient: var(--color-gradient)
+    --bg-gradient: var(--color-gradient);
+    --bg-violetfooter: var(--violetfooter);
 
     --border-dark: var(--dark);
     --border-light: var(--light);
@@ -155,5 +157,3 @@ body {
     );
     filter: blur(100px);
 }
-
-

@@ -44,7 +44,7 @@ export default function MobileMenu({ open, setOpen, currentPage }) {
                     mobile
                     iconName="filled_stars"
                 >
-                    Personnalisation
+                    Modélisation
                 </ItemMenu>
             </Link>
             <Link href={routes.story} onClick={() => setOpen(false)}>

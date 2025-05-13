@@ -18,16 +18,26 @@ const GlobeViewerPanel = ({
     Controls,
     CaptureScene,
     forSmallerScreens = false,
+    isTablet = false,
 }) => {
     return (
         <div
             className={clsx(
-                'relative flex flex-col justify-center h-full',
-                forSmallerScreens ? 'gap-4' : 'gap-11 max-w-144 w-1/3 2xl:w-3/7'
+                'relative flex justify-center h-full',
+                forSmallerScreens
+                    ? 'gap-8 flex-col-reverse'
+                    : isTablet
+                    ? 'flex-col gap-11 items-center'
+                    : 'flex-col gap-11 max-w-144 w-1/3 2xl:w-3/7'
             )}
         >
             {/* Globe 3D */}
-            <div className="w-full [aspect-ratio:1/1] -translate-y-4">
+            <div
+                className={clsx(
+                    '[aspect-ratio:1/1] -translate-y-4',
+                    isTablet ? 'w-full lg:w-2/3' : 'w-full'
+                )}
+            >
                 <Canvas camera={{ position: [0, 1.5, 5], fov: 50 }}>
                     <Controls />
                     <SnowGlobeSphere

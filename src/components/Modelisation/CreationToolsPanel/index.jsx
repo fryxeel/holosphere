@@ -17,13 +17,22 @@ export default function CreationToolsPanel({
     handleImageClick,
     handleImageSelect,
     setMaterialTexture,
+    forSmallerScreens = false,
 }) {
     const fileInputRef = useRef(null)
 
     return (
         <BoxBlanc
-            className="relative w-sm flex-1 min-h-0"
-            interClassName="flex flex-col flex-1 min-h-0"
+            interClassName={clsx(
+                'flex flex-col',
+                forSmallerScreens
+                    ? 'w-[calc(100vw_-_80px)] md:w-80'
+                    : 'flex-1 min-h-0'
+            )}
+            className={clsx(
+                'relative ',
+                forSmallerScreens ? '' : 'w-sm flex-1 min-h-0'
+            )}
         >
             {currentTheme === 'default' && (
                 <div className="absolute inset-0 z-15 flex flex-col justify-center items-center">

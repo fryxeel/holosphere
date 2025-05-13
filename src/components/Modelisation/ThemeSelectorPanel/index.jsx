@@ -6,6 +6,7 @@ import BoxBlanc from '../../BoxBlanc'
 import Icon from '../../Icon'
 import Title from '../../Text/Title'
 import Body from '../../Text/Body'
+import GetDiscountByShare from '../GetDiscountByShare'
 
 const ThemeSelectorPanel = ({
     currentTheme,
@@ -13,12 +14,21 @@ const ThemeSelectorPanel = ({
     themeImages,
     handleToggleThemeObject,
     captureFunction,
+    forSmallerScreens = false,
 }) => {
     return (
-        <div className="flex flex-col gap-8 max-w-96 w-2/7 justify-end h-full">
+        <div className="flex flex-col gap-8 w-full md:w-2/7 md:max-w-96 justify-end h-full">
             <BoxBlanc
-                className="relative w-sm flex-1 min-h-0"
-                interClassName="flex flex-col flex-1 min-h-0"
+                interClassName={clsx(
+                    'flex flex-col ',
+                    forSmallerScreens
+                        ? 'w-[calc(100vw_-_80px)] md:w-77'
+                        : 'flex-1 min-h-0'
+                )}
+                className={clsx(
+                    'relative ',
+                    forSmallerScreens ? 'md:w-80' : 'w-sm flex-1 min-h-0'
+                )}
             >
                 {currentTheme === 'default' && (
                     <div className="absolute inset-0 z-15 flex flex-col justify-center items-center">
@@ -105,28 +115,9 @@ const ThemeSelectorPanel = ({
                 </article>
             </BoxBlanc>
 
-            <BoxBlanc className="w-sm flex-shrink-0">
-                <div className="flex flex-col gap-4">
-                    <Title hierarchy={3} cssClass="text-dark">
-                        Imaginez, modelez, partagez !
-                    </Title>
-                    <Body hierarchy={3} cssClass="text-dark">
-                        Partagez votre création avec le tag{' '}
-                        <span>#holosphere</span> et tentez de remporter des
-                        réductions exclusives, jusqu’à 50% !
-                    </Body>
-
-                    <button
-                        className="cta-button-orange"
-                        onClick={() => captureFunction && captureFunction()}
-                    >
-                        <Body hierarchy={3} cssClass="text-dark">
-                            Débloquer mes réductions
-                        </Body>
-                        <Icon name="arrowRight" color="black" />
-                    </button>
-                </div>
-            </BoxBlanc>
+            {!forSmallerScreens && (
+                <GetDiscountByShare captureFunction={captureFunction} />
+            )}
         </div>
     )
 }

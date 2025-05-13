@@ -1,6 +1,6 @@
 'use client'
 import { useLoader } from '@react-three/fiber'
-import { useState, useRef } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import Controls from '../../components/snowglobe/Controls'
 import CaptureScene from '../../components/snowglobe/CaptureScene'
@@ -13,9 +13,11 @@ import SnowGlobeSphere from '@/components/snowglobe/SnowGlobeSphere'
 import clsx from 'clsx'
 import ThemeSelectorPanel from '@/components/Modelisation/ThemeSelectorPanel/index.jsx'
 import GlobeViewerPanel from '@/components/Modelisation/GlobeViewerPanel/index.jsx'
+import GetDiscountByShare from '@/components/Modelisation/GetDiscountByShare/index.jsx'
 
 import CreationToolsPanel from '@/components/Modelisation/CreationToolsPanel/index.jsx'
 import { useMediaQuery } from 'react-responsive'
+import SwitchToolsElement from '@/components/Modelisation/SwitchToolsElement'
 
 export default function SnowGlobe() {
     const [imageTexture, setImageTexture] = useState(null) // Texture pour la sphère
@@ -33,7 +35,7 @@ export default function SnowGlobe() {
 
     const [currentTheme, setCurrentTheme] = useState('default') // État pour le thème actif
 
-    const [showPopup, setShowPopup] = useState(true) // DEBUG
+    const [showPopup, setShowPopup] = useState(false) // DEBUG
 
     const themes = {
         default: [],
@@ -161,17 +163,33 @@ export default function SnowGlobe() {
     const isCapturePage = pathname === '/personnalisation'
 
     // Gérer le responsive avec react-responsive
-    const isMobile = useMediaQuery({ maxWidth: 767 })
+    const actualIsMobile = useMediaQuery({ maxWidth: 767 })
+    const actualIsTablet = useMediaQuery({ maxWidth: 1329 })
+    const [isMobile, setIsMobile] = useState(false) // valeur par défaut
+    const [isTablet, setIsTablet] = useState(false) // valeur par défaut
+
+    const [isClient, setIsClient] = useState(false)
+
+    useEffect(() => {
+        setIsClient(true) // Ne passe à true qu’après le premier rendu côté client
+    }, [])
+
+    useEffect(() => {
+        if (isClient) {
+            setIsMobile(actualIsMobile)
+            setIsTablet(actualIsTablet)
+        }
+    }, [isClient, actualIsMobile, actualIsTablet])
 
     return isMobile ? (
         <main
             className={clsx(
-                'h-[calc(100vh_-_100px)] w-full flex justify-center items-center',
+                'w-full flex justify-center items-center',
                 showPopup ? 'opacity-50' : ''
             )}
         >
-            <section className="h-[calc(100vh_-_100px)] max-h-250 flex flex-col max-w-400 w-full min-h-0 justify-between p-4 pt-8 2xl:p-8">
-                <div className="flex flex-col gap-2 w-full translate-x-4">
+            <section className="flex flex-col gap-12 max-w-400 w-full justify-between p-4 pt-8 2xl:p-8">
+                <div className="flex flex-col gap-4 w-full">
                     <Title hierarchy={1} cssClass="text-light">
                         Sculptez votre souvenir
                     </Title>
@@ -195,9 +213,10 @@ export default function SnowGlobe() {
                     Controls={Controls}
                     CaptureScene={CaptureScene}
                     forSmallerScreens
+                    key="globeMobile"
                 />
 
-                <CreationToolsPanel
+                <SwitchToolsElement
                     currentTheme={currentTheme}
                     imageSphere={imageSphere}
                     selectedImageTexture={selectedImageTexture}
@@ -206,15 +225,75 @@ export default function SnowGlobe() {
                     handleImageSelect={handleImageSelect}
                     fileInputRef={fileInputRef}
                     setMaterialTexture={setMaterialTexture}
-                />
-
-                <ThemeSelectorPanel
-                    currentTheme={currentTheme}
                     selectedTheme={selectedTheme}
                     themeImages={themeImages}
                     handleToggleThemeObject={handleToggleThemeObject}
                     captureFunction={captureFunction}
                 />
+
+                <GetDiscountByShare
+                    captureFunction={captureFunction}
+                    forSmallerScreens
+                />
+            </section>
+        </main>
+    ) : isTablet ? (
+        <main
+            className={clsx(
+                'w-full flex justify-center items-center',
+                showPopup ? 'opacity-50' : ''
+            )}
+        >
+            <section className="h-[calc(100vh_-_100px)] max-h-250 flex flex-row max-w-400 w-full min-h-0 justify-between gap-8 p-4 pt-8 2xl:p-8">
+                <div className="flex flex-col gap-11 w-full justify-between h-full">
+                    <div className="flex flex-col max-w-135 gap-4 w-full">
+                        <Title hierarchy={1} cssClass="text-light">
+                            Sculptez votre souvenir
+                        </Title>
+                        <Body cssClass="text-light">
+                            Laissez parler votre intuition : une belle idée peut
+                            faire naître une Holosphère unique… et peut-être
+                            vous faire gagner.
+                        </Body>
+                    </div>
+
+                    <GlobeViewerPanel
+                        texture={texture}
+                        materialTexture={materialTexture}
+                        selectedTheme={selectedTheme}
+                        currentTheme={currentTheme}
+                        isCapturePage={isCapturePage}
+                        setCaptureFunction={setCaptureFunction}
+                        handleThemeClick={handleThemeClick}
+                        SnowGlobeSphere={SnowGlobeSphere}
+                        SnowGlobetest={SnowGlobetest}
+                        Controls={Controls}
+                        CaptureScene={CaptureScene}
+                        isTablet
+                        key="globeTablet"
+                    />
+                </div>
+                <div className="flex flex-col gap-11 min-w-94 w-94 justify-between h-full overflow-y-auto overflow-x-hidden pr-3">
+                    <SwitchToolsElement
+                        currentTheme={currentTheme}
+                        imageSphere={imageSphere}
+                        selectedImageTexture={selectedImageTexture}
+                        setSelectedImageTexture={setSelectedImageTexture}
+                        handleImageClick={handleImageClick}
+                        handleImageSelect={handleImageSelect}
+                        fileInputRef={fileInputRef}
+                        setMaterialTexture={setMaterialTexture}
+                        selectedTheme={selectedTheme}
+                        themeImages={themeImages}
+                        handleToggleThemeObject={handleToggleThemeObject}
+                        captureFunction={captureFunction}
+                    />
+
+                    <GetDiscountByShare
+                        captureFunction={captureFunction}
+                        forSmallerScreens
+                    />
+                </div>
             </section>
         </main>
     ) : (
@@ -251,6 +330,7 @@ export default function SnowGlobe() {
                             handleImageSelect={handleImageSelect}
                             fileInputRef={fileInputRef}
                             setMaterialTexture={setMaterialTexture}
+                            key="toolsDesktop"
                         />
                     </div>
 
@@ -266,6 +346,7 @@ export default function SnowGlobe() {
                         SnowGlobetest={SnowGlobetest}
                         Controls={Controls}
                         CaptureScene={CaptureScene}
+                        key="globeDesktop"
                     />
 
                     <ThemeSelectorPanel
@@ -274,6 +355,7 @@ export default function SnowGlobe() {
                         themeImages={themeImages}
                         handleToggleThemeObject={handleToggleThemeObject}
                         captureFunction={captureFunction}
+                        key="themeDesktop"
                     />
                 </section>
             </main>

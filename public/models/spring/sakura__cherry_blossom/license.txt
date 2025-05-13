@@ -1,0 +1,11 @@
+Model Information:
+* title:	Sakura / Cherry Blossom (桜の木)
+* source:	https://sketchfab.com/3d-models/sakura-cherry-blossom-1bba2a5f47a0444f84006bc65c65253e
+* author:	18gen (https://sketchfab.com/18gen)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Sakura / Cherry Blossom (桜の木)" (https://sketchfab.com/3d-models/sakura-cherry-blossom-1bba2a5f47a0444f84006bc65c65253e) by 18gen (https://sketchfab.com/18gen) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

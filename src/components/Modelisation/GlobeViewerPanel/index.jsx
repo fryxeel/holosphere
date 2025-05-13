@@ -74,24 +74,40 @@ const GlobeViewerPanel = ({
                         <div className="px-2 bg-gray-200 rounded-[8px]">
                             {currentTheme === 'default' && 'Aucun'}
                             {currentTheme === 'summer' && 'Été'}
+                            {currentTheme === 'autumn' && 'Automne'}
                             {currentTheme === 'winter' && 'Hiver'}
                             {currentTheme === 'spring' && 'Printemps'}
                             {currentTheme === 'valentine' && 'Saint-Valentin'}
                         </div>
                     </div>
                     <div className="flex items-center gap-2">
-                        <button onClick={() => handleThemeClick('summer')}>
-                            Été
-                        </button>
-                        <button onClick={() => handleThemeClick('winter')}>
-                            Hiver
-                        </button>
-                        <button onClick={() => handleThemeClick('spring')}>
+                        <button
+                            className="cursor-pointer"
+                            onClick={() => handleThemeClick('spring')}
+                        >
                             Printemps
                         </button>
                         <button
+                            className="cursor-pointer"
+                            onClick={() => handleThemeClick('summer')}
+                        >
+                            Été
+                        </button>
+                        <button
+                            className="cursor-pointer"
+                            onClick={() => handleThemeClick('autumn')}
+                        >
+                            Automne
+                        </button>
+                        <button
+                            className="cursor-pointer"
+                            onClick={() => handleThemeClick('winter')}
+                        >
+                            Hiver
+                        </button>
+                        <button
+                            className="cursor-pointer"
                             onClick={() => handleThemeClick('valentine')}
-                            className="text-dark"
                         >
                             Saint-Valentin
                         </button>

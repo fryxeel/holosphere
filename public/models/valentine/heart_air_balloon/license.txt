@@ -1,0 +1,11 @@
+Model Information:
+* title:	Heart air balloon
+* source:	https://sketchfab.com/3d-models/heart-air-balloon-90de6d1e5d4b4a3093617e4d926835ac
+* author:	Kyyy_24 (https://sketchfab.com/luckyardrianto27)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Heart air balloon" (https://sketchfab.com/3d-models/heart-air-balloon-90de6d1e5d4b4a3093617e4d926835ac) by Kyyy_24 (https://sketchfab.com/luckyardrianto27) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

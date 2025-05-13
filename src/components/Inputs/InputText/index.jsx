@@ -8,7 +8,6 @@ const InputText = ({
     required = false, // Ajout du support pour les champs requis
     ...props
 }) => {
-    
     return (
         <div className={` ${className}`}>
             {label && (
@@ -35,7 +34,7 @@ const InputText = ({
             bg-white
             w-full p-4
             border-2 border-dark/20 rounded-xl
-            focus:outline-none focus:ring-2 focus:ring-[var(--orange)] focus:border-transparent
+            focus:outline-none focus:ring-1 focus:ring-[var(--orange)] focus:border-transparent
             transition duration-150
             placeholder-gray-400
             ${props.disabled ? 'opacity-70 cursor-not-allowed' : ''}

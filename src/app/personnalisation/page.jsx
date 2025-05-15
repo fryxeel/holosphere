@@ -177,6 +177,11 @@ export default function SnowGlobe() {
         const file = e.target.files[0]
         if (!file) return
 
+        if (!file.type.startsWith('image/')) {
+            alert('Merci de sélectionner une image.')
+            return
+        }
+
         const reader = new FileReader()
 
         reader.onload = (event) => {
@@ -187,9 +192,17 @@ export default function SnowGlobe() {
                 alt: file.name,
             }
 
+            try {
+                localStorage.setItem('imgBase64', base64)
+            } catch (error) {
+                console.error(
+                    'Erreur lors de l’enregistrement dans le localStorage :',
+                    error
+                )
+            }
+
             setImageSphere((prev) => [...prev, newImage])
             setImageTexture(base64)
-            // <=== c'est ça que tu vas passer au composant 3D
             setSelectedImageTexture(base64)
         }
 

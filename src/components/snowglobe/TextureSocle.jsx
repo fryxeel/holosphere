@@ -31,7 +31,7 @@ const MaterialSelector = ({ onSelectMaterial }) => {
                 {materials.map((material) => (
                     <button
                         key={material.src}
-                        className={`relative w-16 h-16 rounded-[10px] p-0.5 border-2 overflow-hidden ${
+                        className={`relative w-16 h-16 rounded-[10px] p-0.5 border-2 overflow-hidden cursor-pointer ${
                             selectedMaterial === material.src
                                 ? 'border-dark'
                                 : 'border-transparent'

@@ -9,11 +9,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="fr">
-            <body>
-                <LayoutWrapper>
-                    {children}
-                </LayoutWrapper>
+        <html className="overflow-x-hidden max-w-[100vw]" lang="fr">
+            <body className="overflow-x-hidden max-w-[100vw]">
+                <LayoutWrapper>{children}</LayoutWrapper>
             </body>
         </html>
     )

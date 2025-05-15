@@ -56,7 +56,7 @@ const SwitchToolsElement = ({
 
     return (
         <section
-            className="flex flex-col gap-4 w-full"
+            className="flex flex-col gap-4 w-full relative overflox-x-hidden"
             onTouchStart={(e) => handleStart(e.touches[0].clientX, true)}
             onTouchMove={(e) => handleMove(e.touches[0].clientX)}
             onTouchEnd={(e) => handleEnd(e.changedTouches[0].clientX)}

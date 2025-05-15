@@ -69,7 +69,7 @@ const MusicAmbience = () => {
             <div className="flex gap-2">
                 <button
                     onClick={handlePauseAll}
-                    className="relative w-16 h-16 rounded-xl p-0.5 border-2 border-[#0c0f1e7e]"
+                    className="relative w-16 h-16 rounded-xl p-0.5 border-2 border-[#0c0f1e7e] cursor-pointer"
                 >
                     <div className="absolute bottom-4 left-4 p-0.5">
                         <Icon name={'mute'} height={24} color={'black'}></Icon>
@@ -79,7 +79,7 @@ const MusicAmbience = () => {
                 {musicAmbiences.map((music) => (
                     <button
                         key={music.src}
-                        className={`relative w-16 h-16 rounded-[10px] p-0.5 border-2 overflow-hidden ${
+                        className={`relative w-16 h-16 rounded-[10px] p-0.5 border-2 overflow-hidden cursor-pointer ${
                             selectedMusic?.src === music.src
                                 ? 'border-black'
                                 : 'border-transparent'

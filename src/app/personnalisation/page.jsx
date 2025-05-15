@@ -35,7 +35,15 @@ export default function SnowGlobe() {
 
     const [currentTheme, setCurrentTheme] = useState('default') // État pour le thème actif
 
-    const [showPopup, setShowPopup] = useState(false) // DEBUG
+    const [showPopup, setShowPopup] = useState(true)
+
+    const imgTheme = [
+        { id: 'summer', src: '/images/modelisationPicto/summer.jpg' },
+        { id: 'winter', src: '/images/modelisationPicto/winter.jpg' },
+        { id: 'autumn', src: '/images/modelisationPicto/autumn.jpg' },
+        { id: 'valentine', src: '/images/modelisationPicto/valentine.jpg' },
+        { id: 'spring', src: '/images/modelisationPicto/spring.jpg' },
+    ]
 
     const themes = {
         default: [],
@@ -211,71 +219,16 @@ export default function SnowGlobe() {
     }, [isClient, actualIsMobile, actualIsTablet])
 
     return isMobile ? (
-        <main
-            className={clsx(
-                'w-full flex justify-center items-center',
-                showPopup ? 'opacity-50' : ''
-            )}
-        >
-            <section className="flex flex-col gap-12 max-w-400 w-full justify-between p-4 pt-8 2xl:p-8">
-                <div className="flex flex-col gap-4 w-full">
-                    <Title hierarchy={1} cssClass="text-light">
-                        Sculptez votre souvenir
-                    </Title>
-                    <Body cssClass="text-light">
-                        Laissez parler votre intuition : une belle idée peut
-                        faire naître une Holosphère unique… et peut-être vous
-                        faire gagner.
-                    </Body>
-                </div>
-
-                <GlobeViewerPanel
-                    texture={texture}
-                    materialTexture={materialTexture}
-                    selectedTheme={selectedTheme}
-                    currentTheme={currentTheme}
-                    isCapturePage={isCapturePage}
-                    setCaptureFunction={setCaptureFunction}
-                    handleThemeClick={handleThemeClick}
-                    SnowGlobeSphere={SnowGlobeSphere}
-                    SnowGlobetest={SnowGlobetest}
-                    Controls={Controls}
-                    CaptureScene={CaptureScene}
-                    forSmallerScreens
-                    key="globeMobile"
-                />
-
-                <SwitchToolsElement
-                    currentTheme={currentTheme}
-                    imageSphere={imageSphere}
-                    selectedImageTexture={selectedImageTexture}
-                    setSelectedImageTexture={setSelectedImageTexture}
-                    handleImageClick={handleImageClick}
-                    handleImageSelect={handleImageSelect}
-                    fileInputRef={fileInputRef}
-                    setMaterialTexture={setMaterialTexture}
-                    selectedTheme={selectedTheme}
-                    themeImages={themeImages}
-                    handleToggleThemeObject={handleToggleThemeObject}
-                    captureFunction={captureFunction}
-                />
-
-                <GetDiscountByShare
-                    captureFunction={captureFunction}
-                    forSmallerScreens
-                />
-            </section>
-        </main>
-    ) : isTablet ? (
-        <main
-            className={clsx(
-                'w-full flex justify-center items-center',
-                showPopup ? 'opacity-50' : ''
-            )}
-        >
-            <section className="h-[calc(100vh_-_100px)] max-h-250 flex flex-row max-w-400 w-full min-h-0 justify-between gap-8 p-4 pt-8 2xl:p-8">
-                <div className="relative flex flex-col gap-11 w-full justify-between h-full max-h-full overflow-hidden">
-                    <div className="flex flex-col max-w-135 gap-4 w-full">
+        <>
+            {showPopup && <PopUpGame onClose={() => setShowPopup(false)} />}
+            <main
+                className={clsx(
+                    'w-full flex justify-center items-center',
+                    showPopup ? 'opacity-50' : ''
+                )}
+            >
+                <section className="flex flex-col gap-12 max-w-400 w-full justify-between p-4 pt-8 2xl:p-8">
+                    <div className="flex flex-col gap-4 w-full">
                         <Title hierarchy={1} cssClass="text-light">
                             Sculptez votre souvenir
                         </Title>
@@ -298,11 +251,11 @@ export default function SnowGlobe() {
                         SnowGlobetest={SnowGlobetest}
                         Controls={Controls}
                         CaptureScene={CaptureScene}
-                        isTablet
-                        key="globeTablet"
+                        imgTheme={imgTheme}
+                        forSmallerScreens
+                        key="globeMobile"
                     />
-                </div>
-                <div className="flex flex-col gap-11 min-w-94 w-94 justify-between h-full overflow-y-auto overflow-x-hidden pr-3 rounded-2xl">
+
                     <SwitchToolsElement
                         currentTheme={currentTheme}
                         imageSphere={imageSphere}
@@ -322,9 +275,72 @@ export default function SnowGlobe() {
                         captureFunction={captureFunction}
                         forSmallerScreens
                     />
-                </div>
-            </section>
-        </main>
+                </section>
+            </main>
+        </>
+    ) : isTablet ? (
+        <>
+            {showPopup && <PopUpGame onClose={() => setShowPopup(false)} />}
+            <main
+                className={clsx(
+                    'w-full flex justify-center items-center',
+                    showPopup ? 'opacity-50' : ''
+                )}
+            >
+                <section className="h-[calc(100vh_-_100px)] max-h-250 flex flex-row max-w-400 w-full min-h-0 justify-between gap-8 p-4 pt-8 2xl:p-8">
+                    <div className="relative flex flex-col gap-11 w-full justify-between h-full max-h-full overflow-hidden">
+                        <div className="flex flex-col max-w-135 gap-4 w-full">
+                            <Title hierarchy={1} cssClass="text-light">
+                                Sculptez votre souvenir
+                            </Title>
+                            <Body cssClass="text-light">
+                                Laissez parler votre intuition : une belle idée
+                                peut faire naître une Holosphère unique… et
+                                peut-être vous faire gagner.
+                            </Body>
+                        </div>
+
+                        <GlobeViewerPanel
+                            texture={texture}
+                            materialTexture={materialTexture}
+                            selectedTheme={selectedTheme}
+                            currentTheme={currentTheme}
+                            isCapturePage={isCapturePage}
+                            setCaptureFunction={setCaptureFunction}
+                            handleThemeClick={handleThemeClick}
+                            SnowGlobeSphere={SnowGlobeSphere}
+                            SnowGlobetest={SnowGlobetest}
+                            Controls={Controls}
+                            CaptureScene={CaptureScene}
+                            imgTheme={imgTheme}
+                            isTablet
+                            key="globeTablet"
+                        />
+                    </div>
+                    <div className="flex flex-col gap-11 min-w-94 w-94 justify-between h-full overflow-y-auto overflow-x-hidden pr-3 rounded-2xl">
+                        <SwitchToolsElement
+                            currentTheme={currentTheme}
+                            imageSphere={imageSphere}
+                            selectedImageTexture={selectedImageTexture}
+                            setSelectedImageTexture={setSelectedImageTexture}
+                            handleImageClick={handleImageClick}
+                            handleImageSelect={handleImageSelect}
+                            fileInputRef={fileInputRef}
+                            setMaterialTexture={setMaterialTexture}
+                            selectedTheme={selectedTheme}
+                            themeImages={themeImages}
+                            handleToggleThemeObject={handleToggleThemeObject}
+                            captureFunction={captureFunction}
+                        />
+
+                        <GetDiscountByShare
+                            captureFunction={captureFunction}
+                            forSmallerScreens
+                        />
+                    </div>
+                </section>
+            </main>
+        </>
     ) : (
         <>
             {showPopup && <PopUpGame onClose={() => setShowPopup(false)} />}
@@ -375,6 +391,7 @@ export default function SnowGlobe() {
                         SnowGlobetest={SnowGlobetest}
                         Controls={Controls}
                         CaptureScene={CaptureScene}
+                        imgTheme={imgTheme}
                         key="globeDesktop"
                     />
 

@@ -4,6 +4,7 @@ import React from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Environment } from '@react-three/drei'
 import clsx from 'clsx'
+import Icon from '../../Icon'
 
 const GlobeViewerPanel = ({
     texture,
@@ -17,6 +18,7 @@ const GlobeViewerPanel = ({
     SnowGlobetest,
     Controls,
     CaptureScene,
+    imgTheme = [],
     forSmallerScreens = false,
     isTablet = false,
 }) => {
@@ -80,37 +82,37 @@ const GlobeViewerPanel = ({
                             {currentTheme === 'valentine' && 'Saint-Valentin'}
                         </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                        <button
-                            className="cursor-pointer"
-                            onClick={() => handleThemeClick('spring')}
-                        >
-                            Printemps
-                        </button>
-                        <button
-                            className="cursor-pointer"
-                            onClick={() => handleThemeClick('summer')}
-                        >
-                            Été
-                        </button>
-                        <button
-                            className="cursor-pointer"
-                            onClick={() => handleThemeClick('autumn')}
-                        >
-                            Automne
-                        </button>
-                        <button
-                            className="cursor-pointer"
-                            onClick={() => handleThemeClick('winter')}
-                        >
-                            Hiver
-                        </button>
-                        <button
-                            className="cursor-pointer"
-                            onClick={() => handleThemeClick('valentine')}
-                        >
-                            Saint-Valentin
-                        </button>
+                    <div className="flex gap-2">
+                        {imgTheme.map((imgOfThisTheme) => (
+                            <button
+                                key={imgOfThisTheme.id}
+                                className={`relative w-16 h-16 rounded-[10px] p-0.5 border-2 overflow-hidden cursor-pointer ${
+                                    currentTheme === imgOfThisTheme.id
+                                        ? 'border-dark'
+                                        : 'border-transparent'
+                                }`}
+                                onClick={() =>
+                                    handleThemeClick(imgOfThisTheme.id)
+                                }
+                            >
+                                <img
+                                    src={imgOfThisTheme.src}
+                                    alt={imgOfThisTheme.id}
+                                    className="w-full h-full rounded-lg"
+                                />
+                                {currentTheme === imgOfThisTheme.id && (
+                                    <div className="absolute bottom-0 left-0 z-10">
+                                        <div className="bg-dark p-[2px] rounded-lg border-2 border-white">
+                                            <Icon
+                                                color={'white'}
+                                                name={'check'}
+                                                height={20}
+                                            />
+                                        </div>
+                                    </div>
+                                )}
+                            </button>
+                        ))}
                     </div>
                 </div>
             </div>

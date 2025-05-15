@@ -35,7 +35,15 @@ export default function SnowGlobe() {
 
     const [currentTheme, setCurrentTheme] = useState('default') // État pour le thème actif
 
-    const [showPopup, setShowPopup] = useState(false) // DEBUG
+    const [showPopup, setShowPopup] = useState(true)
+
+    const imgTheme = [
+        { id: 'summer', src: '/images/modelisationPicto/summer.jpg' },
+        { id: 'winter', src: '/images/modelisationPicto/winter.jpg' },
+        { id: 'autumn', src: '/images/modelisationPicto/autumn.jpg' },
+        { id: 'valentine', src: '/images/modelisationPicto/valentine.jpg' },
+        { id: 'spring', src: '/images/modelisationPicto/spring.jpg' },
+    ]
 
     const themes = {
         default: [],
@@ -45,14 +53,14 @@ export default function SnowGlobe() {
                 position: [0, -1.5, 1],
                 scale: 1,
                 rotation: [0, 0, 0],
-                img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
+                img: '/images/modelisationModels/palmTree.jpg',
             },
             {
                 model: '/models/summer/beach_ball/scene.gltf',
                 position: [1, -1.3, 0],
                 scale: 0.2,
                 rotation: [0, 0, 0],
-                img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
+                img: '/images/modelisationModels/beachBall.jpg',
             },
         ],
         winter: [
@@ -61,14 +69,14 @@ export default function SnowGlobe() {
                 position: [-0.2, -1.5, 1],
                 scale: 0.004,
                 rotation: [0, 0, 0],
-                img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
+                img: '/images/modelisationModels/snowTree.jpg',
             },
             {
                 model: '/models/winter/snow_man/scene.gltf',
                 position: [1, -1.22, 0],
                 scale: 0.2,
                 rotation: [0, Math.PI * 1.6, 0],
-                img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
+                img: '/images/modelisationModels/snowMan.jpg',
             },
         ],
         spring: [
@@ -77,7 +85,7 @@ export default function SnowGlobe() {
                 position: [0.6, -1.45, 0.5],
                 scale: 0.3,
                 rotation: [0, Math.PI / 3, 0],
-                img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
+                img: '/images/modelisationModels/cherryTree.jpg',
             },
         ],
         autumn: [
@@ -86,14 +94,14 @@ export default function SnowGlobe() {
                 position: [0.8, -1.4, 0],
                 scale: 0.2,
                 rotation: [0, Math.PI / 3, 0],
-                img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
+                img: '/images/modelisationModels/fallPin.jpg',
             },
             {
                 model: '/models/automn/pumpkins_model/scene.gltf',
                 position: [0.2, -1.4, 0.6],
                 scale: 0.1,
                 rotation: [0, Math.PI / 3, 0],
-                img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
+                img: '/images/modelisationModels/pumpkin.jpg',
             },
         ],
         valentine: [
@@ -102,14 +110,14 @@ export default function SnowGlobe() {
                 position: [-0.2, -1.4, 1],
                 scale: 0.2,
                 rotation: [0, Math.PI / 3, 0],
-                img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
+                img: '/images/modelisationModels/heartBalloons.jpg',
             },
             {
                 model: '/models/valentine/heart_air_balloon/scene.gltf',
                 position: [1, -1, 0],
                 scale: 0.1,
                 rotation: [0, Math.PI / 3, 0],
-                img: 'https://png.pngtree.com/png-vector/20241113/ourlarge/pngtree-3d-tree-model-png-image_14142194.png',
+                img: '/images/modelisationModels/heartMongolfiere.jpg',
             },
         ],
     }
@@ -169,6 +177,11 @@ export default function SnowGlobe() {
         const file = e.target.files[0]
         if (!file) return
 
+        if (!file.type.startsWith('image/')) {
+            alert('Merci de sélectionner une image.')
+            return
+        }
+
         const reader = new FileReader()
 
         reader.onload = (event) => {
@@ -179,9 +192,17 @@ export default function SnowGlobe() {
                 alt: file.name,
             }
 
+            try {
+                localStorage.setItem('imgBase64', base64)
+            } catch (error) {
+                console.error(
+                    'Erreur lors de l’enregistrement dans le localStorage :',
+                    error
+                )
+            }
+
             setImageSphere((prev) => [...prev, newImage])
             setImageTexture(base64)
-            // <=== c'est ça que tu vas passer au composant 3D
             setSelectedImageTexture(base64)
         }
 
@@ -211,71 +232,16 @@ export default function SnowGlobe() {
     }, [isClient, actualIsMobile, actualIsTablet])
 
     return isMobile ? (
-        <main
-            className={clsx(
-                'w-full flex justify-center items-center',
-                showPopup ? 'opacity-50' : ''
-            )}
-        >
-            <section className="flex flex-col gap-12 max-w-400 w-full justify-between p-4 pt-8 2xl:p-8">
-                <div className="flex flex-col gap-4 w-full">
-                    <Title hierarchy={1} cssClass="text-light">
-                        Sculptez votre souvenir
-                    </Title>
-                    <Body cssClass="text-light">
-                        Laissez parler votre intuition : une belle idée peut
-                        faire naître une Holosphère unique… et peut-être vous
-                        faire gagner.
-                    </Body>
-                </div>
-
-                <GlobeViewerPanel
-                    texture={texture}
-                    materialTexture={materialTexture}
-                    selectedTheme={selectedTheme}
-                    currentTheme={currentTheme}
-                    isCapturePage={isCapturePage}
-                    setCaptureFunction={setCaptureFunction}
-                    handleThemeClick={handleThemeClick}
-                    SnowGlobeSphere={SnowGlobeSphere}
-                    SnowGlobetest={SnowGlobetest}
-                    Controls={Controls}
-                    CaptureScene={CaptureScene}
-                    forSmallerScreens
-                    key="globeMobile"
-                />
-
-                <SwitchToolsElement
-                    currentTheme={currentTheme}
-                    imageSphere={imageSphere}
-                    selectedImageTexture={selectedImageTexture}
-                    setSelectedImageTexture={setSelectedImageTexture}
-                    handleImageClick={handleImageClick}
-                    handleImageSelect={handleImageSelect}
-                    fileInputRef={fileInputRef}
-                    setMaterialTexture={setMaterialTexture}
-                    selectedTheme={selectedTheme}
-                    themeImages={themeImages}
-                    handleToggleThemeObject={handleToggleThemeObject}
-                    captureFunction={captureFunction}
-                />
-
-                <GetDiscountByShare
-                    captureFunction={captureFunction}
-                    forSmallerScreens
-                />
-            </section>
-        </main>
-    ) : isTablet ? (
-        <main
-            className={clsx(
-                'w-full flex justify-center items-center',
-                showPopup ? 'opacity-50' : ''
-            )}
-        >
-            <section className="h-[calc(100vh_-_100px)] max-h-250 flex flex-row max-w-400 w-full min-h-0 justify-between gap-8 p-4 pt-8 2xl:p-8">
-                <div className="relative flex flex-col gap-11 w-full justify-between h-full max-h-full overflow-hidden">
-                    <div className="flex flex-col max-w-135 gap-4 w-full">
+        <>
+            {showPopup && <PopUpGame onClose={() => setShowPopup(false)} />}
+            <main
+                className={clsx(
+                    'w-full flex justify-center items-center',
+                    showPopup ? 'opacity-50' : ''
+                )}
+            >
+                <section className="flex flex-col gap-12 max-w-400 w-full justify-between p-4 pt-8 2xl:p-8">
+                    <div className="flex flex-col gap-4 w-full">
                         <Title hierarchy={1} cssClass="text-light">
                             Sculptez votre souvenir
                         </Title>
@@ -298,11 +264,11 @@ export default function SnowGlobe() {
                         SnowGlobetest={SnowGlobetest}
                         Controls={Controls}
                         CaptureScene={CaptureScene}
-                        isTablet
-                        key="globeTablet"
+                        imgTheme={imgTheme}
+                        forSmallerScreens
+                        key="globeMobile"
                     />
-                </div>
-                <div className="flex flex-col gap-11 min-w-94 w-94 justify-between h-full overflow-y-auto overflow-x-hidden pr-3 rounded-2xl">
+
                     <SwitchToolsElement
                         currentTheme={currentTheme}
                         imageSphere={imageSphere}
@@ -322,9 +288,72 @@ export default function SnowGlobe() {
                         captureFunction={captureFunction}
                         forSmallerScreens
                     />
-                </div>
-            </section>
-        </main>
+                </section>
+            </main>
+        </>
+    ) : isTablet ? (
+        <>
+            {showPopup && <PopUpGame onClose={() => setShowPopup(false)} />}
+            <main
+                className={clsx(
+                    'w-full flex justify-center items-center',
+                    showPopup ? 'opacity-50' : ''
+                )}
+            >
+                <section className="h-[calc(100vh_-_100px)] max-h-250 flex flex-row max-w-400 w-full min-h-0 justify-between gap-8 p-4 pt-8 2xl:p-8">
+                    <div className="relative flex flex-col gap-11 w-full justify-between h-full max-h-full overflow-hidden">
+                        <div className="flex flex-col max-w-135 gap-4 w-full">
+                            <Title hierarchy={1} cssClass="text-light">
+                                Sculptez votre souvenir
+                            </Title>
+                            <Body cssClass="text-light">
+                                Laissez parler votre intuition : une belle idée
+                                peut faire naître une Holosphère unique… et
+                                peut-être vous faire gagner.
+                            </Body>
+                        </div>
+
+                        <GlobeViewerPanel
+                            texture={texture}
+                            materialTexture={materialTexture}
+                            selectedTheme={selectedTheme}
+                            currentTheme={currentTheme}
+                            isCapturePage={isCapturePage}
+                            setCaptureFunction={setCaptureFunction}
+                            handleThemeClick={handleThemeClick}
+                            SnowGlobeSphere={SnowGlobeSphere}
+                            SnowGlobetest={SnowGlobetest}
+                            Controls={Controls}
+                            CaptureScene={CaptureScene}
+                            imgTheme={imgTheme}
+                            isTablet
+                            key="globeTablet"
+                        />
+                    </div>
+                    <div className="flex flex-col gap-11 min-w-94 w-94 justify-between h-full overflow-y-auto overflow-x-hidden pr-3 rounded-2xl">
+                        <SwitchToolsElement
+                            currentTheme={currentTheme}
+                            imageSphere={imageSphere}
+                            selectedImageTexture={selectedImageTexture}
+                            setSelectedImageTexture={setSelectedImageTexture}
+                            handleImageClick={handleImageClick}
+                            handleImageSelect={handleImageSelect}
+                            fileInputRef={fileInputRef}
+                            setMaterialTexture={setMaterialTexture}
+                            selectedTheme={selectedTheme}
+                            themeImages={themeImages}
+                            handleToggleThemeObject={handleToggleThemeObject}
+                            captureFunction={captureFunction}
+                        />
+
+                        <GetDiscountByShare
+                            captureFunction={captureFunction}
+                            forSmallerScreens
+                        />
+                    </div>
+                </section>
+            </main>
+        </>
     ) : (
         <>
             {showPopup && <PopUpGame onClose={() => setShowPopup(false)} />}
@@ -375,6 +404,7 @@ export default function SnowGlobe() {
                         SnowGlobetest={SnowGlobetest}
                         Controls={Controls}
                         CaptureScene={CaptureScene}
+                        imgTheme={imgTheme}
                         key="globeDesktop"
                     />
 

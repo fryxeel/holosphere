@@ -92,7 +92,7 @@ const ThemeSelectorPanel = ({
                                     <img
                                         src={item.img}
                                         alt="Objet du thème"
-                                        className="w-20 h-20 rounded-lg"
+                                        className="w-19 h-19 rounded-md"
                                     />
                                     {isActive && (
                                         <div className="absolute bottom-0 left-0 z-10">

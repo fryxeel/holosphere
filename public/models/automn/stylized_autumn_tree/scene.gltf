@@ -1,0 +1,335 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 98,
+      "max": [
+        0.08447793126106262,
+        0.23030546307563782,
+        7.581399917602539
+      ],
+      "min": [
+        -0.5127633810043335,
+        -0.2646525800228119,
+        -0.0009098016889765859
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 1176,
+      "componentType": 5126,
+      "count": 98,
+      "max": [
+        0.9999109506607056,
+        0.974982738494873,
+        0.8033939599990845
+      ],
+      "min": [
+        -0.9975376129150391,
+        -0.9722796082496643,
+        -0.12183471024036407
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 98,
+      "max": [
+        0.6660288572311401,
+        2.996429920196533
+      ],
+      "min": [
+        0.1229209154844284,
+        -0.0033159255981445313
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 444,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 2352,
+      "componentType": 5126,
+      "count": 516,
+      "max": [
+        3.6005425453186035,
+        3.5091335773468018,
+        7.527948379516602
+      ],
+      "min": [
+        -4.1340155601501465,
+        -3.254549026489258,
+        0.28808286786079407
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 8544,
+      "componentType": 5126,
+      "count": 516,
+      "max": [
+        0.5184916853904724,
+        0.5420584082603455,
+        0.9967457056045532
+      ],
+      "min": [
+        -0.5462995767593384,
+        -0.5075902938842773,
+        0.7953022122383118
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 784,
+      "componentType": 5126,
+      "count": 516,
+      "max": [
+        0.8225574493408203,
+        0.9949889183044434
+      ],
+      "min": [
+        0.1774425506591797,
+        -0.0048503875732421875
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 1776,
+      "componentType": 5125,
+      "count": 1548,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "3Dev (https://sketchfab.com/3Dev)",
+      "license": "CC-BY-SA-4.0 (http://creativecommons.org/licenses/by-sa/4.0/)",
+      "source": "https://sketchfab.com/3d-models/stylized-autumn-tree-9a0f35a09ddd4810ad21b87a62a0bd8c",
+      "title": "Stylized Autumn Tree"
+    },
+    "generator": "Sketchfab-14.13.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 7968,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 4912,
+      "byteOffset": 7968,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 14736,
+      "byteOffset": 12880,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 27616,
+      "uri": "scene.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/Bark_baseColor.jpeg"
+    },
+    {
+      "uri": "textures/Pine_Leaves_baseColor.png"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Bark",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.9577051494623774
+      }
+    },
+    {
+      "alphaCutoff": 0.41295363947775837,
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "Pine_Leaves",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.9577051494623774
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Pine_1_Bark_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Pine_1_Pine_Leaves_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 5,
+            "POSITION": 4,
+            "TEXCOORD_0": 6
+          },
+          "indices": 7,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.009999999776482582,
+        0.0,
+        0.0,
+        -0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "a5bfe5d89192467199e73c96f20db857.fbx"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4,
+        5
+      ],
+      "matrix": [
+        100.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.629206793918314e-05,
+        -99.99999999999868,
+        0.0,
+        0.0,
+        99.99999999999868,
+        -1.629206793918314e-05,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Pine_1"
+    },
+    {
+      "mesh": 0,
+      "name": "Pine_1_Bark_0"
+    },
+    {
+      "mesh": 1,
+      "name": "Pine_1_Pine_Leaves_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    }
+  ]
+}

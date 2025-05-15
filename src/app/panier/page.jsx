@@ -7,6 +7,7 @@ import Title from '@/components/Text/Title'
 import Icon from '@/components/Icon'
 import CheckBoxInput from '@/components/Inputs/CheckBox/index.jsx'
 import InputText from '@/components/Inputs/InputText/index.jsx'
+import FAQ from '@/components/Payement/FAQ'
 const panier = () => {
     // const [isChecked, setIsChecked] = useState(false) // <-- Gère l'état ici
     // Un seul état pour toutes les checkboxes
@@ -202,7 +203,7 @@ const panier = () => {
                                             Paiement
                                         </Title>
                                         <div>
-                                            <CheckBoxInput
+                                            {/* <CheckBoxInput
                                                 label="Utiliser l’adresse de livraison pour la facturation"
                                                 showLabel
                                                 name="same_address"
@@ -212,7 +213,9 @@ const panier = () => {
                                                 onChange={handleCheckboxChange(
                                                     'same_address'
                                                 )}
-                                            />
+                                            /> */}
+
+                                            <FAQ />
                                         </div>
                                     </div>
                                     <div>

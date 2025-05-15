@@ -1,13 +1,19 @@
+import { useState } from 'react'
 import Body from '@/components/Text/Body'
 
 const CheckBoxInput = ({
     label = '', // Valeur par défaut
     name,
-    checked,
+    checked = false,
     onChange,
     className = '',
     showLabel,
 }) => {
+    const [isChecked, setIsChecked] = useState(false)
+
+    const handleCheckboxChange = (event) => {
+        setIsChecked(event.target.checked)
+    }
 
     return (
         <label
@@ -22,7 +28,7 @@ const CheckBoxInput = ({
                 aria-label={showLabel ? undefined : label} // Accessibilité quand le label est caché
             />
             <div
-                className={`w-5 h-5 border-2 rounded-md mr-2 flex items-center justify-center transition-colors duration-200 ${
+                className={`w-5 h-5 border-2 rounded-md mr-2 flex items-center justify-center duration-200 ${
                     checked ? 'bg-[var(--orange)] border-[var(--orange)]' : ' '
                 }
           `}

@@ -11,7 +11,7 @@ const HomeGame = () => {
             <div className="bg-dark p-10 pb-40 ">
                 <BoxBlanc className={'w-full h-full'}>
                     <div className="w-full h-full flex justify-center items-center">
-                        <ClassicSection withMaxWidth={false} cssClass="p-6">
+                        <ClassicSection withMaxWidth={false} cssClass="p-6 ">
                             <img
                                 src="/images/CardsHomeGame.svg"
                                 alt=""

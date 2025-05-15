@@ -6,15 +6,19 @@ import Icon from '../Icon'
 export default function CTAButton({
     children,
     href = '#',
-    variant = 'primary' | 'secondary',
+    variant = 'primary',
     className = '',
     darkBG = false,
     iconName = false,
     onclick,
+    onlyIcon = false,
 }) {
-    // Définir un thème par défaut
+    // Définir un thème par défaut et le padding selon onlyIcon
     const defaultVariantTheme =
-        "button-typo flex justify-center items-center gap-2 px-4 py-3 text-base rounded-xl relative cursor-pointer transition-all duration-300 ease-out before:content-[''] before:absolute before:top-[-4px] before:left-[-4px] before:right-[-4px] before:bottom-[-4px] before:border-2 before:rounded-2xl before:transition-opacity before:duration-300 hover:before:opacity-0"
+        "button-typo flex justify-center items-center gap-2 text-base rounded-xl relative cursor-pointer transition-all duration-300 ease-out before:content-[''] before:absolute before:top-[-4px] before:left-[-4px] before:right-[-4px] before:bottom-[-4px] before:border-2 before:rounded-2xl before:transition-opacity before:duration-300 hover:before:opacity-0"
+
+    // Appliquer le padding en fonction de onlyIcon
+    const paddingClasses = onlyIcon ? 'p-3' : 'px-4 py-3'
 
     let variantSwitcher = ''
     let iconColor = ''
@@ -73,11 +77,16 @@ export default function CTAButton({
     return (
         <Link
             href={href}
-            className={clsx(variantSwitcher, className)}
+            className={clsx(variantSwitcher, paddingClasses, className)}
             onClick={onclick}
         >
             {children}
-            {iconName && <Icon name={iconName} height={18} color={iconColor} />}
+            {!onlyIcon && iconName && (
+                <Icon name={iconName} height={18} color={iconColor} />
+            )}
+            {onlyIcon && iconName && (
+                <Icon name={iconName} height={18} color={iconColor} />
+            )}
         </Link>
     )
 }

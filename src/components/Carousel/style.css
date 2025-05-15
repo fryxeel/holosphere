@@ -1,0 +1,17 @@
+.swiper-button-prev {
+    background-image: url('/images/btnPrev.svg') !important;
+}
+
+.swiper-button-next {
+    background-image: url('/images//btnNext.svg') !important;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 120px;
+    height: 120px;
+    color: transparent; /* masque l'icône par défaut */
+}

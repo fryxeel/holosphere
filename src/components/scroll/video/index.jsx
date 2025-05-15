@@ -57,11 +57,20 @@ export default function ScrollVideo() {
         })
     }, [isMobile])
 
+    const [isMuted, setIsMuted] = useState(true)
+
+    const toggleMute = () => {
+        if (videoRef.current) {
+            videoRef.current.muted = !isMuted
+            setIsMuted(!isMuted)
+        }
+    }
+
     return (
         <div ref={containerRef} className="flex justify-center w-full">
             <div
                 className={`
-                w-full 
+                w-full relative group 
                 ${
                     isMobile
                         ? 'aspect-video'
@@ -78,9 +87,19 @@ export default function ScrollVideo() {
                     playsInline
                     className="h-full object-cover mx-auto"
                 >
-                    <source src="videos/video.mp4" type="video/mp4" />
-                    Votre navigateur ne prend pas en charge les vidéos HTML5.
+                    <source src="videos/final.webm" type="video/webm" />
+                    <source src="videos/final.mp4" type="video/mp4" />
+                    Votre navigateur ne prend pas en charge les vidéos WEBM ni
+                    MP4.
                 </video>
+                <div className="absolute bottom-4 left-0 right-0 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <button
+                        onClick={toggleMute}
+                        className="bg-black/60 text-white px-4 py-2 rounded-full hover:bg-black/80 transition cursor-pointer"
+                    >
+                        {isMuted ? '🔇 Son désactivé' : '🔊 Son activé'}
+                    </button>
+                </div>
             </div>
         </div>
     )

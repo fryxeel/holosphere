@@ -66,12 +66,11 @@ const ThemeSelectorPanel = ({
                 >
                     <Title hierarchy={3} cssClass="text-dark">
                         {currentTheme === 'default' && 'Aucun'}
-                        {currentTheme === 'summer' && "Pièces pour l'été"}
-                        {currentTheme === 'winter' && 'Pièces pour Noël'}
-                        {currentTheme === 'spring' &&
-                            'Pièces pour le printemps'}
+                        {currentTheme === 'summer' && "Model pour l'été"}
+                        {currentTheme === 'winter' && 'Model pour Noël'}
+                        {currentTheme === 'spring' && 'Model pour le Printemps'}
                         {currentTheme === 'valentine' &&
-                            'Pièces pour la Saint-Valentin'}
+                            'Model de Romance'}
                     </Title>
 
                     <div className="grid grid-cols-3 gap-2 p-1 min-h-[120px]">
@@ -119,7 +118,10 @@ const ThemeSelectorPanel = ({
             </BoxBlanc>
 
             {!forSmallerScreens && (
-                <GetDiscountByShare captureFunction={captureFunction} setShowPopupEnd={setShowPopupEnd} />
+                <GetDiscountByShare
+                    captureFunction={captureFunction}
+                    setShowPopupEnd={setShowPopupEnd}
+                />
             )}
         </div>
     )

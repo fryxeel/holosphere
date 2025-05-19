@@ -236,6 +236,7 @@ export default function SnowGlobe() {
 
     return isMobile ? (
         <>
+            {showPopupEnd && <PopUpGameEnd setShowPopupEnd={setShowPopupEnd} />}
             {showPopup && <PopUpGame onClose={() => setShowPopup(false)} />}
             <main
                 className={clsx(
@@ -297,6 +298,7 @@ export default function SnowGlobe() {
         </>
     ) : isTablet ? (
         <>
+            {showPopupEnd && <PopUpGameEnd setShowPopupEnd={setShowPopupEnd} />}
             {showPopup && <PopUpGame onClose={() => setShowPopup(false)} />}
             <main
                 className={clsx(

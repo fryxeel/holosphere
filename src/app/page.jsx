@@ -36,7 +36,10 @@ export default function Home() {
                                 <CTAButton href="vue3D">
                                     Commander maintenant
                                 </CTAButton>
-                                <CTAButton href="test" variant="secondary">
+                                <CTAButton
+                                    href="/#discover"
+                                    variant="secondary"
+                                >
                                     Découvrir
                                 </CTAButton>
                             </div>
@@ -47,7 +50,7 @@ export default function Home() {
             <ScrollVideo />
             <HomeText />
             <BackgroundScroll />
-            
+
             <HomeGame />
             <div className="relative h-screen p-10">
                 {/* Fond flouté qui déborde largement */}

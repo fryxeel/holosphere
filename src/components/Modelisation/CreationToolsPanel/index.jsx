@@ -67,7 +67,7 @@ export default function CreationToolsPanel({
                             return (
                                 <button
                                     key={index}
-                                    className={`relative w-18 h-18 rounded-[10px] p-0.5 border-2 overflow-hidden ${
+                                    className={`relative w-18 h-18 rounded-[10px] p-0.5 border-2 overflow-hidden cursor-pointer ${
                                         isActive
                                             ? 'border-black'
                                             : 'border-transparent'

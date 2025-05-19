@@ -2,6 +2,7 @@ import React from 'react'
 import Body from '../Text/Body'
 import CTAButton from '../Buttons/CTAButton'
 import Icon from '../Icon'
+import Link from 'next/link'
 
 const Footer = () => {
     return (
@@ -44,18 +45,31 @@ const Footer = () => {
                     <Body cssClass="text-white" hierarchy={4}>
                         DÉCOUVRIR
                     </Body>
-                    <Body cssClass="text-white" hierarchy={3}>
-                        Accueil
-                    </Body>
-                    <Body cssClass="text-white" hierarchy={3}>
-                        Modéliser
-                    </Body>
-                    <Body cssClass="text-white" hierarchy={3}>
-                        Notre Histoire
-                    </Body>
-                    <Body cssClass="text-white" hierarchy={3}>
-                        Obtenir mon Holosphere
-                    </Body>
+                    <Link href={'/story'}>
+                        <Body cssClass="text-white" hierarchy={3}>
+                            Notre Histoire
+                        </Body>
+                    </Link>
+                    <Link href={'/'}>
+                        <Body cssClass="text-white" hierarchy={3}>
+                            Accueil
+                        </Body>
+                    </Link>
+                    <Link href={'/personnalisation'}>
+                        <Body cssClass="text-white" hierarchy={3}>
+                            Modéliser
+                        </Body>
+                    </Link>
+                    <Link href={'/story'}>
+                        <Body cssClass="text-white" hierarchy={3}>
+                            Notre Histoire
+                        </Body>
+                    </Link>
+                    <Link href={'/get'}>
+                        <Body cssClass="text-white" hierarchy={3}>
+                            Obtenir mon Holosphere
+                        </Body>
+                    </Link>
                 </div>
                 <div className="flex flex-col gap-7">
                     {' '}

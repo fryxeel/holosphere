@@ -14,6 +14,7 @@ const ThemeSelectorPanel = ({
     themeImages,
     handleToggleThemeObject,
     captureFunction,
+    setShowPopupEnd,
     forSmallerScreens = false,
 }) => {
     return (
@@ -118,7 +119,7 @@ const ThemeSelectorPanel = ({
             </BoxBlanc>
 
             {!forSmallerScreens && (
-                <GetDiscountByShare captureFunction={captureFunction} />
+                <GetDiscountByShare captureFunction={captureFunction} setShowPopupEnd={setShowPopupEnd} />
             )}
         </div>
     )

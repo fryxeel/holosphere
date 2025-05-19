@@ -5,7 +5,16 @@ import Body from '../../Text/Body'
 import Icon from '../../Icon'
 import clsx from 'clsx'
 
-const GetDiscountByShare = ({ captureFunction, forSmallerScreens = false }) => {
+const GetDiscountByShare = ({
+    captureFunction,
+    forSmallerScreens = false,
+    setShowPopupEnd,
+}) => {
+
+    function onClickGetDiscount() {
+        captureFunction && captureFunction()
+        setShowPopupEnd(true)
+    }
     return (
         <BoxBlanc
             className={clsx(
@@ -24,7 +33,7 @@ const GetDiscountByShare = ({ captureFunction, forSmallerScreens = false }) => {
                 </Body>
                 <button
                     className="cta-button-orange"
-                    onClick={() => captureFunction && captureFunction()}
+                    onClick={() => onClickGetDiscount()}
                 >
                     <Body hierarchy={3} cssClass="text-dark">
                         Débloquer mes réductions

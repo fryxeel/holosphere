@@ -10,11 +10,12 @@ const CaptureScene = ({ setCaptureFunction }) => {
             gl.render(scene, camera)
             const canvas = gl.domElement
             const image = canvas.toDataURL('image/png', 1)
+            localStorage.setItem('image', image)
 
-            const link = document.createElement('a')
-            link.href = image
-            link.download = 'Ma_Holosphere.png'
-            link.click()
+            // const link = document.createElement('a')
+            // link.href = image
+            // link.download = 'Ma_Holosphere.png'
+            // link.click()
         }
 
         setCaptureFunction(() => captureImage)

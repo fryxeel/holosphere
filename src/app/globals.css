@@ -157,3 +157,7 @@ body {
     );
     filter: blur(100px);
 }
+
+html {
+    scroll-behavior: smooth;
+}

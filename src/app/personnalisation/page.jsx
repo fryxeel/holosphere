@@ -14,10 +14,10 @@ import clsx from 'clsx'
 import ThemeSelectorPanel from '@/components/Modelisation/ThemeSelectorPanel/index.jsx'
 import GlobeViewerPanel from '@/components/Modelisation/GlobeViewerPanel/index.jsx'
 import GetDiscountByShare from '@/components/Modelisation/GetDiscountByShare/index.jsx'
-
 import CreationToolsPanel from '@/components/Modelisation/CreationToolsPanel/index.jsx'
 import { useMediaQuery } from 'react-responsive'
 import SwitchToolsElement from '@/components/Modelisation/SwitchToolsElement'
+import PopUpGameEnd from '@/components/PopUp/popUpGameEnd'
 
 export default function SnowGlobe() {
     const [imageTexture, setImageTexture] = useState(null) // Texture pour la sphère
@@ -210,6 +210,9 @@ export default function SnowGlobe() {
         e.target.value = null
     }
 
+    //popUp fin
+    const [showPopupEnd, setShowPopupEnd] = useState(false) // Ne pas afficher par défaut
+
     const isCapturePage = pathname === '/personnalisation'
 
     // Gérer le responsive avec react-responsive
@@ -286,6 +289,7 @@ export default function SnowGlobe() {
 
                     <GetDiscountByShare
                         captureFunction={captureFunction}
+                        setShowPopupEnd={setShowPopupEnd}
                         forSmallerScreens
                     />
                 </section>
@@ -348,6 +352,7 @@ export default function SnowGlobe() {
 
                         <GetDiscountByShare
                             captureFunction={captureFunction}
+                            setShowPopupEnd={setShowPopupEnd}
                             forSmallerScreens
                         />
                     </div>
@@ -356,6 +361,7 @@ export default function SnowGlobe() {
         </>
     ) : (
         <>
+            {showPopupEnd && <PopUpGameEnd setShowPopupEnd={setShowPopupEnd} />}
             {showPopup && <PopUpGame onClose={() => setShowPopup(false)} />}
             <main
                 className={clsx(
@@ -414,6 +420,7 @@ export default function SnowGlobe() {
                         themeImages={themeImages}
                         handleToggleThemeObject={handleToggleThemeObject}
                         captureFunction={captureFunction}
+                        setShowPopupEnd={setShowPopupEnd}
                         key="themeDesktop"
                     />
                 </section>

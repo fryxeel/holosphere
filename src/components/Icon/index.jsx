@@ -13,6 +13,7 @@ import {
     Undo2,
     ArrowRight,
     Video,
+    MoveLeft,
 } from 'lucide-react'
 
 function Icon({ name, color = 'white', height = 16 }) {
@@ -236,6 +237,8 @@ function Icon({ name, color = 'white', height = 16 }) {
                     />
                 </svg>
             )
+        case 'arrowLeft':
+            return <MoveLeft size={height} color={color} />
         default:
             return 'Error: Unavailable icon name! '
     }

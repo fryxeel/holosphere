@@ -161,3 +161,9 @@ body {
 html {
     scroll-behavior: smooth;
 }
+
+/* style.css ou tailwind global */
+.no-outline * {
+    outline: none !important;
+    box-shadow: none !important;
+}

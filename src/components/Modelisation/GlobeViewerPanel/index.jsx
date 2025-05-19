@@ -79,7 +79,7 @@ const GlobeViewerPanel = ({
                             {currentTheme === 'autumn' && 'Automne'}
                             {currentTheme === 'winter' && 'Hiver'}
                             {currentTheme === 'spring' && 'Printemps'}
-                            {currentTheme === 'valentine' && 'Saint-Valentin'}
+                            {currentTheme === 'valentine' && 'Romance'}
                         </div>
                     </div>
                     <div className="flex gap-2">

@@ -8,8 +8,8 @@ import ClassicSection from '../ClassicSection'
 const HomeGame = () => {
     return (
         <>
-            <div className="bg-dark p-10 pb-40 ">
-                <BoxBlanc className={'w-full h-full'}>
+            <div className="bg-dark p-10 pb-40 flex justify-center items-center">
+                <BoxBlanc className="max-w-360 w-full h-full">
                     <div className="w-full h-full flex justify-center items-center">
                         <ClassicSection withMaxWidth={false} cssClass="p-6 ">
                             <img

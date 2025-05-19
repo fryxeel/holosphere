@@ -23,63 +23,64 @@ const PopUpGameEnd = ({ setShowPopupEnd }) => {
     }, [])
 
     return (
-        <div onClick={() => setShowPopupEnd(false)} className="absolute w-full h-full backdrop-blur-sm top-0 bg-white/20 z-20 flex items-center justify-center cursor-pointer">
+        <div
+            onClick={() => setShowPopupEnd(false)}
+            className="absolute w-full h-full backdrop-blur-sm top-0 bg-white/20 z-20 flex items-center justify-center cursor-pointer"
+        >
             <div onClick={(e) => e.stopPropagation()} className="cursor-auto">
-            <BoxBlanc>
-                <ClassicSection cssClass="p-20">
-                    <div className="flex flex-col gap-10">
-                        {savedImageLocalStorage && (
-                            <img
-                                src={savedImageLocalStorage}
-                                alt="Votre création Holosphère"
-                                className="max-w-full h-auto rounded-lg"
-                            />
-                        )}
+                <BoxBlanc>
+                    <ClassicSection cssClass="p-20">
+                        <div className="flex flex-col gap-10">
+                            <button
+                                className="flex items-center gap-2 cursor-pointer"
+                                onClick={() => setShowPopupEnd(false)}
+                            >
+                                <Icon name={'arrowLeft'} color="#5F6368" />
+                                <Body hierarchy={3} cssClass="text-[#5F6368]">
+                                    Continuer la modélisation
+                                </Body>
+                            </button>
 
-                        {/* <img src="/images/popUpGame.svg" alt="Pop-up jeu" /> */}
-                        <Body hierarchy={3} cssClass="gray">
-                            Aucune obligation d’achat — explorez librement,
-                            laissez parler votre créativité.
-                        </Body>
-                    </div>
-                    <div className="flex flex-col gap-8">
-                        <Title hierarchy={2} cssClass="text-dark">
-                            Bienvenue dans l’atelier Holosphère !
-                        </Title>
-                        <Body hierarchy={3} cssClass="text-dark">
-                            Prêt·e à créer la vôtre ? Voici les étapes :
-                        </Body>
-                        <ol className="list-decimal marker:text-orange pl-6 space-y-4">
-                            <li>
-                                <Body hierarchy={3} cssClass="text-dark">
-                                    Choisissez un <span>thème</span> : Noël,
-                                    anniversaire, été… selon vos envies du
-                                    moment.
-                                </Body>
-                            </li>
-                            <li>
-                                <Body hierarchy={3} cssClass="text-dark">
-                                    <span>Personnalisez votre Holosphère</span>{' '}
-                                    : ajoutez vos images, musiques et customisez
-                                    le socle.
-                                </Body>
-                            </li>
-                            <li>
-                                <Body hierarchy={3} cssClass="text-dark">
-                                    Partagez avec le tag{' '}
-                                    <span>#Holosphere</span> pour :
-                                    <br />
-                                    ✅ -5% immédiat <br />
-                                    🎁 Jusqu’à -20% avec notre concours hebdo !
-                                </Body>
-                            </li>
-                        </ol>
-                        <button className="cta-button-black-popUp flex gap-2.5">
-                            C'est parti <Icon name="arrowRight" />
-                        </button>
-                    </div>
-                </ClassicSection>
-            </BoxBlanc>
+                            {savedImageLocalStorage && (
+                                <img
+                                    src={savedImageLocalStorage}
+                                    alt="Votre création Holosphère"
+                                    className="max-w-full h-auto rounded-lg"
+                                />
+                            )}
+                        </div>
+                        <div className="flex flex-col gap-8">
+                            <Title hierarchy={2} cssClass="text-dark">
+                                Votre Holosphère est prête !
+                            </Title>
+                            <Body hierarchy={3} cssClass="text-dark">
+                                Elle n’attend plus qu’à être partagée ✨
+                            </Body>
+                            <Body hierarchy={4}>
+                                Téléchargez votre création et publiez-la avec le
+                                tag #Holosphere :
+                            </Body>
+
+                            <Body hierarchy={3} cssClass="text-dark">
+                                Partagez avec le tag <span>#Holosphere</span>{' '}
+                                pour :
+                                <br />
+                                ✅ -5% immédiat <br />
+                                🎁 Jusqu’à -20% avec notre concours hebdo !
+                            </Body>
+
+                            <button className="cta-button-black-popUp flex gap-2.5">
+                                télécharger le visuel <Icon name="arrowRight" />
+                            </button>
+                            <Body
+                                hierarchy={3}
+                                cssClass="underline text-[#5F6368]"
+                            >
+                                télécharger avec un fond transparent
+                            </Body>
+                        </div>
+                    </ClassicSection>
+                </BoxBlanc>
             </div>
         </div>
     )

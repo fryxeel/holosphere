@@ -108,7 +108,7 @@ const PopUpGameEnd = ({ setShowPopupEnd }) => {
                             <button onClick={handleDownloadImageOnly}>
                                 <Body
                                     hierarchy={3}
-                                    cssClass="underline text-[#5F6368]"
+                                    cssClass="underline text-[#5F6368] cursor-pointer"
                                 >
                                     télécharger avec un fond transparent
                                 </Body>

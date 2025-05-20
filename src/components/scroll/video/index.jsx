@@ -66,6 +66,33 @@ export default function ScrollVideo() {
         }
     }
 
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            if (event.key === 'V') {
+                // majuscule uniquement
+                if (videoRef.current && containerRef.current) {
+                    // Redémarrer la vidéo et activer le son
+                    videoRef.current.currentTime = 0
+                    videoRef.current.muted = false
+                    setIsMuted(false)
+                    videoRef.current.play()
+
+                    // Scroll doux vers le haut de la vidéo
+                    containerRef.current.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start',
+                    })
+                }
+            }
+        }
+
+        window.addEventListener('keydown', handleKeyDown)
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown)
+        }
+    }, [])
+
     return (
         <div ref={containerRef} className="flex justify-center w-full">
             <div

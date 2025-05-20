@@ -33,7 +33,7 @@ export default function Home() {
                                 </Body>
                             </div>
                             <div className="flex justify-center items-center gap-10">
-                                <CTAButton href="vue3D">
+                                <CTAButton href="get">
                                     Commander maintenant
                                 </CTAButton>
                                 <CTAButton

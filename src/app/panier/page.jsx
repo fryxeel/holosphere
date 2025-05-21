@@ -203,26 +203,14 @@ const panier = () => {
                                             Paiement
                                         </Title>
                                         <div>
-                                            {/* <CheckBoxInput
-                                                label="Utiliser l’adresse de livraison pour la facturation"
-                                                showLabel
-                                                name="same_address"
-                                                checked={
-                                                    checkboxes.same_address
-                                                }
-                                                onChange={handleCheckboxChange(
-                                                    'same_address'
-                                                )}
-                                            /> */}
-
                                             <FAQ />
                                         </div>
                                     </div>
-                                    <div>
+                                    <div className="pt-10">
                                         <Title hierarchy={2} cssClass="mb-4">
                                             Se souvenir de moi
                                         </Title>
-                                        <div>
+                                        <div className="pb-10">
                                             <CheckBoxInput
                                                 label="Enregistrer mes informations pour un paiement plus rapide"
                                                 name="enregistrement paiement"
@@ -232,6 +220,14 @@ const panier = () => {
                                                     'save_info'
                                                 )}
                                             ></CheckBoxInput>
+                                        </div>
+                                        <div>
+                                            <button className="cta-button-black-panier w-full flex gap-2">
+                                                <Body hierarchy={3}>
+                                                    Paiement sécurisé
+                                                </Body>
+                                                <Icon name={'lock'} />
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -317,7 +313,7 @@ const panier = () => {
                                         placeholder="Un code promo? Tapez-le ici"
                                         className="w-full lg:w-3/4 input-promo"
                                     />
-                                    <button className="cta-button-black-panier">
+                                    <button className="cta-button-black-panier h-[52px] w-auto">
                                         Appliquer
                                     </button>
                                 </div>

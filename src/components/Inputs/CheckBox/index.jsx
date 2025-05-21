@@ -2,17 +2,19 @@ import { useState } from 'react'
 import Body from '@/components/Text/Body'
 
 const CheckBoxInput = ({
-    label = '', // Valeur par défaut
+    label = '',
     name,
     checked = false,
     onChange,
     className = '',
     showLabel,
+    radio = false,
 }) => {
-    const [isChecked, setIsChecked] = useState(false)
+    const [isChecked, setIsChecked] = useState(checked)
 
     const handleCheckboxChange = (event) => {
         setIsChecked(event.target.checked)
+        onChange?.(event) // 🔁 Assure que le parent reçoit bien le changement
     }
 
     return (
@@ -20,25 +22,26 @@ const CheckBoxInput = ({
             className={`inline-flex items-center cursor-pointer ${className}`}
         >
             <input
-                type="checkbox"
+                type={radio ? 'radio' : 'checkbox'} // 🆕 Type dynamique
                 name={name}
                 checked={checked}
-                onChange={onChange}
+                onChange={handleCheckboxChange}
                 className="hidden"
-                aria-label={showLabel ? undefined : label} // Accessibilité quand le label est caché
+                aria-label={showLabel ? undefined : label}
             />
             <div
-                className={`w-5 h-5 border-2 rounded-md mr-2 flex items-center justify-center duration-200 ${
-                    checked ? 'bg-[var(--orange)] border-[var(--orange)]' : ' '
-                }
-          `}
+                className={`w-5 h-5 border-2 ${
+                    radio ? 'rounded-full' : 'rounded-md'
+                } mr-2 flex items-center justify-center duration-200
+                ${checked ? 'bg-[var(--orange)] border-[var(--orange)]' : ''}
+                `}
             >
                 {checked && (
                     <svg
                         className="w-3 h-3 text-white"
                         viewBox="0 0 20 20"
                         fill="currentColor"
-                        aria-hidden="true" // Cache l'icône aux lecteurs d'écran
+                        aria-hidden="true"
                     >
                         <path
                             fillRule="evenodd"

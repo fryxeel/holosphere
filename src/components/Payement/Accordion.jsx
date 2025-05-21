@@ -12,7 +12,7 @@ const Accordion = ({ title, children, isOpen, onToggle }) => {
                         : 'border-gray-200 border-b-2'
                 }`}
             >
-                <CheckBoxInput checked={isOpen} onChange={onToggle} />
+                <CheckBoxInput radio checked={isOpen} onChange={onToggle} />
                 <Body hierarchy={4}>{title}</Body>
             </button>
 

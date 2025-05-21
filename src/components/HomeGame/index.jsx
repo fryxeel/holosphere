@@ -46,7 +46,7 @@ const HomeGame = () => {
                                                 5% de réduction immédiate
                                             </span>{' '}
                                             et tenter de remporter{' '}
-                                            <span>-20%</span>
+                                            <span>-20% </span>
                                             supplémentaires grâce à notre
                                             concours hebdomadaire !
                                         </Body>

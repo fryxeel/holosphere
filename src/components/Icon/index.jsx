@@ -14,6 +14,7 @@ import {
     ArrowRight,
     Video,
     ArrowLeft,
+    Lock,
 } from 'lucide-react'
 
 function Icon({ name, color = 'white', height = 16 }) {
@@ -239,6 +240,8 @@ function Icon({ name, color = 'white', height = 16 }) {
             )
         case 'arrowLeft':
             return <ArrowLeft size={height} color={color} />
+        case 'lock':
+            return <Lock size={height} color={color} />
         default:
             return 'Error: Unavailable icon name! '
     }

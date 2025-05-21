@@ -7,7 +7,7 @@ import Link from 'next/link'
 const Footer = () => {
     return (
         <footer className="relative h-full bg-[var(--violetfooter)] w-full">
-            <div className="flex py-45 justify-center items-center w-full h-full gap-60 flex-wrap">
+            <div className="flex py-45 justify-center w-full h-full gap-60 flex-wrap">
                 <div className="flex flex-col gap-7">
                     <img
                         className="w-[79px] h-[96px]"

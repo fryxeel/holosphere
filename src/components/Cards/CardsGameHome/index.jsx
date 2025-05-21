@@ -7,8 +7,8 @@ import Title from '@/components/Text/Title'
 import Icon from '@/components/Icon'
 
 const CardsGameHome = ({
-    width = 'w-[400px]',
-    height = 'h-[400px]',
+    width = 'w-[400px] max-w-100',
+    height = 'h-[400px] max-h-100',
     img = '/images/sphereToSell/black_base.svg',
     imgW = 'w-[325px]',
     className,
@@ -20,7 +20,7 @@ const CardsGameHome = ({
             className={clsx(
                 width,
                 height,
-                ' rounded-3xl cardGameHome flex flex-col justify-end',
+                'relative rounded-3xl cardGameHome flex flex-col justify-end',
                 className
             )}
         >

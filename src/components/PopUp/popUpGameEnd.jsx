@@ -60,11 +60,14 @@ const PopUpGameEnd = ({ setShowPopupEnd }) => {
     return (
         <div
             onClick={() => setShowPopupEnd(false)}
-            className="absolute w-full h-full backdrop-blur-sm top-0 bg-white/20 z-20 flex items-center justify-center cursor-pointer"
+            className="absolute p-10 w-full h-full backdrop-blur-sm top-0 bg-white/20 z-20 flex md:items-center pt-30 items-start justify-center cursor-pointer"
         >
-            <div onClick={(e) => e.stopPropagation()} className="cursor-auto">
+            <div
+                onClick={(e) => e.stopPropagation()}
+                className="cursor-auto max-w-260"
+            >
                 <BoxBlanc>
-                    <ClassicSection cssClass="p-20">
+                    <ClassicSection cssClass="sm:p-20 p-5 py-10 sm:max-h-[70vh] max-h-[75vh] overflow-y-auto">
                         <div className="flex flex-col gap-10">
                             <button
                                 className="flex items-center gap-2 cursor-pointer"
@@ -92,8 +95,9 @@ const PopUpGameEnd = ({ setShowPopupEnd }) => {
                             </Body>
 
                             <Body hierarchy={3} cssClass="text-dark">
-                                ✅ -5% immédiat <br />
-                                🎁 Jusqu’à -20% avec notre concours hebdo !
+                                ✅ 5% de réduction immédiate <br />
+                                🎁 + Concours hebdomadaire : -20% à gagner
+                                chaque semaine !
                             </Body>
 
                             {/* 🔽 Le bouton pour capturer la carte */}
@@ -101,7 +105,7 @@ const PopUpGameEnd = ({ setShowPopupEnd }) => {
                                 className="cta-button-black-popUp flex gap-2.5"
                                 onClick={handleDownloadCard}
                             >
-                                télécharger le visuel <Icon name="download" />
+                                Télécharger le visuel <Icon name="download" />
                             </button>
 
                             {/* 🔽 Le bouton pour télécharger l’image brute */}
@@ -110,7 +114,7 @@ const PopUpGameEnd = ({ setShowPopupEnd }) => {
                                     hierarchy={3}
                                     cssClass="underline text-[#5F6368] cursor-pointer"
                                 >
-                                    télécharger avec un fond transparent
+                                    Télécharger avec un fond transparent
                                 </Body>
                             </button>
                         </div>

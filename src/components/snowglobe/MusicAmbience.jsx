@@ -6,24 +6,23 @@ import Icon from '../Icon'
 const MusicAmbience = () => {
     const musicAmbiences = [
         {
-            src: '/songs/End_of_Line.mp3',
-            title: 'End of Line',
-            author: 'Daft Punk',
-            image: 'https://upload.wikimedia.org/wikipedia/en/3/39/Tron_Legacy_Soundtrack.jpg',
+            src: '/songs/eternity.mp3',
+            title: 'Eternity',
+            author: 'Lemonmusicstudio',
+            image: '/songs/cover/eternity.webp',
         },
         {
-            src: '/songs/TRON_Legacy_(End Titles).mp3',
-            title: 'TRON Legacy',
-            author: 'Daft Punk',
-            image: 'https://upload.wikimedia.org/wikipedia/en/3/39/Tron_Legacy_Soundtrack.jpg',
+            src: '/songs/happyBirthday.mp3',
+            title: 'Joyeux Anniversaire',
+            author: 'White_Records',
+            image: '/songs/cover/happyBirthday.webp',
         },
         {
-            src: '/songs/The_Game_Has_Changed.mp3',
-            title: 'The Game Has Changed',
-            author: 'Daft Punk',
-            image: 'https://upload.wikimedia.org/wikipedia/en/3/39/Tron_Legacy_Soundtrack.jpg',
+            src: '/songs/cowboy.mp3',
+            title: 'Cowboy',
+            author: 'Fresh_Morning',
+            image: '/songs/cover/cowboy.jpg',
         },
-        // ... autres musiques
     ]
 
     const [selectedMusic, setSelectedMusic] = useState(null)

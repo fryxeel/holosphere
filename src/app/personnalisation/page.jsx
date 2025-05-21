@@ -234,6 +234,12 @@ export default function SnowGlobe() {
         }
     }, [isClient, actualIsMobile, actualIsTablet])
 
+    useEffect(() => {
+        if (showPopupEnd) {
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+        }
+    }, [showPopupEnd])
+
     return isMobile ? (
         <>
             {showPopupEnd && <PopUpGameEnd setShowPopupEnd={setShowPopupEnd} />}

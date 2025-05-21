@@ -11,11 +11,14 @@ const HomeGame = () => {
             <div className="bg-dark p-10 pb-40 flex justify-center items-center">
                 <BoxBlanc className="max-w-360 w-full h-full">
                     <div className="w-full h-full flex justify-center items-center">
-                        <ClassicSection withMaxWidth={false} cssClass="p-6 ">
+                        <ClassicSection
+                            withMaxWidth={false}
+                            cssClass="p-10 py-15"
+                        >
                             <img
-                                src="/images/CardsHomeGame.svg"
+                                src="/images/CardsHomeGame.webp"
                                 alt=""
-                                className="w-full h-full"
+                                className="lg:w-1/2 w-full h-full max-w-150"
                             />
 
                             <div className="flex flex-col justify-center max-w-2xl">

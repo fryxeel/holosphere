@@ -190,7 +190,7 @@ const panier = () => {
                                         <div className="bg-[#ECECED] p-16 flex items center justify-center rounded-3xl">
                                             <Body
                                                 hierarchy={3}
-                                                cssClass="max-w-[300px]]"
+                                                cssClass="max-w-[300px] text-center"
                                             >
                                                 Renseignez d'abord votre adresse
                                                 pour découvrir les options de

@@ -37,7 +37,6 @@ export function SnowGlobeContent({
     const [socleTexture, setSocleTexture] = useState(null) // texture du socle bois etc..
     const [sphereTexture, setSphereTexture] = useState(null) // image mis par l'utilisateur dans l'input file transformer en base 64
 
-    console.log(sphereImageTexture)
     // 🧠 refs pour ne créer qu'une seule fois les matériaux
     const glassMaterialRef = useRef()
     const mousseMaterialRef = useRef()
@@ -94,7 +93,7 @@ export function SnowGlobeContent({
 
             model.scene.traverse((child) => {
                 if (child.isMesh) {
-                    console.log(child.name)
+                    //console.log(child.name)
                     const name = child.name.toLowerCase()
                     if (
                         name.includes('sphere') ||

@@ -11,6 +11,21 @@ import Icon from '@/components/Icon'
 
 export default function Get() {
     const [materialTexture, setMaterialTexture] = useState(null) // Texture pour la base
+
+    const handleShare = () => {
+        if (navigator.share) {
+            navigator
+                .share({
+                    title: 'Holosphere One',
+                    text: 'Découvrez Holosphere One, la sphère holographique qui donne vie à vos souvenirs.',
+                    url: window.location.href,
+                })
+                .catch((error) => console.error('Erreur de partage:', error))
+        } else {
+            alert("Le partage n'est pas pris en charge par votre navigateur.")
+        }
+    }
+
     return (
         <>
             <div className="h-4" />
@@ -85,14 +100,19 @@ export default function Get() {
                             >
                                 Ajouter au panier
                             </CTAButton>
-                            <CTAButton
-                                darkBG
-                                iconName="share"
-                                variant="secondary"
+                            <div
+                                onClick={handleShare}
                                 className="w-full sm:w-auto"
                             >
-                                Partager
-                            </CTAButton>
+                                <CTAButton
+                                    darkBG
+                                    iconName="share"
+                                    variant="secondary"
+                                    className="w-full sm:w-auto"
+                                >
+                                    Partager
+                                </CTAButton>
+                            </div>
                         </div>
 
                         <div className="flex flex-col gap-4">

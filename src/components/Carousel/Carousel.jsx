@@ -10,34 +10,34 @@ import QuoteCard from '@/components/QuoteCard/QuoteCard.jsx'
 import './style.css'
 const quotes = [
     {
-        quote: 'Ma vie a radicalement changée',
-        author: 'Natalie COUDRAY',
-        date: '- le 18 avril',
+        quote: 'Un souvenir magique chaque jour à la maison.',
+        author: 'Élodie MARTIN',
+        date: '- le 12 février',
     },
     {
-        quote: 'Mes enfants adorent revivre nos dernières vacances',
-        author: ' Sébastien CHÂBALES',
-        date: '- le 5 mai',
+        quote: 'C’est comme revivre les plus beaux moments de notre vie.',
+        author: 'Jean-Pierre LEROY',
+        date: '- le 27 avril',
     },
     {
-        quote: 'Quel cadeau parfait pour un anniversaire',
-        author: 'Lucie DRAY',
-        date: '- le 3 mars',
+        quote: 'L’effet wahou est immédiat, tout le monde est bluffé !',
+        author: 'Camille DUPONT',
+        date: '- le 9 mars',
     },
     {
-        quote: 'Quel cadeau parfait pour un anniversaire',
-        author: 'Lucie DRAY',
-        date: '- le 3 mars',
+        quote: 'Un concept émouvant et ultra moderne.',
+        author: 'Nicolas BRUN',
+        date: '- le 14 mai',
     },
     {
-        quote: 'Quel cadeau parfait pour un anniversaire',
-        author: 'Lucie DRAY',
-        date: '- le 3 mars',
+        quote: 'Mes grands-parents ont pleuré de joie.',
+        author: 'Sophie BAILLY',
+        date: '- le 1er avril',
     },
     {
-        quote: 'Quel cadeau parfait pour un anniversaire',
-        author: 'Lucie DRAY',
-        date: '- le 3 mars',
+        quote: 'C’est devenu notre petit rituel du soir en famille.',
+        author: 'Thomas LAMARRE',
+        date: '- le 22 janvier',
     },
 ]
 

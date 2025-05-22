@@ -11,6 +11,21 @@ import Icon from '@/components/Icon'
 
 export default function Get() {
     const [materialTexture, setMaterialTexture] = useState(null) // Texture pour la base
+
+    const handleShare = () => {
+        if (navigator.share) {
+            navigator
+                .share({
+                    title: 'Holosphere One',
+                    text: 'Découvrez Holosphere One, la sphère holographique qui donne vie à vos souvenirs.',
+                    url: window.location.href,
+                })
+                .catch((error) => console.error('Erreur de partage:', error))
+        } else {
+            alert("Le partage n'est pas pris en charge par votre navigateur.")
+        }
+    }
+
     return (
         <>
             <div className="h-4" />
@@ -28,11 +43,34 @@ export default function Get() {
                         </div>
                     </div>
 
-                    <img
-                        src="images/HolosphereMockup2_small.png"
-                        alt="Image de l'Holosphere"
-                        className="max-h-1/3 lg:w-1/2 aspect-[4/3] lg:aspect-[3/4] overflow-hidden object-cover rounded-2xl"
-                    />
+                    {materialTexture ==
+                    '/textures/Fabric062_2K-JPG_AmbientOcclusion.jpg' ? (
+                        <img
+                            src="images/getSocleDifferent/wool.webp"
+                            alt="Image de l'Holosphere"
+                            className="max-h-1/3 lg:w-1/2 aspect-[4/3] lg:aspect-[3/4] overflow-hidden object-cover rounded-2xl"
+                        />
+                    ) : materialTexture ==
+                      '/textures/NightSkyHDRI007_2K-TONEMAPPED.jpg' ? (
+                        <img
+                            src="images/getSocleDifferent/sky.webp"
+                            alt="Image de l'Holosphere"
+                            className="max-h-1/3 lg:w-1/2 aspect-[4/3] lg:aspect-[3/4] overflow-hidden object-cover rounded-2xl"
+                        />
+                    ) : materialTexture ==
+                      '/textures/Asphalt025B_2K-JPG_Color.jpg' ? (
+                        <img
+                            src="images/getSocleDifferent/concrete.webp"
+                            alt="Image de l'Holosphere"
+                            className="max-h-1/3 lg:w-1/2 aspect-[4/3] lg:aspect-[3/4] overflow-hidden object-cover rounded-2xl"
+                        />
+                    ) : (
+                        <img
+                            src="images/getSocleDifferent/wood.webp"
+                            alt="Image de l'Holosphere"
+                            className="max-h-1/3 lg:w-1/2 aspect-[4/3] lg:aspect-[3/4] overflow-hidden object-cover rounded-2xl"
+                        />
+                    )}
 
                     <article className="flex flex-col gap-8 lg:w-1/2">
                         <div className="hidden lg:flex flex-col gap-4">
@@ -62,14 +100,19 @@ export default function Get() {
                             >
                                 Ajouter au panier
                             </CTAButton>
-                            <CTAButton
-                                darkBG
-                                iconName="share"
-                                variant="secondary"
+                            <div
+                                onClick={handleShare}
                                 className="w-full sm:w-auto"
                             >
-                                Partager
-                            </CTAButton>
+                                <CTAButton
+                                    darkBG
+                                    iconName="share"
+                                    variant="secondary"
+                                    className="w-full sm:w-auto"
+                                >
+                                    Partager
+                                </CTAButton>
+                            </div>
                         </div>
 
                         <div className="flex flex-col gap-4">

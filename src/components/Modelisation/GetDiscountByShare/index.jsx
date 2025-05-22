@@ -10,7 +10,6 @@ const GetDiscountByShare = ({
     forSmallerScreens = false,
     setShowPopupEnd,
 }) => {
-
     function onClickGetDiscount() {
         captureFunction && captureFunction()
         setShowPopupEnd(true)
@@ -27,9 +26,9 @@ const GetDiscountByShare = ({
                     Imaginez, modelez, partagez !
                 </Title>
                 <Body hierarchy={3} cssClass="text-dark">
-                    Partagez votre création avec le tag <span>#holosphere</span>{' '}
-                    et tentez de remporter des réductions exclusives, jusqu’à
-                    50% !
+                    Utilisez le tag <span>#Holosphere</span> sur vos réseaux
+                    pour débloquer <span> 5% de réduction</span> immédiate et
+                    s’inscrire à notre concours pour -20%.
                 </Body>
                 <button
                     className="cta-button-orange"

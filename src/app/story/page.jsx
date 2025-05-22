@@ -18,7 +18,7 @@ export default function Story() {
             <FondBlanc cssClass="px-6 md:px-10 lg:px-16 py-12 md:py-18 lg:py-30 flex flex-col justify-center items-center gap-36">
                 <ClassicSection cssClass="md:flex-row">
                     <img
-                        src="/images/HolosphereMockup1.png"
+                        src="/images/HolosphereMockupPlant.webp"
                         alt="Mockup de l'Holosphère"
                         className="md:max-w-100 md:max-h-100 rounded-3xl"
                     />
@@ -108,10 +108,10 @@ export default function Story() {
                     <picture>
                         <source
                             media="(min-width: 640px)"
-                            srcSet="/images/HolosphereMockup2.png"
+                            srcSet="/images/HolosphereMockup2.webp"
                         />
                         <img
-                            src="/images/HolosphereMockup2_small.png"
+                            src="/images/HolosphereMockup2_small.webp"
                             alt="Mockup de l'Holosphère sur une table basse"
                             className="rounded-3xl"
                         />
@@ -126,7 +126,7 @@ export default function Story() {
                     </ClassicBox>
                     <div className="lg:w-16/10 h-100 rounded-3xl bg-[#FDE3C3] flex justify-center align-center mt-10 lg:mt-0">
                         <img
-                            src="images/HolosphereMockup3.png"
+                            src="images/HolosphereMockupSpring.webp"
                             alt="Holosphère fond transparent"
                             className="h-100 scale-180 sm:scale-210 -translate-y-6"
                         />

@@ -1,39 +1,28 @@
 'use client'
 import React, { useRef, useEffect, forwardRef, useState } from 'react'
-import { Environment, useGLTF } from '@react-three/drei'
-import SnowGlobeSphere from '@/components/snowglobe/SnowGlobeSphere'
-import Base from '@/components/snowglobe/Socle'
+import { Environment } from '@react-three/drei'
+import SnowGlobetest from '@/components/snowglobetest'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import SnowGlobetest from '@/components/snowglobetest'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const AnimatedSnowGlobe = forwardRef((props, scrollRef) => {
     const globeRef = useRef()
-    const snowGlobeRef = useRef() // Référence spécifique pour SnowGlobetest
+    const snowGlobeRef = useRef()
     const materialsRef = useRef([])
     const animationRef = useRef(null)
 
-    // État pour détecter si on est en mobile avec 3 breakpoints (mobile, tablet, desktop)
     const [deviceType, setDeviceType] = useState('desktop')
+    const [ready, setReady] = useState(false)
 
-    // Constantes pour les animations
     const ANIMATION_SETTINGS = {
-        desktop: {
-            rotationMultiplier: 2,
-            animationDuration: 4,
-            zoomFactor: 6,
-        },
+        desktop: { rotationMultiplier: 2, animationDuration: 4, zoomFactor: 6 },
         tablet: {
             rotationMultiplier: 1.5,
-            animationDuration: 3,
-            zoomFactor: 4,
-        },
-        mobile: {
-            rotationMultiplier: 1,
             animationDuration: 2,
         },
+        mobile: { rotationMultiplier: 3, animationDuration: 2 },
     }
 
     useEffect(() => {
@@ -49,51 +38,32 @@ const AnimatedSnowGlobe = forwardRef((props, scrollRef) => {
         return () => window.removeEventListener('resize', checkDeviceType)
     }, [])
 
-    // Fonction améliorée pour gérer les matériaux et textures
     const setupMaterials = () => {
         if (!globeRef.current) return
 
-        // On vide la référence actuelle
         materialsRef.current = []
 
-        // On trouve le composant SnowGlobetest pour l'accès direct
-        globeRef.current.traverse((child) => {
-            if (
-                child.name === 'SnowGlobetest' ||
-                child.type === 'SnowGlobetest'
-            ) {
-                snowGlobeRef.current = child
-            }
-        })
-
-        // On parcourt tous les meshes pour configurer les matériaux
-        materialsRef.current = []
         globeRef.current.traverse((child) => {
             if (child.isMesh && child.material) {
-                // Pour un seul matériau
-                if (!Array.isArray(child.material)) {
-                    if (child.material.map)
-                        child.material.map.needsUpdate = true
-                    child.material.transparent = true
-                    child.material.opacity = 0
-                    child.material.needsUpdate = true
-                    materialsRef.current.push(child.material)
-                }
-                // Pour les matériaux multiples
-                else {
-                    child.material.forEach((mat) => {
-                        if (mat.map) mat.map.needsUpdate = true
-                        mat.transparent = true
-                        mat.opacity = 0
-                        mat.needsUpdate = true
-                        materialsRef.current.push(mat)
-                    })
-                }
+                const mats = Array.isArray(child.material)
+                    ? child.material
+                    : [child.material]
+                mats.forEach((mat) => {
+                    if (mat.map) mat.map.needsUpdate = true
+                    mat.transparent = true
+                    mat.opacity = 0
+                    mat.needsUpdate = true
+                    materialsRef.current.push(mat)
+                })
             }
         })
+
+        // Si au moins un matériau a été trouvé, le modèle est prêt
+        if (materialsRef.current.length > 0) {
+            setReady(true)
+        }
     }
 
-    // Initialisation au premier render
     useEffect(() => {
         setupMaterials()
         return () => {
@@ -101,9 +71,15 @@ const AnimatedSnowGlobe = forwardRef((props, scrollRef) => {
         }
     }, [])
 
-    // Animation principale qui réagit aux changements de taille d'écran
+    useEffect(() => {
+        if (ready) {
+            ScrollTrigger.refresh()
+        }
+    }, [ready])
+
     useEffect(() => {
         if (
+            !ready ||
             !globeRef.current ||
             !scrollRef?.current ||
             materialsRef.current.length === 0
@@ -112,33 +88,31 @@ const AnimatedSnowGlobe = forwardRef((props, scrollRef) => {
 
         const settings = ANIMATION_SETTINGS[deviceType]
 
-        // Nettoyage de l'animation précédente si elle existe
         if (animationRef.current) {
             animationRef.current.revert()
         }
 
         animationRef.current = gsap.context(() => {
-            // Timeline principale
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: scrollRef.current,
                     start: 'top top',
                     end: 'bottom bottom',
-                    scrub: 1, // Valeur plus élevée pour un défilement plus doux
-                    markers: false, // Mettre à true pour le debugging
+                    scrub: 1,
+                    markers: false,
                 },
             })
 
-            // Animation de base (apparition) - plus douce
             tl.fromTo(
                 globeRef.current.position,
                 { y: -3 },
                 { y: 0, ease: 'power2.out', duration: 0.5 },
                 0
             )
-
+            {
+                /*MOBILE*/
+            }
             if (deviceType === 'mobile') {
-                // MOBILE : Uniquement rotation, pas de mouvement en Z
                 tl.to(
                     globeRef.current.rotation,
                     {
@@ -149,11 +123,10 @@ const AnimatedSnowGlobe = forwardRef((props, scrollRef) => {
                     0.3
                 )
 
-                // Ajoute une légère rotation X pour l'effet visuel
                 tl.to(
                     globeRef.current.rotation,
                     {
-                        x: Math.PI * 0.05, // Légère inclinaison
+                        x: Math.PI * 0.05,
                         ease: 'sine.inOut',
                         duration: settings.animationDuration / 2,
                     },
@@ -163,16 +136,46 @@ const AnimatedSnowGlobe = forwardRef((props, scrollRef) => {
                 tl.to(
                     globeRef.current.rotation,
                     {
-                        x: 0, // Retour à l'horizontal
+                        x: 0,
+                        ease: 'sine.inOut',
+                        duration: settings.animationDuration / 2,
+                    },
+                    settings.animationDuration / 2
+                )
+                {
+                    /*TABLET*/
+                }
+            } else if (deviceType === 'tablet') {
+                tl.to(
+                    globeRef.current.rotation,
+                    {
+                        y: Math.PI * settings.rotationMultiplier,
+                        ease: 'sine.inOut',
+                        duration: settings.animationDuration,
+                    },
+                    0.3
+                )
+
+                tl.to(
+                    globeRef.current.rotation,
+                    {
+                        x: Math.PI * 0.05,
+                        ease: 'sine.inOut',
+                        duration: settings.animationDuration / 2,
+                    },
+                    0.3
+                )
+
+                tl.to(
+                    globeRef.current.rotation,
+                    {
+                        x: 0,
                         ease: 'sine.inOut',
                         duration: settings.animationDuration / 2,
                     },
                     settings.animationDuration / 2
                 )
             } else {
-                // Animation complète pour tablette/desktop
-
-                // Zoom avant
                 tl.to(
                     globeRef.current.position,
                     {
@@ -183,35 +186,30 @@ const AnimatedSnowGlobe = forwardRef((props, scrollRef) => {
                     0.3
                 )
 
-                // Maintien du zoom pour apprécier
                 tl.to(globeRef.current.position, {
                     z: settings.zoomFactor,
                     ease: 'none',
                     duration: settings.animationDuration / 3,
                 })
 
-                // Zoom arrière avec dépassement
                 tl.to(globeRef.current.position, {
                     z: -settings.zoomFactor,
                     ease: 'power2.inOut',
                     duration: 1,
                 })
 
-                // Maintien du zoom arrière
                 tl.to(globeRef.current.position, {
                     z: -settings.zoomFactor,
                     ease: 'none',
                     duration: settings.animationDuration / 3,
                 })
 
-                // Retour à la position d'origine - PLUS SMOOTH
                 tl.to(globeRef.current.position, {
                     z: 0,
-                    ease: 'power3.inOut', // Ease plus doux qu'elastic
+                    ease: 'power3.inOut',
                     duration: 0.8,
                 })
 
-                // Rotations
                 tl.to(
                     globeRef.current.rotation,
                     {
@@ -222,7 +220,6 @@ const AnimatedSnowGlobe = forwardRef((props, scrollRef) => {
                     0
                 )
 
-                // Inclinaison sur les axes X et Z
                 tl.to(
                     globeRef.current.rotation,
                     {
@@ -234,28 +231,27 @@ const AnimatedSnowGlobe = forwardRef((props, scrollRef) => {
                     1
                 )
 
-                // Rotation complète pour revenir à la position initiale - PLUS SMOOTH
                 tl.to(
                     globeRef.current.rotation,
                     {
                         z: Math.PI * 2,
                         x: 0,
                         y: Math.PI,
-                        ease: 'power3.inOut', // Easing plus doux
+                        ease: 'power3.inOut',
                         duration: settings.animationDuration / 1.5,
                     },
                     settings.animationDuration / 2
                 )
             }
 
-            // Apparition progressive (fade-in) des matériaux - seulement pour SnowGlobetest
+            // Fade in des matériaux
             gsap.fromTo(
                 materialsRef.current,
                 { opacity: 0 },
                 {
                     opacity: 1,
-                    stagger: 0.02, // Plus rapide et subtil
-                    ease: 'power1.out', // Transition plus naturelle
+                    stagger: 0.02,
+                    ease: 'power1.out',
                     scrollTrigger: {
                         trigger: scrollRef.current,
                         start: 'top 30%',
@@ -263,20 +259,18 @@ const AnimatedSnowGlobe = forwardRef((props, scrollRef) => {
                         scrub: true,
                     },
                     onStart: () => {
-                        // Garantit que les textures sont visibles pendant la transition
                         materialsRef.current.forEach((mat) => {
                             mat.needsUpdate = true
                             if (mat.map) {
                                 mat.map.needsUpdate = true
-                                mat.map.anisotropy = 16 // Meilleure qualité des textures pendant l'animation
+                                mat.map.anisotropy = 16
                             }
                         })
                     },
                 }
             )
 
-            // On garde les matériaux opaques jusqu'à presque la fin du scroll
-            // puis fade-out subtil à la toute fin
+            // Fade out des matériaux
             gsap.fromTo(
                 materialsRef.current,
                 { opacity: 1 },
@@ -285,7 +279,7 @@ const AnimatedSnowGlobe = forwardRef((props, scrollRef) => {
                     ease: 'power1.in',
                     scrollTrigger: {
                         trigger: scrollRef.current,
-                        start: '85% bottom', // Plus tard dans le scroll
+                        start: '85% bottom',
                         end: 'bottom bottom',
                         scrub: true,
                     },
@@ -298,7 +292,7 @@ const AnimatedSnowGlobe = forwardRef((props, scrollRef) => {
                 animationRef.current.revert()
             }
         }
-    }, [scrollRef, deviceType]) // Réagit aux changements de taille d'écran
+    }, [scrollRef, deviceType, ready])
 
     return (
         <group
@@ -307,13 +301,10 @@ const AnimatedSnowGlobe = forwardRef((props, scrollRef) => {
             scale={0.7}
             position={[0, -3, 0]}
         >
-            {/* <SnowGlobeSphere />
-            <Base /> */}
             <SnowGlobetest home />
-            {/* <axesHelper args={[5, 5, 5]} position={[0, 0, 0]} /> */}
             <Environment
                 files="/environnement/poly_haven_studio_1k.hdr"
-                intensity={0.3} // Légère augmentation de l'intensité
+                intensity={0.3}
             />
         </group>
     )
